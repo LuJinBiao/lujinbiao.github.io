@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="系统相关的基础类Java 程序在不同操作系统上运行时，需要取得平台相关的属性，或者调用平台命令来完成特定共功能。 System 类System 类代表了当前 Java 程序的运行平台。System 类不能创建对象，其提供了一些类变量和类方法，运行通过 System 类直接调用这些类变量和类方法。 System 类提供了代表 标准输入(System.in)、标准输出(System.out) 和 错误">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7-Java基础类库">
+<meta property="og:url" content="https://lujinbiao.github.io/2018/03/11/Java/7-Java基础类库/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="系统相关的基础类Java 程序在不同操作系统上运行时，需要取得平台相关的属性，或者调用平台命令来完成特定共功能。 System 类System 类代表了当前 Java 程序的运行平台。System 类不能创建对象，其提供了一些类变量和类方法，运行通过 System 类直接调用这些类变量和类方法。 System 类提供了代表 标准输入(System.in)、标准输出(System.out) 和 错误">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-17T10:36:48.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7-Java基础类库">
+<meta name="twitter:description" content="系统相关的基础类Java 程序在不同操作系统上运行时，需要取得平台相关的属性，或者调用平台命令来完成特定共功能。 System 类System 类代表了当前 Java 程序的运行平台。System 类不能创建对象，其提供了一些类变量和类方法，运行通过 System 类直接调用这些类变量和类方法。 System 类提供了代表 标准输入(System.in)、标准输出(System.out) 和 错误">
+
+
+
+
+
+
+  <link rel="canonical" href="https://lujinbiao.github.io/2018/03/11/Java/7-Java基础类库/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>7-Java基础类库 | 学习笔记</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Strange new light can be just as frightening as the dark.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lujinbiao.github.io/2018/03/11/Java/7-Java基础类库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="维他柠檬爱虾饺">
+      <meta itemprop="description" content="不务正业，混吃等死">
+      <meta itemprop="image" content="/images/cat.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7-Java基础类库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-11 08:06:04" itemprop="dateCreated datePublished" datetime="2018-03-11T08:06:04+08:00">2018-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-17 18:36:48" itemprop="dateModified" datetime="2018-06-17T18:36:48+08:00">2018-06-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="系统相关的基础类"><a href="#系统相关的基础类" class="headerlink" title="系统相关的基础类"></a>系统相关的基础类</h1><p>Java 程序在不同操作系统上运行时，需要取得平台相关的属性，或者调用平台命令来完成特定共功能。</p>
+<h3 id="System-类"><a href="#System-类" class="headerlink" title="System 类"></a>System 类</h3><p>System 类代表了当前 Java 程序的运行平台。System 类不能创建对象，其提供了一些类变量和类方法，运行通过 System 类直接调用这些类变量和类方法。</p>
+<p>System 类提供了代表 标准输入(System.in)、标准输出(System.out) 和 错误输出(System.err) 的类变量，还有通过静态方法用于访问环境变量、系统属性，还提供了加载文件和动态链接库的方法。</p>
+<p>System 类提供了 setIn()、setOut()、setErr() 方法来改变系统的标准输入、标准输出 和 标准错误输出流。</p>
+<p>System 类提供了一个 identityHashCode(Object x) 方法，返回指定对象的精确 hashCode 值，也就是根据该对象的地址计算得到的 hashCode 值。</p>
+<h3 id="Runtime-类"><a href="#Runtime-类" class="headerlink" title="Runtime 类"></a>Runtime 类</h3><p>Runtime 类代表 Java 程序的运行时环境，每个 Java 程序都有一个与之对应的 Runtime 实例，应用程序通过该 Runtime 实例与其对运行时环境相连。应用程序不能创建 Runtime 实例，但能通过 getRuntime() 方法获取与之关联的 Runtime 实例。</p>
+<h1 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h1><h3 id="Object-类"><a href="#Object-类" class="headerlink" title="Object 类"></a>Object 类</h3><p>Object 类是所有 类、数组、枚举类的父类：</p>
+<ul>
+<li><strong>boolean equals(Object obj)</strong></li>
+<li><strong>protected void finalized()</strong></li>
+<li><strong>Class&lt;?&gt; getClass()</strong></li>
+<li><strong>int hashCode()</strong></li>
+<li><strong>String toString()</strong></li>
+</ul>
+<p>Object 类提供了一个 protected 修饰的 clone() 方法，用于对象实现 “自我赋值”：</p>
+<ul>
+<li>首先自定义类要实现 Cloneable 接口，这是一个标记性的接口，表明该实现类可以实现 “自我复制”。</li>
+<li>自定义类实现自己的 clone() 方法。</li>
+<li>实现 clone() 方法时通过 <strong>super.clone()</strong> ，通过调用 Object 类的 clone() 方法来得到对象的副本，并返回该副本。</li>
+<li>如果成员变量中存在引用型变量，则要另外对该引用类型变量进行克隆。</li>
+</ul>
+<h2 id="工具类-Objects"><a href="#工具类-Objects" class="headerlink" title="工具类 Objects"></a>工具类 Objects</h2><p>Java7 新增了一个 Objects 工具类，提供了一些 “空指针” 安全的工具方法来操作对象。当出现空指针时不会引发 NullPointException，而是返回一个 null 字符串。</p>
+<h2 id="String、StringBuffer-和-StringBuilder-类"><a href="#String、StringBuffer-和-StringBuilder-类" class="headerlink" title="String、StringBuffer 和 StringBuilder 类"></a>String、StringBuffer 和 StringBuilder 类</h2><p><strong>String</strong> 类是不可变类，即一旦一个String对象被创建以后，包含在这个对象中的字符序列是不可改变的，直至这个对象被销毁。</p>
+<p><strong>StringBuffer</strong> 对象则代表一个字符序列可变的字符串，当一个 StringBuffer 对象被创建以后，通过 StringBuffer 提供的 append()、insert()、reverse()、setCharAt()、setLength() 等方法可以改变这个字符串对象的字符序列。一旦通过 StringBuffer 生成了最终想要的字符串，就可以调用 toString() 方法将其转换为一个 String 对象。</p>
+<p><strong>StringBuilder</strong> 类也代表字符串对象，实际上 StringBuilder 和 StringBufer 基本相似，两个类的构造器和方法也基本相同，不同的是 StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能。因此在单线程情况下，StringBuilder 类的效率要高，优先选用。</p>
+<p>String 类提供了大量构造器来创建 String 对象：</p>
+<ul>
+<li><strong>String()</strong>：创建一个包含 0 个字符串序列的 String 对象(非 null)。</li>
+<li><strong>String(byte[] bytes,Charset charset)</strong>：使用指定的字符集将指定的 byte[] 数组解码成一个新的 String 对象。</li>
+<li><strong>String(byte[] bytes,int offset,int length)</strong>：使用平台默认的字符集将指定的 byte[] 数组从 offset 开始、长度为 length 的子数组解码成一个新的 String 对象。</li>
+<li><strong>String(byte[] bytes,int offset,int length,String charsetName)</strong>：使用指定的字符集将指定的 byte[] 数组从 offset 开始、长度为 length 的子数组解码成一个新的 String 数组。</li>
+<li><strong>String(byte[] bytes,String charsetName)</strong>：使用指定的字符集将指定的 byte[] 数组解码成一个新的 String 对象。</li>
+<li><strong>String(char[] value,int offset,int count)</strong>：将指定的字符数组从 offset 开始、长度为 count 的字符元素连缀成字符串。</li>
+<li><strong>String(String original)</strong>：根据字符串直接量来创建一个 String 对象。也就是说，新创建的 String 对象是该参数字符串的副本。</li>
+<li><strong>String(StringBuffer buffer)</strong>：根据 StringBuffer 对象来创建对应的 String 对象。</li>
+<li><strong>String(StringBuilder builder)</strong>：根据 StringBuilder 对象来创建对应的 String 对象。</li>
+<li><strong>char charAt(int index)</strong>：获取字符串中指定位置的字符。</li>
+<li><strong>int compareTo(String anotherString)</strong>：比较两个字符串的大小。</li>
+<li><strong>String concat(String str)</strong>：将该 String 对象与 str 连接在一起，与 字符串连接运算符 “+” 的功能相同。</li>
+<li><strong>boolean contentEquals(StringBuffer sb)</strong>：将该 String 对象与 StringBuffer 对象 sb 进行比较，当它们包含的字符序列相同时返回 true。</li>
+<li><strong>static String copyValueOf(char[] data)</strong>：将字符数组连缀成字符串。</li>
+<li><strong>static String copyValueOf(char[] data,int offset,int count)</strong>：将 char 数组的子数组中的元素连缀成字符串。</li>
+<li><strong>boolean endsWith(String suffix)</strong>：返回该 String 对象是否以 suffix 结尾。</li>
+<li><strong>boolean equals(Object anObject)</strong>：将该字符串与指定对象比较，如果二者包含的字符序列相等，则返回 true；否则返回 false。</li>
+<li><strong>boolean equalsIgnoreCase(String str)</strong>：与前一个方法相似，只是忽略大小写。</li>
+<li><strong>byte[] getBytes()</strong>：将该 String 对象转换成 byte 数组。</li>
+<li><strong>void getChars(int srcBegin,int srcEnd,char[] dst,int dstBegin)</strong>：该方法将字符串中从 srcBegin 开始，到 srcEnd 结束的字符复制到 dst 字符数组中，其中 dstBegin 为目标字符数组的起使复制位置。</li>
+<li><strong>int length()</strong>：返回该字符串长度。</li>
+<li><strong>String replace(char oldChar,char newChar)</strong>：将字符串中的第一个 oldChar 替换成 newChar。</li>
+<li><strong>boolean startsWith(String prefix)</strong>：该 String 对象是否以 prefix 开始。</li>
+<li><strong>String substring(int beginIndex,int endIndex)</strong>：获取从 beginIndex 位置开始到 endIndex 位置的子字符串。</li>
+<li><strong>char[] toCharArray()</strong>：将该 String 对象转换成 char 数组。</li>
+<li><strong>String toLowerCase()</strong>：将字符串转换成小写。</li>
+<li><strong>String toUpperCase()</strong>：将字符串转换成大写。</li>
+<li><strong>static String valueOf(X x)</strong>：一系列用于将基本类型数据转换成 String 对象的方法。</li>
+</ul>
+<h2 id="Math-类"><a href="#Math-类" class="headerlink" title="Math 类"></a>Math 类</h2><h2 id="Java7-的-ThreadLocalRandom-与-Random"><a href="#Java7-的-ThreadLocalRandom-与-Random" class="headerlink" title="Java7 的 ThreadLocalRandom 与 Random"></a>Java7 的 ThreadLocalRandom 与 Random</h2><p><strong>Random</strong> 类专门用于生产一个伪随机数，它有两个构造器：一个构造器用于使用默认的种子（以当前时间作为种子）；另一个构造器需要程序员显式传入一个 long 型整数的种子。</p>
+<p><strong>ThreadLocalRandom</strong> 类是 Random 类的增强版，在并发访问的环境下使用，减少多线程资源竞争。</p>
+<p>ThreadLocalRandom 类提供一个静态的 <strong>cunrrent()</strong> 方法来获取 ThreadLocalRandom 对象，获取该对象之后即可调用各种 <strong>nextXxx()</strong>方法来获取伪随机数。<br>ThreadLocalRandom 与 Random 都比 Math.random（）方法提供了更多的方式来生成各种伪随机数，可以生成浮点类型的伪随机数，也可以生成整数类型的伪随机数，还可以指定生成随机数的范围。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Random random=new Random();</span><br><span class="line">random.nextBoolean();</span><br><span class="line">byte[] buffer=new byte[16];</span><br><span class="line">random.nextBytes(buffer);</span><br><span class="line">//生成0.0~1.0之间的伪随机 double 数或 float 数</span><br><span class="line">random.nextDouble();</span><br><span class="line">random.nextFloat();</span><br><span class="line">//生成0~26之间的伪随机数</span><br><span class="line">random.nextInt(26);</span><br><span class="line">//生成一个处于 int 整数取值范围的伪随机数</span><br><span class="line">random.nextInt();</span><br></pre></td></tr></table></figure></p>
+<p>多线程环境下使用 ThreadLocalRandom ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocalRandom random=ThreadLocalRandom.current();</span><br><span class="line">//生成一个4~20之间的伪随机数</span><br><span class="line">int val=random.nextInt(4,20);</span><br><span class="line">//生成一个2.0~10.0之间的伪随机浮点数</span><br><span class="line">double var2=random.nextDouble(2.0,10.0);</span><br></pre></td></tr></table></figure></p>
+<h2 id="BigDcimal-类"><a href="#BigDcimal-类" class="headerlink" title="BigDcimal 类"></a>BigDcimal 类</h2><p>由于 float、double 两种基本浮点类型容易引起精度丢失，因此Java提供了 <strong>BigDecimal类</strong>。其提供了大量的构造器用于创建 BigDecimal 对象，包括把所有的基本数据类型变量转换成一个 BigDecimal 对象，也包括利用数字字符串、数字字符串数组来创建 BigDecimal 对象。</p>
+<blockquote>
+<p>不推荐使用 <strong>BigDecimal(double val)</strong> 构造器来创建对象，该构造器存在不可预知性。可以通过 <strong>BigDecimal.valueOf(double value)</strong> 静态方法来创建对象。</p>
+</blockquote>
+<p>BigDecimal 类提供了 add()、subtract()、multiply()、divide()、pow() 等方法对精确浮点数进行常规算数运算。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/11/Java/6-Enum枚举类/" rel="next" title="6-Enum枚举类">
+                <i class="fa fa-chevron-left"></i> 6-Enum枚举类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/11/Java/7-Java8新增的日期时间类/" rel="prev" title="7-Java8新增的日期、时间类">
+                7-Java8新增的日期、时间类 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/cat.png"
+                alt="维他柠檬爱虾饺" />
+            
+              <p class="site-author-name" itemprop="name">维他柠檬爱虾饺</p>
+              <p class="site-description motion-element" itemprop="description">不务正业，混吃等死</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统相关的基础类"><span class="nav-number">1.</span> <span class="nav-text">系统相关的基础类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#System-类"><span class="nav-number">1.0.1.</span> <span class="nav-text">System 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-类"><span class="nav-number">1.0.2.</span> <span class="nav-text">Runtime 类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用类"><span class="nav-number">2.</span> <span class="nav-text">常用类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-类"><span class="nav-number">2.0.1.</span> <span class="nav-text">Object 类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具类-Objects"><span class="nav-number">2.1.</span> <span class="nav-text">工具类 Objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String、StringBuffer-和-StringBuilder-类"><span class="nav-number">2.2.</span> <span class="nav-text">String、StringBuffer 和 StringBuilder 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-类"><span class="nav-number">2.3.</span> <span class="nav-text">Math 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java7-的-ThreadLocalRandom-与-Random"><span class="nav-number">2.4.</span> <span class="nav-text">Java7 的 ThreadLocalRandom 与 Random</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BigDcimal-类"><span class="nav-number">2.5.</span> <span class="nav-text">BigDcimal 类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">维他柠檬爱虾饺</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
