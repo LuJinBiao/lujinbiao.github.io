@@ -118,7 +118,7 @@
 <meta property="og:image" content="https://i.imgur.com/VbHfcDr.png">
 <meta property="og:image" content="https://i.imgur.com/tvvMdkf.png">
 <meta property="og:image" content="https://i.imgur.com/cejepkQ.png">
-<meta property="og:updated_time" content="2018-05-21T17:23:59.734Z">
+<meta property="og:updated_time" content="2018-10-17T07:41:26.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring-简介">
 <meta name="twitter:description" content="先来了解关于 Spring 的几个基本概念：  非侵入式所谓非侵入式，指 Spring 框架的 API 不会在业务逻辑上出现。 容器Spring 提供容器功能，容器可以管理对象的生命周期、对象与对象之间的依赖关系。可以通过写一个配置文件(通常是 XML 文件)，在上面定义对象的名字、是否单例模式，以及设置与其他对象的依赖关系。在容器启动后，这些对象就被实例化，可以直接使用，而且依赖关系也建立好了。">
@@ -386,7 +386,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-22 01:23:59" itemprop="dateModified" datetime="2018-05-22T01:23:59+08:00">2018-05-22</time>
+                <time title="修改时间：2018-10-17 15:41:26" itemprop="dateModified" datetime="2018-10-17T15:41:26+08:00">2018-10-17</time>
               
             
           </span>
@@ -476,19 +476,7 @@
 <li><strong>session</strong>：在一次 HTTP Session 中，容器会返回该 Bean 的同一个实例。而对于不同的 HTTP Session 请求，会返回不同的实例。</li>
 <li><strong>global session</strong>：在一个全局的 HTTP Session 中，容器会返回该 Bean 的同一个实例。</li>
 </ul>
-<h1 id="Bean-的作用域-1"><a href="#Bean-的作用域-1" class="headerlink" title="Bean 的作用域"></a>Bean 的作用域</h1><ul>
-<li><strong>singleton</strong></li>
-<li><strong>prototype</strong></li>
-<li><strong>request</strong></li>
-<li><strong>session</strong></li>
-<li><strong>global session</strong></li>
-</ul>
-<h1 id="Bean-的装配方式"><a href="#Bean-的装配方式" class="headerlink" title="Bean 的装配方式"></a>Bean 的装配方式</h1><h2 id="基于-XML-的-Bean-装配"><a href="#基于-XML-的-Bean-装配" class="headerlink" title="基于 XML 的 Bean 装配"></a>基于 XML 的 Bean 装配</h2><h2 id="基于-Annotation-的-Bean-装配"><a href="#基于-Annotation-的-Bean-装配" class="headerlink" title="基于 Annotation 的 Bean 装配"></a>基于 Annotation 的 Bean 装配</h2><ul>
-<li><strong>@Autowired</strong>：用于对 Bean 的属性变量、属性的 set() 方法以及构造方法进行标注。该注解默认按照 Bean 类型进行装配，@Autowired 注解加上 @Qualifier 注解，可直接指定一个 Bean 实例名称进行装配。</li>
-<li><strong>@Qualifer</strong>：于 @Autowired 注解配合，将默认按照 Bean 类型装配修改为按 Bean 实例名称进行装配，Bean 的实例名称由 @Qualifier 注解的参数指定。</li>
-<li><strong>@Resource</strong>：=</li>
-</ul>
-<h2 id="自动-Bean-装配"><a href="#自动-Bean-装配" class="headerlink" title="自动 Bean 装配"></a>自动 Bean 装配</h2>
+
       
     </div>
 
@@ -601,7 +589,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -659,13 +647,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -701,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean-工厂的-ApplicationContext"><span class="nav-number">1.</span> <span class="nav-text">Bean 工厂的 ApplicationContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean-的作用域"><span class="nav-number">2.</span> <span class="nav-text">Bean 的作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean-的作用域-1"><span class="nav-number">3.</span> <span class="nav-text">Bean 的作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean-的装配方式"><span class="nav-number">4.</span> <span class="nav-text">Bean 的装配方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于-XML-的-Bean-装配"><span class="nav-number">4.1.</span> <span class="nav-text">基于 XML 的 Bean 装配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于-Annotation-的-Bean-装配"><span class="nav-number">4.2.</span> <span class="nav-text">基于 Annotation 的 Bean 装配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动-Bean-装配"><span class="nav-number">4.3.</span> <span class="nav-text">自动 Bean 装配</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean-工厂的-ApplicationContext"><span class="nav-number">1.</span> <span class="nav-text">Bean 工厂的 ApplicationContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean-的作用域"><span class="nav-number">2.</span> <span class="nav-text">Bean 的作用域</span></a></li></ol></div>
             
 
           </div>

@@ -108,21 +108,21 @@
 
 
 
-  <meta name="description" content="IP地址的定义IP地址（IPV4）由32位正整数来表示。TCP/IP通信要求将这样的IP地址分配给每一个参与通信的主机。IP地址在计算机内部以二进制方式被处理。为了便于理解，将32位的IP地址以每８位为一组，分成４组，每组以　‘．’　隔开，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡">
+  <meta name="description" content="IP地址的定义IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都">
 <meta name="keywords" content="TCP&#x2F;IP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCPIP基础知识">
 <meta property="og:url" content="https://lujinbiao.github.io/2018/02/16/TCPIP/TCPIP基础知识/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="IP地址的定义IP地址（IPV4）由32位正整数来表示。TCP/IP通信要求将这样的IP地址分配给每一个参与通信的主机。IP地址在计算机内部以二进制方式被处理。为了便于理解，将32位的IP地址以每８位为一组，分成４组，每组以　‘．’　隔开，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡">
+<meta property="og:description" content="IP地址的定义IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/8a9NbjY.png">
 <meta property="og:image" content="https://i.imgur.com/8DrgXSC.png">
 <meta property="og:image" content="https://i.imgur.com/VGZzOZa.png">
-<meta property="og:updated_time" content="2018-04-01T23:38:06.714Z">
+<meta property="og:updated_time" content="2018-10-14T15:04:04.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCPIP基础知识">
-<meta name="twitter:description" content="IP地址的定义IP地址（IPV4）由32位正整数来表示。TCP/IP通信要求将这样的IP地址分配给每一个参与通信的主机。IP地址在计算机内部以二进制方式被处理。为了便于理解，将32位的IP地址以每８位为一组，分成４组，每组以　‘．’　隔开，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡">
+<meta name="twitter:description" content="IP地址的定义IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都">
 <meta name="twitter:image" content="https://i.imgur.com/8a9NbjY.png">
 
 
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-02 07:38:06" itemprop="dateModified" datetime="2018-04-02T07:38:06+08:00">2018-04-02</time>
+                <time title="修改时间：2018-10-14 23:04:04" itemprop="dateModified" datetime="2018-10-14T23:04:04+08:00">2018-10-14</time>
               
             
           </span>
@@ -438,8 +438,8 @@
       
 
       
-        <p><strong>IP地址的定义</strong><br>IP地址（IPV4）由32位正整数来表示。TCP/IP通信要求将这样的IP地址分配给每一个参与通信的主机。IP地址在计算机内部以二进制方式被处理。为了便于理解，将32位的IP地址以每８位为一组，分成４组，每组以　‘．’　隔开，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。<br>实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都会设置两个以上的网卡，因此可以设置两个以上的IP地址。</p>
-<p><strong>IP地址由网络和主机两部分表示组成</strong><br>IP地址由“网络标识”和“主机标识”两部分组成。<br>IP地址的主机标识<br><img src="https://i.imgur.com/8a9NbjY.png" alt="IP地址的主机标识"><br>IP地址的网络标识<br><img src="https://i.imgur.com/8DrgXSC.png" alt="IP地址的网络标识"><br>注意：”192.168.128.10/24”中的”/24”表示从二进制IP地址的第1位开始到多少位属于网络标识。在这个例子中，”192.168.128”之前的都是该IP的网络地址。</p>
+        <p><strong>IP地址的定义</strong><br>IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。<br>实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都会设置两个以上的网卡，因此可以设置两个以上的IP地址。</p>
+<p><strong>IP地址由网络和主机两部分表示组成</strong><br>IP地址由 “网络标识” 和 “主机标识” 两部分组成。<br>IP地址的主机标识<br><img src="https://i.imgur.com/8a9NbjY.png" alt="IP地址的主机标识"><br>IP地址的网络标识<br><img src="https://i.imgur.com/8DrgXSC.png" alt="IP地址的网络标识"><br>注意：”192.168.128.10/24”中的”/24”表示从二进制IP地址的第1位开始到多少位属于网络标识。在这个例子中，”192.168.128”之前的都是该IP的网络地址。</p>
 <p><strong>IP地址的分类</strong><br>IP地址分为四个级别，分别为A类、B类、C类、D类。它根据IP地址中从第1位到第4位的比特列对其网络标识和主机标识进行区分。<br><strong>A类地址</strong><br>A类IP地址是首位以”0”开头的地址。从第1位到第8位是它的网络标识。用十进制表示的话，0.0.0.0~127.0.0.0是A类的网络地址。A类地址的后24位相当于主机标识。<br><strong>B类地址</strong><br>B类IP地址是前两位为”10”的地址。从第1位到第16位是它的网络标识。用十进制表示的话，128.0.0.1~191.255.0.0是B类的网络地址。B类的后16位相当于主机号。<br><strong>C类地址</strong><br>C类IP地址是前三位为”110”的地址。从第1位到第24位是它的网络标识。用十进制表示的话，192.168.0.0~239.255.255.0是C类的网络地址。C类地址的后8位相当于主机标识。<br><strong>D类地址</strong><br>D类IP地址是前四位为”1110”的地址。从第1位到第32位是它的网络标识。用十进制表示的话，224.0.0.0~239.255.255.255是D类的网络地址。<strong>D类地址没有主机标识，常被用于多播。</strong><br><img src="https://i.imgur.com/VGZzOZa.png" alt="IP地址的分类"><br><strong>关于分配IP主机地址的注意</strong><br>要<strong>用比特位表示主机地址时，不可以全部为0或全部为1</strong>。因为只有0在表示对应的网络地址或IP地址不可获知的情况下才使用。而全部为1的主机地址通常作为广播地址。</p>
 <p><strong>广播地址</strong><br>广播地址用于在同一个链路中相互连接的主机之间发送数据，把IP地址中的主机地址部分全部设置为1，就成了广播地址。<br>两种广播地址<br>广播地址分为<strong>本地广播</strong>和<strong>直接广播</strong>。<br>在本网络内的关播叫做本地广播。例如网络地址为192.168.0.0/24的情况下，广播地址是192.168.0.255。因为这个广播地址的IP包会被路由器屏蔽，所以不会到达192.168.0.0/24以外的其他链路上。<br>在不同网络之间的广播叫做直接广播。例如网络地址为192.168.0.0/24的主机向192.168.1.255/24的目标地址发送IP包。收到这个包的路由器，将数据转发给192.168.1.0/24，从而使得所有192.168.1.1~192.168.1.254的主机都能收到这个包。</p>
 <p><strong>IP多播</strong><br>多播用于将包发送给特定组内的所有主机。由于其直接使用IP协议，所以也不存在可靠传输。<br>在人们使用多播功能之前，一直采用广播的方式。那时广播将数据发送给所有终端主机，再由这些主机IP之上的一层去判断是否有必要接收数据，是则接收，否则丢弃。然而这种方式会给那些毫无关系的网络或主机带来影响，造成网络上很多不必要的流量。况且由于广播无法穿透路由，若想给其他网段发送同样的包，就不得不采取另一种机制。因此，多播这种既可以穿透路由器，又可以实现只给那些必要的组发送数据包的技术就称为必选。<br><strong>IP多播与地址</strong><br>多播使用D类地址。</p>
@@ -487,8 +487,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/24/MyBatis/MyBatis-问题集/" rel="prev" title="MyBatis-问题集">
-                MyBatis-问题集 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/05/Spring/AOP--基于代理类/" rel="prev" title="实现SpringAOP--基于代理类">
+                实现SpringAOP--基于代理类 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -554,7 +554,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -612,13 +612,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
