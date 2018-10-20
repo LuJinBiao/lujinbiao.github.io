@@ -108,19 +108,22 @@
 
 
 
-  <meta name="description" content="NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。 Java 中与 NIO 有关的包：  java.nio：主要包含各种与 Buffer 相关的类。 java.nio.channels：主要包含与 Channel 和 Selector 相关的">
+  <meta name="description" content="NIO 体系NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。 Java 中与 NIO 有关的包：  java.nio：主要包含各种与 Buffer 相关的类。 java.nio.channels：主要包含与 Channel 和 Select">
 <meta name="keywords" content="CrazyJava">
 <meta property="og:type" content="article">
-<meta property="og:title" content="15-NIO">
+<meta property="og:title" content="15-NIO体系">
 <meta property="og:url" content="https://lujinbiao.github.io/2018/03/15/Java/15-NIO/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。 Java 中与 NIO 有关的包：  java.nio：主要包含各种与 Buffer 相关的类。 java.nio.channels：主要包含与 Channel 和 Selector 相关的">
+<meta property="og:description" content="NIO 体系NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。 Java 中与 NIO 有关的包：  java.nio：主要包含各种与 Buffer 相关的类。 java.nio.channels：主要包含与 Channel 和 Select">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/6eW16aJ.png">
-<meta property="og:updated_time" content="2018-10-17T19:14:04.013Z">
+<meta property="og:image" content="https://i.imgur.com/petgVSi.png">
+<meta property="og:image" content="https://i.imgur.com/0rYSpdh.png">
+<meta property="og:image" content="https://i.imgur.com/I2fA3Dd.png">
+<meta property="og:updated_time" content="2018-10-20T01:18:26.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="15-NIO">
-<meta name="twitter:description" content="NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。 Java 中与 NIO 有关的包：  java.nio：主要包含各种与 Buffer 相关的类。 java.nio.channels：主要包含与 Channel 和 Selector 相关的">
+<meta name="twitter:title" content="15-NIO体系">
+<meta name="twitter:description" content="NIO 体系NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。 Java 中与 NIO 有关的包：  java.nio：主要包含各种与 Buffer 相关的类。 java.nio.channels：主要包含与 Channel 和 Select">
 <meta name="twitter:image" content="https://i.imgur.com/6eW16aJ.png">
 
 
@@ -138,7 +141,7 @@
   };
 </script>
 
-  <title>15-NIO | 学习笔记</title>
+  <title>15-NIO体系 | 学习笔记</title>
   
 
 
@@ -343,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">15-NIO
+          <h1 class="post-title" itemprop="name headline">15-NIO体系
               
             
           </h1>
@@ -385,7 +388,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-18 03:14:04" itemprop="dateModified" datetime="2018-10-18T03:14:04+08:00">2018-10-18</time>
+                <time title="修改时间：2018-10-20 09:18:26" itemprop="dateModified" datetime="2018-10-20T09:18:26+08:00">2018-10-20</time>
               
             
           </span>
@@ -436,7 +439,7 @@
       
 
       
-        <p>NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。</p>
+        <h1 id="NIO-体系"><a href="#NIO-体系" class="headerlink" title="NIO 体系"></a>NIO 体系</h1><p>NIO 跟传统的 IO 一样都用于输入/输出，但 NIO 采用了内存映射文件的方式来处理输入/输出。NIO 将文件或文件的一段区域映射到内存中，这样就可以像访问内存一样来访问文件，相比于传统 IO 要快得多。</p>
 <p>Java 中与 NIO 有关的包：</p>
 <ul>
 <li><strong>java.nio</strong>：主要包含各种与 Buffer 相关的类。</li>
@@ -446,7 +449,7 @@
 <li><strong>java.nio.charset.spi</strong>：包含于字符集相关的服务提供者编程接口。</li>
 </ul>
 <h1 id="Channel-通道-和-Buffer-缓冲"><a href="#Channel-通道-和-Buffer-缓冲" class="headerlink" title="Channel(通道) 和 Buffer(缓冲)"></a>Channel(通道) 和 Buffer(缓冲)</h1><p>Channel 是对传统的输入/输出系统的模拟，在 NIO 中所有数据都需要通过 Channel 传输。Channel 提供了一个 map() 方法，可以直接将 “一块数据” 映射到内存中。</p>
-<p>Buffer(缓冲) 本质是一个数组，发送到 Channel 中的所有对象都必须首先放到 Buffer 中，而从 Channel 中读取的数据也必须先放到 Buffer 中。</p>
+<p>Buffer(缓冲) 本质是一个数组，是一个容器。发送到 Channel 中的所有对象都必须首先放到 Buffer 中，而从 Channel 中读取的数据也必须先放到 Buffer 中。</p>
 <blockquote>
 <p>除了 <strong>Channel</strong> 和 <strong>Buffer</strong> 之外，新 IO 还提供了用于将 <strong>Unicode</strong> 字符映射成字节序列以及逆映射操作的 <strong>Charset</strong> 类，也提供了用于支持非阻塞式 输入/输出 的 <strong>Selector</strong> 类。</p>
 </blockquote>
@@ -462,6 +465,9 @@
 <p><strong>Buffer</strong> 的主要作用就是装入数据，然后输出数据。开始的 <strong>Buffer</strong> 的 <strong>position</strong> 为 0，<strong>limit</strong> 为 <strong>capacity</strong>，<strong>mark</strong>=-1。程序可以通过 <strong>put()</strong> 方法向 Buffer 中放入一些数据(或者从 <strong>Channel</strong> 中获取一些数据)，每放入一些数据，<strong>Buffer</strong> 的 <strong>position</strong> 相应地向后移动一些位置。</p>
 <p><img src="https://i.imgur.com/6eW16aJ.png" alt=""></p>
 <p>当 <strong>Buffer</strong> 装入数据后，调用 <strong>Buffer</strong> 的 <strong>flip()</strong> 方法，该方法将 <strong>limit</strong> 设置为 <strong>position</strong> 所在位置，并将 <strong>position</strong> 设为 0，这就使得 <strong>Buffer</strong> 的读写指针又移动到开始位置。也就是说，<strong>Buffer</strong> 调用 <strong>flip()</strong> 方法之后，<strong>Buffer</strong> 为输出数据做好准备；当 <strong>Buffer</strong> 输出数据结束后，<strong>Buffer</strong> 调用 <strong>clear()</strong> 方法，<strong>clear()</strong> 方法并非清空 <strong>Buffer</strong> 的数据，它仅仅将 <strong>position</strong> 置为 0，将 <strong>limit</strong> 置为 <strong>capacity</strong>，这样再次向 <strong>Buffer</strong> 中装入数据做好准备。</p>
+<p><img src="https://i.imgur.com/petgVSi.png" alt="1"></p>
+<p><img src="https://i.imgur.com/0rYSpdh.png" alt="2"></p>
+<p><img src="https://i.imgur.com/I2fA3Dd.png" alt="3"></p>
 <p><strong>Buffer</strong> 还有如下一些常用方法：</p>
 <ul>
 <li><strong>int capacity()</strong>：返回 <strong>Buffer</strong> 的 <strong>capacity</strong> 大小。</li>
@@ -487,12 +493,10 @@
 </ul>
 <p>Java 为 <strong>Channel</strong> 接口按功能提供了以下常用实现类：</p>
 <ul>
-<li><strong>Pipe.SinkChannel</strong>：用于支持线程之间通信管道。</li>
-<li><strong>Pipe.SourceChannel</strong></li>
-<li><strong>FileChannel</strong></li>
+<li><strong>Pipe.SinkChannel</strong> 和 <strong>Pipe.SourceChannel</strong>：用于支持线程之间通信管道。</li>
+<li><strong>FileChannel</strong>：用于对文件进行操作。</li>
 <li><strong>SelectableChannel</strong></li>
-<li><strong>ServerSocketChannel</strong>：用于支持 TCP 网络通信。</li>
-<li><strong>SocketChannel</strong></li>
+<li><strong>ServerSocketChannel</strong> 和 <strong>SocketChannel</strong>：用于支持 TCP 网络通信。</li>
 <li><strong>DatagramChannel</strong>：用于支持 UDP 网络通信。</li>
 </ul>
 <p>所有的 <strong>Channel</strong> 都不应该通过构造器来直接创建，而是通过传统的节点 <strong>InputStream、OutputStream</strong> 的 <strong>getChanne()</strong> 方法来返回对应的 <strong>Channel</strong>，不同的节点流获得的 <strong>Channel</strong> 不一样。例如，<strong>FileInputStream</strong>、<strong>FileOutputStream</strong> 的<strong>getChannel()</strong> 返回的是 <strong>FileChannel</strong>，而 <strong>PipeInputStream</strong> 和 <strong>PipeOutputStream</strong> 的 <strong>getChannel()</strong> 返回的是 <strong>Pipe.SinkChannel</strong> 和 <strong>Pipe.SourceChannel</strong>。</p>
@@ -503,8 +507,8 @@
 <p>以下代码实现了文件内容的追加复制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">File file=new File(&quot;D:\\randomFile.txt&quot;);</span><br><span class="line">try(</span><br><span class="line">//创建一个RandomAccessFile对象</span><br><span class="line">RandomAccessFile raf=new RandomAccessFile(file,&quot;rw&quot;);</span><br><span class="line">//获取RandomAccessFile对应的Channel</span><br><span class="line">FileChannel randomChannel=raf.getChannel()</span><br><span class="line">)</span><br><span class="line">&#123;</span><br><span class="line">    //将Channel中的所有数据映射成ByteBuffer</span><br><span class="line">    ByteBuffer buffer=randomChannel.map(READ_ONLY,0,file.length());</span><br><span class="line">    //把Channel的记录指针移到最后</span><br><span class="line">    randomChannel.position(file.length());</span><br><span class="line">    //将buffer中的所有数据输出</span><br><span class="line">    randomChannl.write(buffer);</span><br></pre></td></tr></table></figure></p>
 <p>如果习惯了传统IO的”用竹筒多次重复取水”的过程，或者担心 Channel 对应的文件过大，使用 map() 一次将所有的文件内容映射到内存中引起性能下降，也可以使用 Channel 和 Buffer 传统的 “用竹筒多次重复取水” 的方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">try(</span><br><span class="line">//创建文件输入流</span><br><span class="line">FileInputStream fis=new FileInputStream(&quot;readFile.java&quot;);</span><br><span class="line">//创建FileChannel</span><br><span class="line">FileChannel fileChannel=fis.getChannel();</span><br><span class="line">)</span><br><span class="line">&#123;</span><br><span class="line">    //定义一个ByteBuffer对象，用于重复取水</span><br><span class="line">    ByteBuffer buffer=ByteBuffer.allocate(1024);</span><br><span class="line">    //将FileChannel中的数据放入ByteBuffer</span><br><span class="line">    while(fileChannel.read(buffer) != -1)</span><br><span class="line">    &#123;</span><br><span class="line">        //锁定buffer的空白区，避免读取到null的区域</span><br><span class="line">        buffer.flip();</span><br><span class="line">        //根据指定编码字符集创建解码器</span><br><span class="line">        Charset charset=Charset.forName(&quot;UTF-8&quot;);</span><br><span class="line">        CharsetDecoder decoder=charset.newDecoder();</span><br><span class="line">        //将ByteBuffer的内容转码</span><br><span class="line">        CharBuffer charBuffer=decoder.decode(buffer);</span><br><span class="line">        System.out.print(charBuffer);</span><br><span class="line">        //将ByteBuffer对象重新初始化，为下一次读取数据做准备</span><br><span class="line">        buffer.clear();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;catch(IOException e);</span><br></pre></td></tr></table></figure></p>
 <h2 id="文件锁"><a href="#文件锁" class="headerlink" title="文件锁"></a>文件锁</h2><p>如果多个运行的程序需要并发修改同一个文件时，程序之间需要某种机制来进行通信，使用 <strong>文件锁</strong> 可以有效地阻止多个进程并发修改同一个文件，所以现在的大部分操作系统都提供了 <strong>文件锁</strong> 功能。</p>
-<p>文件锁控制文件的全部或部分字节的访问，但文件锁在不同的操作系统中差别较大，从 NIO 开始Java提供了 <strong>FileLock</strong> 来支持文件锁功能，在 <strong>FileChannel</strong> 中提供的 <strong>lock()/tryLock()</strong> 方法可以获得文件锁 <strong> FileLock</strong> 对象，从而锁定文件。</p>
-<p><strong>lock()</strong> 和 <strong> tryLock()</strong> 方法存在区别：<br>当 <strong>lock()</strong> 试图锁定某个文件时，如果无法得到文件锁，程序将一直阻塞；<br>而 <strong>tryLock()</strong> 是尝试锁定文件，它将直接返回而不是阻塞，如果获得了文件锁，该方法则返回文件锁，否则返回 <strong>null</strong>。</p>
+<p>文件锁控制文件的全部或部分字节的访问，但文件锁在不同的操作系统中差别较大，从 NIO 开始 java 提供了 <strong>FileLock</strong> 来支持文件锁功能，在 <strong>FileChannel</strong> 中提供的 <strong>lock()/tryLock()</strong> 方法可以获得文件锁 <strong>FileLock</strong> 对象，从而锁定文件。</p>
+<p><strong>lock()</strong> 和 <strong>tryLock()</strong> 方法存在区别：<br>当 <strong>lock()</strong> 试图锁定某个文件时，如果无法得到文件锁，程序将一直阻塞；<br>而 <strong>tryLock()</strong> 是尝试锁定文件，它将直接返回而不是阻塞，如果获得了文件锁，该方法则返回文件锁，否则返回 <strong>null</strong>。</p>
 <p>如果 <strong>FileChannel</strong> 只想锁定文件的部分内容，而不是锁定全部内容，则可以使用如下的 <strong>lock()</strong> 或 <strong>tryLock()</strong> 方法：</p>
 <ul>
 <li><strong>lock(long position,long size,boolean shared)</strong>：对文件从 <strong>position</strong> 开始，长度为 <strong>size</strong> 的内容加锁，该方法是阻塞式的。</li>
@@ -512,7 +516,7 @@
 </ul>
 <p>当参数 <strong>shared</strong> 为 <strong>true</strong> 时，表明锁时一个共享锁，它将允许多个进程来读取该文件，但阻止其他进程获得对该文件的排他锁。当 <strong>shared</strong> 为 <strong>false</strong> 时，表明该锁是一个排他锁，它将锁住对该文件的读写。程序可以通过调用 <strong>FileLock()</strong> 的 <strong>isShared()</strong> 来判断它是否获得共享锁。直接使用无参数的 <strong>lock()</strong> 或 <strong>tryLock()</strong> 获得的是排他锁。当处理完文件后通过 <strong>FileLock</strong> 的 <strong>release()</strong> 方法释放文件锁。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">try(</span><br><span class="line">//使用FileOutputStream获得FileChannel</span><br><span class="line">FileChannel channel=new FileOutputStream(&quot;a.txt&quot;).getChannel())</span><br><span class="line">&#123;</span><br><span class="line">    //使用非阻塞式方法对指定文件加锁</span><br><span class="line">    FileLock lock=channel.tryLock();</span><br><span class="line">    //程序暂停 10s</span><br><span class="line">    Thread.sleep(10000);</span><br><span class="line">    //释放锁</span><br><span class="line">    lock.release();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Java7-对原有-NIO-的重大改进"><a href="#Java7-对原有-NIO-的重大改进" class="headerlink" title="Java7 对原有 NIO 的重大改进"></a>Java7 对原有 NIO 的重大改进</h1><p>Java7 对原有的 NIO 进行了重大改进：</p>
+<h1 id="NIO2"><a href="#NIO2" class="headerlink" title="NIO2"></a>NIO2</h1><p>Java7 对原有的 NIO 进行了重大改进：</p>
 <ul>
 <li>提供了全面的文件 IO 和文件系统访问支持。</li>
 <li>基于异步 <strong>Channel</strong> 的 AIO。</li>
@@ -525,14 +529,15 @@
 <h2 id="使用-FileVisitor-遍历文件和目录"><a href="#使用-FileVisitor-遍历文件和目录" class="headerlink" title="使用 FileVisitor 遍历文件和目录"></a>使用 FileVisitor 遍历文件和目录</h2><p>早期版本中，程序要遍历指定目录下的所有文件和子目录，只能使用递归进行遍历，但这种方式不仅复杂，而且灵活性不高。现在在 <strong>Files</strong> 工具类中提供了如下两个方法来遍历文件和子目录：</p>
 <ul>
 <li><strong>walkFileTree(Path start,FileVisitor&lt;? super Path&gt; visitor</strong>：遍历 <strong>start</strong> 路径下的所有文件和子目录。</li>
-<li><strong>walkFileTree(Path start,Set<filevisitoption> option,int maxDepth,FileVisitor&lt;? super Path&gt; visitor)</filevisitoption></strong>：与上个方法功能类似。该方法最多可以遍历 <strong>maxDepth</strong> 深度的文件。</li>
+<li><strong>walkFileTree(Path start,Set\<filevisitoption> option,int maxDepth,FileVisitor&lt;? super Path&gt; visitor)</filevisitoption></strong>：与上个方法功能类似。该方法最多可以遍历 <strong>maxDepth</strong> 深度的文件。</li>
 </ul>
-<p>上述两个方法中的 <strong>FileVisitor</strong> 参数代表一个文件访问器，<strong>FileVisitor</strong> 中定义了如下方法：</p>
+<p>上述两个方法中的 <strong>FileVisitor</strong> 参数代表一个文件访问器，<strong>walkFileTree()</strong> 方法会自动遍历 <strong>star</strong> 路径下的所有文件和子目录，遍历文件和子目录都会出发 <strong>FileVisitor</strong> 中相应的方法。</p>
+<p><strong>FileVisitor</strong> 中定义了如下方法：</p>
 <ul>
 <li><strong>FileVisitResult postVisitDirectory(T dir,IOException exc)</strong>：访问子目录之后触发该方法。</li>
 <li><strong>FileVisitResult preVisitDirectory(T dir,BasicFileAttributes attrs)</strong>：访问子目录之前触发该方法。</li>
 <li><strong>FileVisitResult visitFile(T file,BasicFileAttributes attrs)</strong>：访问 file 文件时触发该方法。</li>
-<li><strong>**FileVisitResult visitFileFailed(T file,IOException exc)</strong>：访问 file 文件失败时触发该方法。</li>
+<li><strong>FileVisitResult visitFileFailed(T file,IOException exc)</strong>：访问 file 文件失败时触发该方法。</li>
 </ul>
 <p>上面4个方法都返回一个 <strong>FileVisitResult</strong> 对象，它是一个枚举类，代表了访问之后的后续行为：</p>
 <ul>
@@ -541,12 +546,27 @@
 <li><strong>SKIP_SUBTREE</strong>：代表”继续访问”的后续行为，但不访问该文件或目录的子目录。</li>
 <li><strong>TERMINATE</strong>：代表”中止访问”的后续行为。</li>
 </ul>
-<p>可以通过继承 <strong>SimpleFileVisitor</strong>类（<strong>FileVisitor</strong>的实现类）来实现自己的”文件访问器”，根据需要、选择性地重写指定方法。<br>下面示范了如何使用 <strong>FileVisitor</strong> 来遍历文件和子目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//遍历 D:\\a目录下的所有文件和子目录</span><br><span class="line">Files.walkFileTree(Paths.get(&quot;D:\\a&quot;,new SimpleFileVisitor&lt;Path&gt;()</span><br><span class="line">    &#123;</span><br><span class="line">        //访问文件时触发该方法</span><br><span class="line">        @Override</span><br><span class="line">        public FileVisitResult visitFile(Path file,BasicFileAttributes attrs) throws IOException</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;正在访问：&quot; + file + &quot; 文件&quot;);</span><br><span class="line">            return FileVisitorResult.CONTINUE;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       //开始访问目录时触发该方法</span><br><span class="line">       @Override</span><br><span class="line">       public FileVisitResult preVisitDirectory(Path dir,BasicFileAttributes attrs) throws IOException</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.ptinln(&quot;正在访问：&quot; + dir + &quot;路径&quot;);</span><br><span class="line">            return FileVisitResult.CONTINUE;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用-WatchService-监控文件变化"><a href="#使用-WatchService-监控文件变化" class="headerlink" title="使用 WatchService 监控文件变化"></a>使用 WatchService 监控文件变化</h2><p><strong>Path</strong> 类提供了如下一个方法来监听文件系统的变化：</p>
+<p>可以通过继承 <strong>SimpleFileVisitor</strong>类（<strong>FileVisitor</strong>的实现类）来实现自己的”文件访问器”，根据需要、选择性地重写指定方法。</p>
+<p>下面示范了如何使用 <strong>FileVisitor</strong> 来遍历文件和子目录：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//遍历 D:/ 下的所有文件和目录</span></span><br><span class="line"><span class="comment">//并把遍历结果保存到 D:/file_walk_tree.txt 文件中</span></span><br><span class="line">Path path = Paths.get(<span class="string">"D:/"</span>);</span><br><span class="line">FileVisitor&lt;Path&gt; fileVisitor = <span class="keyword">new</span> SimpleFileVisitor&lt;Path&gt;()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> FileVisitResult <span class="title">preVisitDirectory</span><span class="params">(Path dir, BasicFileAttributes attrs)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"准备访问目录： "</span> + dir);</span><br><span class="line">      <span class="keyword">return</span> FileVisitResult.CONTINUE;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> FileVisitResult <span class="title">visitFile</span><span class="params">(Path file, BasicFileAttributes attrs)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       System.out.println(<span class="string">"  "</span> + <span class="string">"文件-"</span> + file);</span><br><span class="line">       <span class="keyword">return</span> FileVisitResult.CONTINUE;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> FileVisitResult <span class="title">postVisitDirectory</span><span class="params">(Path dir, IOException exc)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       System.out.println(<span class="string">"离开目录： "</span> + dir);</span><br><span class="line">       <span class="keyword">return</span> FileVisitResult.CONTINUE;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FileVisitResult <span class="title">visitFileFailed</span><span class="params">(Path file, IOException exc)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> FileVisitResult.SKIP_SIBLINGS;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Path des = Paths.get(<span class="string">"D:/file_walk_tree.txt"</span>);</span><br><span class="line"><span class="comment">//重定向标准输出 System.out 到目标文件 D:/file_walk_tree.txt</span></span><br><span class="line">PrintStream printStream = <span class="keyword">new</span> PrintStream(<span class="keyword">new</span> FileOutputStream(des.toString()));</span><br><span class="line">PrintStream originPrintStream = System.out;</span><br><span class="line">System.setOut(printStream);</span><br><span class="line">Files.walkFileTree(path, fileVisitor);</span><br><span class="line">System.setOut(originPrintStream);</span><br><span class="line">System.out.println(<span class="string">"遍历完成"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="使用-WatchService-监控文件变化"><a href="#使用-WatchService-监控文件变化" class="headerlink" title="使用 WatchService 监控文件变化"></a>使用 WatchService 监控文件变化</h2><p>如果要监控文件的变化，<strong>Path</strong> 类提供了如下一个方法：</p>
 <ul>
-<li><strong>register(WatchService watcher,WatchEvent.Kind&lt;?&gt;…events)</strong>：用 watcher 监听该 path 代表的目录下的文件变化。events 参数指定要监听哪些类型的事件。<br>(待补充)</li>
+<li><strong>register(WatchService watcher,WatchEvent.Kind&lt;?&gt;…events)</strong>：用 <strong>watcher</strong> 监听该 <strong>path</strong> 代表的目录下的文件变化。<strong>events</strong> 参数指定要监听哪些类型的事件。</li>
 </ul>
-<h2 id="访问文件属性"><a href="#访问文件属性" class="headerlink" title="访问文件属性"></a>访问文件属性</h2>
+<p>在这个方法中，<strong>WhatchService</strong> 代表一个文件系统监听服务，它负责监听 <strong>path</strong> 代表的目录下的文件变化。一旦使用 <strong>register()</strong> 方法完成注册之后，接下来就可以调用 <strong>WhatchService</strong> 的如下三个方法来监听目录的文件变化事件：</p>
+<ul>
+<li><strong>WatchKey poll()</strong>：获取下一个 WatchKey，如果没有 WatcheKey 发生就立即返回 null。</li>
+<li><strong>WatchKey poll(long timeout，TimeUnit unit)</strong>：尝试等待 timeout 时间去获取下一个 WatchKey。</li>
+<li><strong>WatchKey take()</strong>：获取下一个 WatchKey，如果没有 WatchKey 发生就一直等待。</li>
+</ul>
+<p>（待补充）</p>
+<h2 id="访问文件属性"><a href="#访问文件属性" class="headerlink" title="访问文件属性"></a>访问文件属性</h2><p>从 Java7 开始，<strong>java.nio.file.attribute</strong> 包下提供了大量的工具类，可以非常简单地读取、修改文件属性。这些工具类主要分为如下两类：</p>
+<ul>
+<li><strong>XxxAttributeView</strong>：代表某种文件属性的 “视图”。</li>
+<li><strong>XxxAttributes</strong>：代表某种文件属性的 “集合”，程序一般通过 <strong>XxxAttributeView</strong> 对象来获取 <strong>XxxAttributes</strong>。</li>
+</ul>
+<p>(待补充)</p>
+
       
     </div>
 
@@ -579,8 +599,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/15/Java/15-输入输出/" rel="next" title="15-输入/输出">
-                <i class="fa fa-chevron-left"></i> 15-输入/输出
+              <a href="/2018/03/15/Java/15-传统IO/" rel="next" title="15-传统IO">
+                <i class="fa fa-chevron-left"></i> 15-传统IO
               </a>
             
           </div>
@@ -665,7 +685,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -759,7 +779,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Channel-通道-和-Buffer-缓冲"><span class="nav-number">1.</span> <span class="nav-text">Channel(通道) 和 Buffer(缓冲)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer"><span class="nav-number">1.1.</span> <span class="nav-text">Buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Channel"><span class="nav-number">1.2.</span> <span class="nav-text">Channel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件锁"><span class="nav-number">1.3.</span> <span class="nav-text">文件锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java7-对原有-NIO-的重大改进"><span class="nav-number">2.</span> <span class="nav-text">Java7 对原有 NIO 的重大改进</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Path、Paths-和-Files-核心-API"><span class="nav-number">2.1.</span> <span class="nav-text">Path、Paths 和 Files 核心 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-FileVisitor-遍历文件和目录"><span class="nav-number">2.2.</span> <span class="nav-text">使用 FileVisitor 遍历文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-WatchService-监控文件变化"><span class="nav-number">2.3.</span> <span class="nav-text">使用 WatchService 监控文件变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问文件属性"><span class="nav-number">2.4.</span> <span class="nav-text">访问文件属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NIO-体系"><span class="nav-number">1.</span> <span class="nav-text">NIO 体系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Channel-通道-和-Buffer-缓冲"><span class="nav-number">2.</span> <span class="nav-text">Channel(通道) 和 Buffer(缓冲)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer"><span class="nav-number">2.1.</span> <span class="nav-text">Buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Channel"><span class="nav-number">2.2.</span> <span class="nav-text">Channel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件锁"><span class="nav-number">2.3.</span> <span class="nav-text">文件锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NIO2"><span class="nav-number">3.</span> <span class="nav-text">NIO2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Path、Paths-和-Files-核心-API"><span class="nav-number">3.1.</span> <span class="nav-text">Path、Paths 和 Files 核心 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-FileVisitor-遍历文件和目录"><span class="nav-number">3.2.</span> <span class="nav-text">使用 FileVisitor 遍历文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-WatchService-监控文件变化"><span class="nav-number">3.3.</span> <span class="nav-text">使用 WatchService 监控文件变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问文件属性"><span class="nav-number">3.4.</span> <span class="nav-text">访问文件属性</span></a></li></ol></li></ol></div>
             
 
           </div>

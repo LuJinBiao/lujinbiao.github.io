@@ -108,27 +108,27 @@
 
 
 
-  <meta name="description" content="使用 NumberFormat 格式化数字抽象类 Format 有子类：MessageFormat、NumberFormat、DateFormat。NumberFormat、DateFormat 可以将数值、日期转换成字符串，也可以将字符串转换成数值、日期。 NumberFormat 和 DateFormat 类都包含了 format() 和 parse() 方法，其中 format() 用于将">
+  <meta name="description" content="传统 IO 流体系理解节点流和处理流直接以物理资源建立的流就是节点流，把节点流包装就是处理流。 InputStream 和 ReaderInputSteam 和 Reader 是所有输入流的抽象基类，它们的方法所有输入流都可以使用： InputStream int read()：从输入流中读取单个字节，返回所读取的字节数据。 int read(byte[] b)：从输入流中最多读取 b.lengt">
 <meta name="keywords" content="CrazyJava">
 <meta property="og:type" content="article">
-<meta property="og:title" content="7-日期、数字的格式化">
-<meta property="og:url" content="https://lujinbiao.github.io/2018/03/12/Java/7-日期数字的格式化/index.html">
+<meta property="og:title" content="15-传统IO">
+<meta property="og:url" content="https://lujinbiao.github.io/2018/03/15/Java/15-传统IO/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="使用 NumberFormat 格式化数字抽象类 Format 有子类：MessageFormat、NumberFormat、DateFormat。NumberFormat、DateFormat 可以将数值、日期转换成字符串，也可以将字符串转换成数值、日期。 NumberFormat 和 DateFormat 类都包含了 format() 和 parse() 方法，其中 format() 用于将">
+<meta property="og:description" content="传统 IO 流体系理解节点流和处理流直接以物理资源建立的流就是节点流，把节点流包装就是处理流。 InputStream 和 ReaderInputSteam 和 Reader 是所有输入流的抽象基类，它们的方法所有输入流都可以使用： InputStream int read()：从输入流中读取单个字节，返回所读取的字节数据。 int read(byte[] b)：从输入流中最多读取 b.lengt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.imgur.com/zf0YegE.png">
-<meta property="og:updated_time" content="2018-06-17T15:32:35.218Z">
+<meta property="og:image" content="https://i.imgur.com/y4BdTXp.png">
+<meta property="og:updated_time" content="2018-10-19T13:02:36.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="7-日期、数字的格式化">
-<meta name="twitter:description" content="使用 NumberFormat 格式化数字抽象类 Format 有子类：MessageFormat、NumberFormat、DateFormat。NumberFormat、DateFormat 可以将数值、日期转换成字符串，也可以将字符串转换成数值、日期。 NumberFormat 和 DateFormat 类都包含了 format() 和 parse() 方法，其中 format() 用于将">
-<meta name="twitter:image" content="https://i.imgur.com/zf0YegE.png">
+<meta name="twitter:title" content="15-传统IO">
+<meta name="twitter:description" content="传统 IO 流体系理解节点流和处理流直接以物理资源建立的流就是节点流，把节点流包装就是处理流。 InputStream 和 ReaderInputSteam 和 Reader 是所有输入流的抽象基类，它们的方法所有输入流都可以使用： InputStream int read()：从输入流中读取单个字节，返回所读取的字节数据。 int read(byte[] b)：从输入流中最多读取 b.lengt">
+<meta name="twitter:image" content="https://i.imgur.com/y4BdTXp.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://lujinbiao.github.io/2018/03/12/Java/7-日期数字的格式化/"/>
+  <link rel="canonical" href="https://lujinbiao.github.io/2018/03/15/Java/15-传统IO/"/>
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>7-日期、数字的格式化 | 学习笔记</title>
+  <title>15-传统IO | 学习笔记</title>
   
 
 
@@ -326,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lujinbiao.github.io/2018/03/12/Java/7-日期数字的格式化/">
+    <link itemprop="mainEntityOfPage" href="https://lujinbiao.github.io/2018/03/15/Java/15-传统IO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="维他柠檬爱虾饺">
@@ -343,7 +343,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">7-日期、数字的格式化
+          <h1 class="post-title" itemprop="name headline">15-传统IO
               
             
           </h1>
@@ -368,7 +368,7 @@
                 
               
 
-              <time title="创建时间：2018-03-12 09:14:05" itemprop="dateCreated datePublished" datetime="2018-03-12T09:14:05+08:00">2018-03-12</time>
+              <time title="创建时间：2018-03-15 06:26:55" itemprop="dateCreated datePublished" datetime="2018-03-15T06:26:55+08:00">2018-03-15</time>
             
 
             
@@ -385,7 +385,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-17 23:32:35" itemprop="dateModified" datetime="2018-06-17T23:32:35+08:00">2018-06-17</time>
+                <time title="修改时间：2018-10-19 21:02:36" itemprop="dateModified" datetime="2018-10-19T21:02:36+08:00">2018-10-19</time>
               
             
           </span>
@@ -436,46 +436,98 @@
       
 
       
-        <h1 id="使用-NumberFormat-格式化数字"><a href="#使用-NumberFormat-格式化数字" class="headerlink" title="使用 NumberFormat 格式化数字"></a>使用 NumberFormat 格式化数字</h1><p>抽象类 <strong>Format</strong> 有子类：<strong>MessageFormat、NumberFormat、DateFormat</strong>。<strong>NumberFormat、DateFormat</strong> 可以将数值、日期转换成字符串，也可以将字符串转换成数值、日期。<br><img src="https://i.imgur.com/zf0YegE.png" alt=""></p>
-<p><strong>NumberFormat</strong> 和 <strong>DateFormat</strong> 类都包含了 <strong>format()</strong> 和 <strong>parse()</strong> 方法，其中 <strong>format()</strong> 用于将 数值、日期 格式化成字符串，<strong>parse()</strong> 用于将字符串解析成数值、日期。</p>
-<p><strong>NumberFormat</strong> 是一个抽象基类，提供了如下几个类方法来得到对象：</p>
-<ul>
-<li><strong>getCurrencyInstance()</strong>：返回默认 Locale 的货币格式器，也可以在调用该方法时传入指定的 Locale，则获取指定 Locale 的货币格式器。</li>
-<li><strong>getIntegerInstance()</strong>：返回默认 Locale 的整数格式器，也可以在调用该方法时传入指定的 Locale，则获取指定 Locale 的货币格式器。</li>
-<li><strong>getNumberInstance()</strong>：返回默认 Locale 的通用数值格式器，也可以在调用该方法时传入指定的 Locale，则获取指定 Locale 的货币格式器。</li>
-<li><strong>getPercentInstance()</strong>：返回默认 Locale 的百分数格式器，也可以在调用该方法时传入指定的 Locale，则获取指定 Locale 的货币格式器。</li>
+        <h1 id="传统-IO-流体系"><a href="#传统-IO-流体系" class="headerlink" title="传统 IO 流体系"></a>传统 IO 流体系</h1><p>理解节点流和处理流<br>直接以物理资源建立的流就是节点流，把节点流包装就是处理流。</p>
+<h2 id="InputStream-和-Reader"><a href="#InputStream-和-Reader" class="headerlink" title="InputStream 和 Reader"></a>InputStream 和 Reader</h2><p>InputSteam 和 Reader 是所有输入流的抽象基类，它们的方法所有输入流都可以使用：</p>
+<h3 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h3><ul>
+<li><strong>int read()</strong>：从输入流中读取单个字节，返回所读取的字节数据。</li>
+<li><strong>int read(byte[] b)</strong>：从输入流中最多读取 b.length 个字节的数据，并将其存储在字节数组 b 中，返回实际读取的字节数。</li>
+<li><strong>int read(byte[] b,int off,int len)</strong>：从输入流中最多读取 len 个字节的数据，并将其存储在数组 b 中，当放入数组 b 中时从数组的 off 位置开始放入，返回实际读取的字节数。</li>
 </ul>
-<p>一旦取得 NumberFormat 对象后，就可以调用它的 format() 方法来格式化数值，包括整数和浮点数。</p>
-<h1 id="使用-DateFormat-格式化日期、时间"><a href="#使用-DateFormat-格式化日期、时间" class="headerlink" title="使用 DateFormat 格式化日期、时间"></a>使用 DateFormat 格式化日期、时间</h1><p><strong>DateFormat</strong> 也是一个抽象类，提供如下几个类方法用于获取 DateFormat 实例：</p>
-<ul>
-<li><strong>getDateInstance()</strong>：返回一个日期格式器，它格式化后的字符串只有日期，没有时间。该方法可以传入多个参数，用于指定日期样式和 Locale 等参数，不指定就使用默认参数。</li>
-<li><strong>getTimeInstance()</strong>：返回一个时间格式器，它格式化后的字符串只有时间，没有日期。该方法可以传入多个参数，用于指定日期样式和 Locale 等参数，不指定就使用默认参数。</li>
-<li><strong>getDateTimeInstance()</strong>：返回一个日期、时间格式器，它格式化后的字符串既有日期，也有时间。该方法可以传入多个参数，用于指定日期样式、时间样式和 Locale 等参数，不指定就使用默认参数。</li>
+<h3 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h3><ul>
+<li><strong>int read()</strong>：从输入流中读取单个字符，返回所读取的字符数据。</li>
+<li><strong>int read(char[] cbuf)</strong>：从输入流中最多读取 cbuf.length 个字符的数据，并将其存储在字符数组 cbuf 中，返回实际读取的字符数。</li>
+<li><strong>int read(char[] cbuf,int off,int len)</strong>：从输入流中最多读取 len 个字符的数据，并将其存储在数组 cbuf 中，当放入数组 cbuf 中时从数组的 off 位置开始放入，返回实际读取的字符数。</li>
 </ul>
-<p>可以通过 <strong>DateFormat</strong> 的 4 个静态常量指定日期、时间样式：</p>
+<p>除此之外，InputSteam 和 Reader 还支持以下方法来移动记录指针：</p>
 <ul>
-<li><strong>FULL</strong>：例如 Friday，December 2，2018</li>
-<li><strong>LONG</strong>：例如 December 2，2018</li>
-<li><strong>MEDIUM</strong>：例如 Dec 2，2018</li>
-<li><strong>SHORT</strong>：例如 12/2/18</li>
+<li><strong>void mark(int readAheadLimit)</strong>：在记录指针当前位置进行一个标记 mark。</li>
+<li><strong>boolean markSupported()</strong>：判断此输入流是否支持 mark() 操作</li>
+<li><strong>void reset()</strong>：将此流的记录指针重新定位到上一次标记 mark 的位置</li>
+<li><strong>long skip(logn n)</strong>：记录指针向前移动 n 个字节/字符</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//需要被格式化的时间</span><br><span class="line">Date dt = new Date();</span><br><span class="line">//创建不同的日期格式器</span><br><span class="line">DateFormat shortDf=DateFormat.getDateInstance(DateFormat.SHORT);</span><br><span class="line">DateFormat fulltDf=DateFormat.getDateInstance(DateFormat.FULL);</span><br><span class="line"></span><br><span class="line">//开始格式化</span><br><span class="line">System.out.println(shortDf.format(dt));</span><br><span class="line">System.out.pritnln(fullDf.format(dt));</span><br></pre></td></tr></table></figure>
-<p>获得了 DateFormat 对象之后，还可以调用它的 <strong>setLenient(boolean lenient)</strong> 方法类设置该格式器是否采用严格语法<br>DateFormat 的 <strong>parse()</strong> 方法可以把一个字符串解析成 Date 对象。</p>
-<h1 id="使用-SimpleDateFormat-格式化日期"><a href="#使用-SimpleDateFormat-格式化日期" class="headerlink" title="使用 SimpleDateFormat 格式化日期"></a>使用 SimpleDateFormat 格式化日期</h1><p><strong>SimpleDateFormat</strong> 是 DateFormat 的子类，创建 <strong>SimpleDateFormat</strong> 对象时需要传入一个 <strong>pattern</strong> 字符串，是一个日期模板字串，用来定制自己的日期格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//定制自己的日期格式</span><br><span class="line">String pattern = &quot;YYYY/MM/dd&quot;;</span><br><span class="line">SimpleDateFormat dateFomat = new SimpleDateFormat(pattern);</span><br><span class="line"></span><br><span class="line">System.out.println(dateFormat.format(new Date());</span><br></pre></td></tr></table></figure></p>
-<h1 id="Java8-新增的日期、时间格式器"><a href="#Java8-新增的日期、时间格式器" class="headerlink" title="Java8 新增的日期、时间格式器"></a>Java8 新增的日期、时间格式器</h1><p>Java8 新增的日期、时间API里不仅包括了 <strong>Instant、LocalDate、LocalDateTime、LocalTime</strong> 等代表日期、时间的类，而且在 <strong>java.time.format</strong> 包下提供了一个 <strong>DateTimeFormatter</strong> 格式器类，该类相当于前面介绍的 <strong>DateFormat</strong> 和 <strong>SimpleDateFormat</strong> 的合体，功能非常强大。</p>
-<h3 id="创建格式器实例"><a href="#创建格式器实例" class="headerlink" title="创建格式器实例"></a>创建格式器实例</h3><p>首先获取 <strong>DateTimeFormatter</strong> 对象，途径有：</p>
+<h2 id="OutputSteam-和-Writer"><a href="#OutputSteam-和-Writer" class="headerlink" title="OutputSteam 和 Writer"></a>OutputSteam 和 Writer</h2><p>OutputStream 和 Writer 都提供如下方法：</p>
 <ul>
-<li>直接使用静态常量创建格式器：<strong>ISO_LOCAL_DATE、ISO_LOCAL_TIME、ISO_LOCAL_DATE_TIME</strong> 等静态常量，这些静态常量本身就是 <strong>DateTimeFormat</strong> 实例。</li>
-<li>使用代表不同风格的枚举值来创建格式器，在 <strong>FormatStyle</strong> 枚举类中定义了 <strong>FULL、LOGN、MEDIUM、SHORT</strong> 四个枚举值。</li>
-<li>根据模式字符串来创建格式器。</li>
+<li><strong>void write(int c)</strong>：将指定的字节/字符输出到输出流中，其中 c 既可以代表字节，也可以代表字符。</li>
+<li><strong>void writer(byte[]/char[] buf)</strong>：将字节数组/字符数组中的数据输出到指定输出流中。</li>
+<li><strong>void write(byte[]/char[] buf,int off,int len)</strong>：将字节数组/字符数组中从 off 位置开始，长度为 len 的字节/字符输出到输出流中。</li>
 </ul>
-<h3 id="完成格式化"><a href="#完成格式化" class="headerlink" title="完成格式化"></a>完成格式化</h3><p>使用 <strong>DateTimeFormatter</strong> 把日期、时间格式化为字符串：</p>
+<p><strong>Writer</strong>还包含以下方法：</p>
 <ul>
-<li>调用 <strong>format(TemporalAccessor temporal)</strong> 方法执行格式化，<strong>LocalDate、LocalDateTime、LocalTime</strong> 等类都是 <strong>TemporalAccessor</strong> 接口的实现类。</li>
-<li>调用 <strong>LocalDate、LocalDateTime、LocalTime</strong> 等日期、时间对象的 <strong>format(DateTimeFormatter formatter)</strong> 方法执行格式化。</li>
+<li><strong>void writer(String str)</strong>：将 str 字符串里包含的字符输出到指定输出流中。</li>
+<li><strong>void write(String str,int off,int len)</strong>：将 str 字符串里从 off 位置开始，长度为 len 的字符输出到指定输出流中。</li>
 </ul>
-<h3 id="解析字符串"><a href="#解析字符串" class="headerlink" title="解析字符串"></a>解析字符串</h3><p>将指定格式的字符串解析成日期、时间对象，通过日期、时间对象提供的 <strong>parse(CharSequence text,DateTimeFormatter formatter)</strong> 方法进行解析。</p>
-
+<h3 id="处理流的用法"><a href="#处理流的用法" class="headerlink" title="处理流的用法"></a>处理流的用法</h3><p>上述4个基类用起来很繁琐，此时就有了处理流。使用处理流的思路是，使用处理流来包装节点流，程序通过处理流来执行输入/输出功能，让节点流与底层的 I/O 设备、文件交互。</p>
+<p>实际识别处理流非常简单，只要流的构造器参数不是一个物理节点，而是已经存在的流，那么这种流就一定是处理流；而所有节点流都是直接以物理 IO 节点作为构造参数的。</p>
+<h2 id="输入-输出体系"><a href="#输入-输出体系" class="headerlink" title="输入/输出体系"></a>输入/输出体系</h2><p><img src="https://i.imgur.com/y4BdTXp.png" alt=""></p>
+<blockquote>
+<p>4 个访问管道的流：PipeInputStream、PipeOutputStream、PipedReader、PipedWriter，用来实现进程之间通信功能。</p>
+<p>4 个缓冲流：增加缓冲流之后需要使用 flush() 才可以将缓冲区的内容写入实际的物理节点。</p>
+<p>对象流，主要用于实现对象的序列化。</p>
+</blockquote>
+<h2 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h2><p>输入/输出 体系中还提供了两个转换流，用于实现将字节流转换成字符流。分别是 <strong>InputStreamReader</strong> 和 <strong>OutputStreamWriter</strong> 。普通的 Reader 读取输入内容时不太方便，此时可以将普通的 Reader 再次包装成 <strong>BufferedReader</strong> ，利用 <strong>BufferedReader</strong> 的 <strong>readLine()</strong> 方法可以一次读取一行文本内容。</p>
+<p><strong>BufferReader</strong> 有一个 <strong>readLine()</strong> 方法可以一次读取一行内容，方便读取文本内容。</p>
+<h2 id="推回输入流"><a href="#推回输入流" class="headerlink" title="推回输入流"></a>推回输入流</h2><p>在输入/输出流体系中，有两个特殊的流与众不同，就是 <strong>PushbackInputStream</strong> 和 <strong>PushbackReader</strong>，它们都提供了如下方法：</p>
+<ul>
+<li><strong>void unread(byte[]/char[] buf)</strong>：将一个字节/字符数组内容推回到 <strong>推回缓冲区</strong>，从而允许重复读取刚刚读取的内容</li>
+<li><strong>void unread(byte[]/char[] b,int off,int len)</strong>：将一个字节/字符数组里从 off 开始，长度为 len 字节/字符的内容推回到 <strong>推回缓冲区</strong>，从而允许重复读取刚刚读取的内容</li>
+<li><strong>void unread(int b)</strong>：将一个字节/字符推回到 <strong>推缓冲区</strong>，从而允许重复读取刚刚读取的内容</li>
+</ul>
+<h2 id="重定向标准输入-输出"><a href="#重定向标准输入-输出" class="headerlink" title="重定向标准输入/输出"></a>重定向标准输入/输出</h2><p>Java 的标准输入/输出分别通过 <strong>System.in</strong> 和 <strong>System.out</strong> 来实现，在默认情况下代表键盘和显示器。在 <strong>System</strong> 类里提供了如下三个重定向标准输入/输出的方法：</p>
+<ul>
+<li><strong>static void setErr(PrintStream err)</strong>：重定向 “标准” 错误输出流</li>
+<li><strong>static void setIn(InputStream in)</strong>：重定向 “标准” 输入流</li>
+<li><strong>static void setOut(PrintStream out)</strong>：重定向 “标准” 输出流</li>
+</ul>
+<h2 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h2><p><strong>RandomAccessFile</strong> 既可以读取文件内容，也可以向文件输出数据，与普通的输入流/输出流不同，<strong>RandomAccessFile</strong> 支持”随机访问”的方式，程序可以直接跳转到文件的任意地方来读写数据。</p>
+<blockquote>
+<p>“随机访问” 翻译不确切，应该说是任意访问。</p>
+</blockquote>
+<p><strong>RandomAccessFile</strong> 有一个最大的局限，就是只能读写文件，不能读写其他 IO 节点。有如下两个方法来操作文件记录指针：</p>
+<ul>
+<li><strong>long getFilePoint()</strong>：返回文件记录指针的位置。</li>
+<li><strong>void seek(long pos)</strong>：将文件记录指针定位到 pos 位置。</li>
+</ul>
+<h1 id="File-类"><a href="#File-类" class="headerlink" title="File 类"></a>File 类</h1><p>File 类是 <strong>java.io</strong> 包下与平台无关的文件和目录，不管是文件还是目录都是使用 File 类来操作。File 类能新建、删除、重命名文件和目录，但是不能访问文件内容本身(访问内容需要输入/输出流)。</p>
+<h2 id="访问文件和目录"><a href="#访问文件和目录" class="headerlink" title="访问文件和目录"></a>访问文件和目录</h2><p>File 类使用文件路径字符串来创建 File 实例，可以是绝对路径或者相对路径。以下是 File 类提供来操作文件和目录的方法：</p>
+<ul>
+<li><strong>String getName()</strong>：返回此 File 对象所表示的文件名或路径名。</li>
+<li><strong>String getPath()</strong>：返回此 File 对象所对应的路径名。</li>
+<li><strong>File getAbsoluteFile()</strong>：返回此 File 对象的绝对路径。</li>
+<li><strong>String getParent()</strong>：返回此 File 对象所对应目录的父目录名。</li>
+<li><strong>boolean renameTo(File newName)</strong>：重命名此 File 对象所对应的文件或目录。</li>
+<li><strong>boolean exists()</strong>：判断 File 对象所对应的文件或目录是否存在。</li>
+<li><strong>boolean canWrite()</strong>：判断 File 对象所对应的文件和目录是否可写。</li>
+<li><strong>boolean canRead()</strong>：判断 File 对象所对应的文件和目录是否可读。</li>
+<li><strong>boolean isFile()</strong>：判断 File 对象所对应的是否是文件，而不是目录。</li>
+<li><strong>boolean isDirectory()</strong>：判断 File 对象所对应的是否是目录，而不是文件。</li>
+<li><strong>boolean isAbsolute()</strong>：判断 File 对象所对应的文件或目录是否是绝对路径。</li>
+<li><strong>long lastModified()</strong>：返回文件的最后修改时间。</li>
+<li><strong>long length()</strong>：返回文件内容的长度。</li>
+<li><strong>boolean createNewFile()</strong>：当此 File 对象所对应的文件不存在时，该方法将新建一个该 File 对象所指定的新文件。</li>
+<li><strong>boolean delete()</strong>：删除 File 对象所对应的文件或路径。</li>
+<li><strong>static File createTempFile(String prefix,String suffix)</strong>：在默认的临时文件目录中创建一个临时的空文件。</li>
+<li><strong>static File createTempFile(String prefix,String suffix,File directory)</strong>：在 directory 所指定的目录中创建一个临时的空文件。</li>
+<li><strong>void deleteOnExit()</strong>：注册一个删除钩子，指定当Java虚拟机退出时，删除 File 对象所对应的文件和目录。</li>
+<li><strong>boolean mkdir()</strong>：试图创建一个 File 对象所对应的目录，必须对应一个路径，而不是一个文件。</li>
+<li><strong>String[] list()</strong>：列出 File 对象的所有子文件名和路径名，返回 String 数组。</li>
+<li><strong>File[] listFile()</strong>：列出 File 对象的所有子文件和路径，返回 File 数组。</li>
+<li><strong>static File[] listRoots()</strong>：列出系统所有的根路径。</li>
+</ul>
+<blockquote>
+<p>注意：Windows的路径分隔符使用反斜线<code>(\)</code>，而Java程序中的反斜线表示转移字符，所有当需要在Windows的路径下包括反斜线，应该使用两条反斜线，或者直接使用斜线<code>(/)</code>。</p>
+</blockquote>
+<h2 id="文件过滤器"><a href="#文件过滤器" class="headerlink" title="文件过滤器"></a>文件过滤器</h2><p>File 类的 list() 方法中可以接受一个 FilenameFilter 参数，通过该参数可以只列出符合条件的文件。该 FilenameFilter 接口包含了一个 accept(File dir,String name) 方法，该方法将依次对指定 File 的所有子目录或文件进行迭代，如果该方法返回 true，则 list() 方法会列出该子目录或文件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">File file = <span class="keyword">new</span> File(<span class="string">"D:/MyWork"</span>);</span><br><span class="line">String[] nameList = file.list((dir, name) -&gt; name.endsWith(<span class="string">".jpg"</span>));</span><br><span class="line"><span class="keyword">for</span> (String str:nameList)</span><br><span class="line">&#123;</span><br><span class="line">  System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -508,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/12/Java/7-国际化与格式化/" rel="next" title="7-国际化">
-                <i class="fa fa-chevron-left"></i> 7-国际化
+              <a href="/2018/03/13/Java/10-异常/" rel="next" title="10-异常处理">
+                <i class="fa fa-chevron-left"></i> 10-异常处理
               </a>
             
           </div>
@@ -518,8 +570,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/12/Java/8-集合框架/" rel="prev" title="8-Java集合框架">
-                8-Java集合框架 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/15/Java/15-NIO/" rel="prev" title="15-NIO体系">
+                15-NIO体系 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -688,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-NumberFormat-格式化数字"><span class="nav-number">1.</span> <span class="nav-text">使用 NumberFormat 格式化数字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-DateFormat-格式化日期、时间"><span class="nav-number">2.</span> <span class="nav-text">使用 DateFormat 格式化日期、时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-SimpleDateFormat-格式化日期"><span class="nav-number">3.</span> <span class="nav-text">使用 SimpleDateFormat 格式化日期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java8-新增的日期、时间格式器"><span class="nav-number">4.</span> <span class="nav-text">Java8 新增的日期、时间格式器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建格式器实例"><span class="nav-number">4.0.1.</span> <span class="nav-text">创建格式器实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完成格式化"><span class="nav-number">4.0.2.</span> <span class="nav-text">完成格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析字符串"><span class="nav-number">4.0.3.</span> <span class="nav-text">解析字符串</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#传统-IO-流体系"><span class="nav-number">1.</span> <span class="nav-text">传统 IO 流体系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#InputStream-和-Reader"><span class="nav-number">1.1.</span> <span class="nav-text">InputStream 和 Reader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#InputStream"><span class="nav-number">1.1.1.</span> <span class="nav-text">InputStream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reader"><span class="nav-number">1.1.2.</span> <span class="nav-text">Reader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OutputSteam-和-Writer"><span class="nav-number">1.2.</span> <span class="nav-text">OutputSteam 和 Writer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理流的用法"><span class="nav-number">1.2.1.</span> <span class="nav-text">处理流的用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-输出体系"><span class="nav-number">1.3.</span> <span class="nav-text">输入/输出体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换流"><span class="nav-number">1.4.</span> <span class="nav-text">转换流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推回输入流"><span class="nav-number">1.5.</span> <span class="nav-text">推回输入流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向标准输入-输出"><span class="nav-number">1.6.</span> <span class="nav-text">重定向标准输入/输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RandomAccessFile"><span class="nav-number">1.7.</span> <span class="nav-text">RandomAccessFile</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#File-类"><span class="nav-number">2.</span> <span class="nav-text">File 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问文件和目录"><span class="nav-number">2.1.</span> <span class="nav-text">访问文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件过滤器"><span class="nav-number">2.2.</span> <span class="nav-text">文件过滤器</span></a></li></ol></li></ol></div>
             
 
           </div>
