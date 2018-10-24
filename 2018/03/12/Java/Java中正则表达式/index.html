@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://i.imgur.com/XERtHBc.png">
 <meta property="og:image" content="https://i.imgur.com/l2EU6r7.png">
 <meta property="og:image" content="https://i.imgur.com/xBUWVg5.png">
-<meta property="og:updated_time" content="2018-03-30T14:30:29.176Z">
+<meta property="og:updated_time" content="2018-10-24T03:24:24.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中正则表达式">
 <meta name="twitter:description" content="正则表达式是一个用于匹配的模板，可以对字符串进行查找、提取、分割、替换等操作。String 类里也提供了几个特殊的方法：  boolean matches(String regex)：判断字符串是否匹配指定的正则表达式。 String replaceAll(String regex，String replacement)：将字符串中所有匹配 regex 的子串替换成 replacement。 St">
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-03-30 22:30:29" itemprop="dateModified" datetime="2018-03-30T22:30:29+08:00">2018-03-30</time>
+                <time title="修改时间：2018-10-24 11:24:24" itemprop="dateModified" datetime="2018-10-24T11:24:24+08:00">2018-10-24</time>
               
             
           </span>
@@ -465,7 +465,7 @@
 </ul>
 <p>三种模式的数量表示符如下：<br><img src="https://i.imgur.com/xBUWVg5.png" alt=""></p>
 <h2 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h2><p>一旦在程序中定义了正则表达式，就可以使用 <strong>Pattern</strong> 和 <strong>Matcher</strong> 来使用正则表达式。</p>
-<p><strong>Pattern</strong> 对象是正则表达式编译后在内存中的表示形式，因此，正则表达式字符串必须先被编译为 Pattern 对象，然后再利用该 Pattern 对象创建对应的 Matcher 对象。执行匹配所涉及的状态保留在 Matcher 对象中，多个 Matcher 对象可共享同一个 Pattern 对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将一个字符串正则表达式编译成 Pattern 对象</span><br><span class="line">Pattern pattern=Pattern.compile(&quot;a*b&quot;);//a*b 为正则表达式</span><br><span class="line">//使用 Pattern 对象创建 Matcher 对象</span><br><span class="line">Matcher matcher= pattern.matcher(&quot;aaaaab&quot;);//aaaaab 为需要查找的文本字符串</span><br><span class="line">boolean b=m.matcher();//返回 true</span><br></pre></td></tr></table></figure></p>
+<p><strong>Pattern</strong> 对象是正则表达式编译后在内存中的表示形式，因此，正则表达式字符串必须先被编译为 Pattern 对象，然后再利用该 Pattern 对象创建对应的 Matcher 对象。执行匹配所涉及的状态保留在 Matcher 对象中，多个 Matcher 对象可共享同一个 Pattern 对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将一个字符串正则表达式编译成 Pattern 对象</span><br><span class="line">Pattern pattern=Pattern.compile(&quot;a*b&quot;);//a*b 为正则表达式</span><br><span class="line">//使用 Pattern 对象创建 Matcher 对象</span><br><span class="line">Matcher matcher= pattern.matcher(&quot;aaaaab&quot;);//aaaaab 为需要查找的文本字符串</span><br><span class="line">boolean b=m.matches();//返回 true</span><br></pre></td></tr></table></figure></p>
 <p>Matcher 类提供了如下几个常用的方法：</p>
 <ul>
 <li><strong>find()</strong>：返回目标字符串中是否包含与 Pattern 匹配的子串。</li>
@@ -590,7 +590,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -627,7 +627,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
