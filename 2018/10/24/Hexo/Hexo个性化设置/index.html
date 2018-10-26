@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="把文章置顶并添加置顶标志首先更换依赖：12$ npm uninstall hexo-generator-index --save$ npm install hexo-generator-index-pin-top --save 然后在需要置顶的文章的 Front-matter 中加上 top: true 即可。比如下面这篇文章：12345title: 常见的内部排序算法date: 2018/10/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-24T07:14:53.981Z">
+<meta property="og:updated_time" content="2018-10-26T09:33:32.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo个性化设置（持续更新）">
 <meta name="twitter:description" content="把文章置顶并添加置顶标志首先更换依赖：12$ npm uninstall hexo-generator-index --save$ npm install hexo-generator-index-pin-top --save 然后在需要置顶的文章的 Front-matter 中加上 top: true 即可。比如下面这篇文章：12345title: 常见的内部排序算法date: 2018/10/">
@@ -367,12 +367,24 @@
                 
               
 
-              <time title="创建时间：2018-10-24 11:13:00 / 修改时间：15:14:53" itemprop="dateCreated datePublished" datetime="2018-10-24T11:13:00+08:00">2018-10-24</time>
+              <time title="创建时间：2018-10-24 11:13:00" itemprop="dateCreated datePublished" datetime="2018-10-24T11:13:00+08:00">2018-10-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-26 17:33:32" itemprop="dateModified" datetime="2018-10-26T17:33:32+08:00">2018-10-26</time>
               
             
           </span>
@@ -428,7 +440,18 @@
         <h1 id="把文章置顶并添加置顶标志"><a href="#把文章置顶并添加置顶标志" class="headerlink" title="把文章置顶并添加置顶标志"></a>把文章置顶并添加置顶标志</h1><p>首先更换依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm uninstall hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure></p>
 <p>然后在需要置顶的文章的 <code>Front-matter</code> 中加上 <code>top: true</code> 即可。比如下面这篇文章：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 常见的内部排序算法</span><br><span class="line">date: 2018/10/18 20:46:03</span><br><span class="line">categories: 算法</span><br><span class="line">tags: </span><br><span class="line">top: true</span><br></pre></td></tr></table></figure></p>
 <p>最后添加置顶标志，打开：<code>/blog/themes/next/layout/_macro</code> 目录下的<code>post.swig</code> 文件，定位到 <code>&lt;div class=&quot;post-meta&quot;&gt;</code> 标签下，插入如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">   &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">   &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">   &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="把-sideBar-设置在左边"><a href="#把-sideBar-设置在左边" class="headerlink" title="把 sideBar 设置在左边"></a>把 sideBar 设置在左边</h1><h1 id="调整首页文章间距"><a href="#调整首页文章间距" class="headerlink" title="调整首页文章间距"></a>调整首页文章间距</h1><p>打开 <code>\themes\next\source\css\_schemes\Mist\_posts-expanded.styl</code> ，在最后一行添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.posts-expand .post &#123;</span><br><span class="line">  margin-top: 50px; //调整到自己合适的数值</span><br><span class="line">  margin-bottom: 00px; //调整到自己合适的数值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="把-sideBar-设置在左边"><a href="#把-sideBar-设置在左边" class="headerlink" title="把 sideBar 设置在左边"></a>把 sideBar 设置在左边</h1><p>需要修改的文件有：</p>
+<ul>
+<li>sidebar.styl</li>
+<li>sidebar-toggle.styl</li>
+<li>back-to-top.styl</li>
+<li>motion.js</li>
+</ul>
+<h2 id="sidebar-styl"><a href="#sidebar-styl" class="headerlink" title="sidebar.styl"></a>sidebar.styl</h2><p><code>\themes\next\source\css\_common\components\sidebar\</code><br>修改如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.sidebar &#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  left: 0;</span><br><span class="line">  top: 0;</span><br><span class="line">  bottom: 0;</span><br></pre></td></tr></table></figure></p>
+<h2 id="sidebar-toggle-styl"><a href="#sidebar-toggle-styl" class="headerlink" title="sidebar-toggle.styl"></a>sidebar-toggle.styl</h2><p><code>\themes\next\source\css\_common\components\sidebar\</code><br>修改如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">left: $b2t-position-right;</span><br></pre></td></tr></table></figure></p>
+<h2 id="back-to-top-styl"><a href="#back-to-top-styl" class="headerlink" title="back-to-top.styl"></a>back-to-top.styl</h2><p><code>\themes\next\source\css\_common\components\</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">left: $b2t-position-right;</span><br></pre></td></tr></table></figure></p>
+<h2 id="motion-js"><a href="#motion-js" class="headerlink" title="motion.js"></a>motion.js</h2><p><code>\themes\next\source\js\src\motion.js</code><br>利用搜索功能找到改文档中的 paddingRight 字段，将 paddingRight 改为 paddingLeft(共两处)。</p>
+<h1 id="调整首页文章间距"><a href="#调整首页文章间距" class="headerlink" title="调整首页文章间距"></a>调整首页文章间距</h1><p>打开 <code>\themes\next\source\css\_schemes\Mist\_posts-expanded.styl</code> ，在最后一行添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.posts-expand .post &#123;</span><br><span class="line">  margin-top: 50px; //调整到自己合适的数值</span><br><span class="line">  margin-bottom: 00px; //调整到自己合适的数值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -538,7 +561,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -604,7 +627,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -649,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#把文章置顶并添加置顶标志"><span class="nav-number">1.</span> <span class="nav-text">把文章置顶并添加置顶标志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把-sideBar-设置在左边"><span class="nav-number">2.</span> <span class="nav-text">把 sideBar 设置在左边</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调整首页文章间距"><span class="nav-number">3.</span> <span class="nav-text">调整首页文章间距</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#把文章置顶并添加置顶标志"><span class="nav-number">1.</span> <span class="nav-text">把文章置顶并添加置顶标志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把-sideBar-设置在左边"><span class="nav-number">2.</span> <span class="nav-text">把 sideBar 设置在左边</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sidebar-styl"><span class="nav-number">2.1.</span> <span class="nav-text">sidebar.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sidebar-toggle-styl"><span class="nav-number">2.2.</span> <span class="nav-text">sidebar-toggle.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#back-to-top-styl"><span class="nav-number">2.3.</span> <span class="nav-text">back-to-top.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#motion-js"><span class="nav-number">2.4.</span> <span class="nav-text">motion.js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调整首页文章间距"><span class="nav-number">3.</span> <span class="nav-text">调整首页文章间距</span></a></li></ol></div>
             
 
           </div>
