@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="CSS 样式的语法总是遵循如下格式：1234Selector&amp;#123;    property1:value;    property2:value;&amp;#125; 属性选择器 E{ …} ：指定该 CSS 样式对所有 E 元素起作用（即元素选择器）。 E[attr]{…}：指定该 CSS 样式对具有 attr 属性的 E 元素起作用。 E[attr=value]{…}：指定该 CSS 样式对所有">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3 选择器">
+<meta property="og:url" content="https://lujinbiao.github.io/2018/04/15/前端/CSS/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="CSS 样式的语法总是遵循如下格式：1234Selector&amp;#123;    property1:value;    property2:value;&amp;#125; 属性选择器 E{ …} ：指定该 CSS 样式对所有 E 元素起作用（即元素选择器）。 E[attr]{…}：指定该 CSS 样式对具有 attr 属性的 E 元素起作用。 E[attr=value]{…}：指定该 CSS 样式对所有">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/deV1ZjO.png">
+<meta property="og:updated_time" content="2018-10-20T03:10:00.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3 选择器">
+<meta name="twitter:description" content="CSS 样式的语法总是遵循如下格式：1234Selector&amp;#123;    property1:value;    property2:value;&amp;#125; 属性选择器 E{ …} ：指定该 CSS 样式对所有 E 元素起作用（即元素选择器）。 E[attr]{…}：指定该 CSS 样式对具有 attr 属性的 E 元素起作用。 E[attr=value]{…}：指定该 CSS 样式对所有">
+<meta name="twitter:image" content="https://i.imgur.com/deV1ZjO.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://lujinbiao.github.io/2018/04/15/前端/CSS/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CSS3 选择器 | 学习笔记</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Strange new light can be just as frightening as the dark.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lujinbiao.github.io/2018/04/15/前端/CSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="维他柠檬爱虾饺">
+      <meta itemprop="description" content="不务正业，混吃等死">
+      <meta itemprop="image" content="/images/cat.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS3 选择器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-15 09:34:59" itemprop="dateCreated datePublished" datetime="2018-04-15T09:34:59+08:00">2018-04-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-20 11:10:00" itemprop="dateModified" datetime="2018-10-20T11:10:00+08:00">2018-10-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSS 样式的语法总是遵循如下格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Selector&#123;</span><br><span class="line">    property1:value;</span><br><span class="line">    property2:value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h1><ul>
+<li><strong>E{ …}</strong> ：指定该 CSS 样式对所有 E 元素起作用（即元素选择器）。</li>
+<li><strong>E[attr]{…}</strong>：指定该 CSS 样式对具有 attr 属性的 E 元素起作用。</li>
+<li><strong>E[attr=value]{…}</strong>：指定该 CSS 样式对所有包含 attr 属性，且 attr 属性为 value 的 E 元素起作用。</li>
+<li><strong>E[attr~=value]{…}</strong>：指定该 CSS 样式对所有包含 attr 属性，且 attr 属性的值为以空格隔开的系列值，其中某个值为 value 的 E 元素起作用。</li>
+<li><strong>E[attr|=value]{…}</strong>：指定该 CSS 样式对所有包含 attr 属性，且 attr 属性的值为以连字符分隔的系列值，其中第一个值为 value 的 Tag 元素起作用。</li>
+<li><strong>E[attr^=”value]{…}</strong>：指定该 CSS 样式对所有包含 attr 属性，且 attr 属性的值为以 value 开头的字符串的 E 元素起作用。</li>
+<li><strong>E[attr$=”value”]{…}</strong>：指定该 CSS 样式对所有包含 attr 属性，且 attr 属性的值为以 value 结尾的字符串的 E 元素起作用。</li>
+<li><strong>E[att*=”value”]{…}</strong>：指定该 CSS 样式对所有包含 attr 属性，且 attr 属性的值为包含 value 的字符串的 E 元素起作用。</li>
+</ul>
+<p>上面这几个选择器匹配规则越严格优先级越高。</p>
+<h1 id="ID-选择器"><a href="#ID-选择器" class="headerlink" title="ID 选择器"></a>ID 选择器</h1><p>ID 选择器指定 CSS 样式将会对具有指定 id 属性值的 HTML 元素起作用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#idValue&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>仅对指定元素起作用的 ID 选择器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E#idValue&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h1><p>类选择器指定 CSS 样式对具有指定 class 属性的元素起作用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[E].classValue&#123;...&#125; /*其中 E 是有效的HTML元素*/</span><br></pre></td></tr></table></figure></p>
+<h1 id="包含选择器"><a href="#包含选择器" class="headerlink" title="包含选择器"></a>包含选择器</h1><p>包含选择器用于指定目标选择器必须处于某个选择器对应的元素内部：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Selector1 Selector2&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果还希望实现更为精确的选择，例如只对 section 元素下的article 元素下的 h1 元素应用样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">section article h1&#123;</span><br><span class="line">    font-size:30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="子选择器"><a href="#子选择器" class="headerlink" title="子选择器"></a>子选择器</h1><p>子选择器用于指定目标选择器必须是某个选择器对应的子元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Selector1&gt;Selector2&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>包含选择器与子选择器十分相似，它们之间存在如下区别：对于包含选择器，只要目标选择器位于外部选择器对应的元素内部，即使是 “孙子元素” 也可以；对于子选择器，要求目标选择器必须作为外部选择器对应的元素的直接子元素才可以。</p>
+<h1 id="兄弟选择器"><a href="#兄弟选择器" class="headerlink" title="兄弟选择器"></a>兄弟选择器</h1><p>兄弟选择器是 CSS 3.0 新增的一个选择器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Selector1 ~ Selector2&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>兄弟选择器匹配与 Selector1 对应的元素后面、能匹配 Selector2 的兄弟节点。</p>
+<p>示范：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    //匹配 id 为 android 的元素后面、class 属性为 long 的兄弟节点</span><br><span class="line">    #android ~ .long &#123;</span><br><span class="line">    background-color: #00FF00;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;long&quot;&gt;&lt;/div&gt;//不被匹配</span><br><span class="line">    &lt;div id=&quot;android&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;long&quot;&gt;&lt;/div&gt;//被匹配</span><br><span class="line">    &lt;p class=&quot;long&quot;&gt;&lt;/p&gt;//被匹配</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>CSS 中还有多种基于关系的选择器，如 a &gt; b 表示选择任何 a 元素的子元素 b，a + b 表示任何 a 元素的下一个 b 元素，a:first-child 表示任何 a 元素的第一个子元素。</p>
+</blockquote>
+<h1 id="选择器组合"><a href="#选择器组合" class="headerlink" title="选择器组合"></a>选择器组合</h1><p>如果想让一份 CSS 样式对多个选择器起作用，可以利用选择器组合来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Selector1,Selector2,Selector3,...&#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于上面的组合选择器，{…} 中定义的 CSS 样式将会对前面列出的所有选择器匹配出的元素起作用。</p>
+<h1 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h1><p>伪元素并不是针对真正的元素使用的选择器，而是对元素中的特定内容进行操作。设计伪元素的目的就是去选取诸如元素内容第一个字(母)、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫伪元素。</p>
+<p>CSS 提供的伪元素有如下几个：</p>
+<ul>
+<li><strong>:first-letter</strong>：对指定对象内的第一个字符起作用。<strong>注意 :first-letter 选择器仅对块元素起作用</strong></li>
+<li><strong>:first-line</strong>：对指定对象内的第一行内容起作用。<strong>仅对块元素起作用</strong></li>
+<li><strong>:before</strong>：在指定对象内部的前端插入内容。</li>
+<li><strong>:after</strong>：在指定对象内部的尾端插入内容。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>:block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">:first-letter</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:red;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">20pt</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="内容相关的属性"><a href="#内容相关的属性" class="headerlink" title="内容相关的属性"></a>内容相关的属性</h2><p>这里的内容相关的属性，与 CSS 属性中 color、font-size 等属性本质是相同的。这些内容相关的属性同样需要定义在 CSS 样式的花括号里面。</p>
+<p>CSS 支持的内容相关的属性有：</p>
+<ul>
+<li><strong>include-source</strong>：该属性的值应为 url(url)，插入绝对或相对 URL 地址所对应的文档。</li>
+<li><strong>content</strong>：<strong>核心</strong>，该属性的值可以是字符串、url(url)、attr(alt)、counter(name)、counter(name，list-style-type)、open-quote、close-quote 等格式。该属性用于向指定元素之前或之后插入指定内容。</li>
+<li><strong>quotes</strong>：该属性用于为 content 属性定义 open-quote 和 close-quote，该属性的值可以是两个以空格分隔的字符串，其中前面的字符串是 open-quote，后面的字符串是 close-quote。</li>
+<li><strong>counter-increment</strong>：该属性用于定义一个计数器。该属性的值就是所定义的计数器的名称。</li>
+<li><strong>counter-reset</strong>：该属性用于对指定的计数值复位。</li>
+</ul>
+<h2 id="插入图像"><a href="#插入图像" class="headerlink" title="插入图像"></a>插入图像</h2><p>content 属性的值除了支持普通字符串之外，还可以使用 url(url) 格式的值，用于插入图像。</p>
+<h2 id="只插入部分元素"><a href="#只插入部分元素" class="headerlink" title="只插入部分元素"></a>只插入部分元素</h2><p>有些时候，并不需要为元素的前、后插入内容，只需要向部分元素的前、后插入内容即可。可以在使用 :before、:after 伪元素选择器之前使用更严格的 CSS 选择器。</p>
+<h2 id="配合-quotes-属性执行插入"><a href="#配合-quotes-属性执行插入" class="headerlink" title="配合 quotes 属性执行插入"></a>配合 quotes 属性执行插入</h2><p>使用 quotes 属性可以定义 open-quote 和 close-quote，然后就可以在 content 属性中应用 quotes 属性所定义的 open-quote 和 close-quote。</p>
+<h2 id="配合-counter-increment-属性添加编号"><a href="#配合-counter-increment-属性添加编号" class="headerlink" title="配合 counter-increment 属性添加编号"></a>配合 counter-increment 属性添加编号</h2><h2 id="使用自定义编号"><a href="#使用自定义编号" class="headerlink" title="使用自定义编号"></a>使用自定义编号</h2><h2 id="添加多级编号"><a href="#添加多级编号" class="headerlink" title="添加多级编号"></a>添加多级编号</h2><h1 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h1><p>伪类选择器主要用于对已有选择器做进一步的 <strong>限制</strong>，对已有选择器能匹配的元素做进一步的过滤。CSS 提供的伪类选择器主要分为 3 类：</p>
+<h2 id="结构性伪类选择器"><a href="#结构性伪类选择器" class="headerlink" title="结构性伪类选择器"></a>结构性伪类选择器</h2><p>结构性伪类选择器指的是根据 HTML 元素之间的结构关键进行筛选的伪类选择器，主要有如下几个：</p>
+<ul>
+<li><strong>Selector:root</strong>：匹配文档的根元素，在 HTML 文档中，跟元素永远是 <code>&lt;html../&gt;</code> 元素。</li>
+<li><strong>Selector:first-child</strong>：匹配符合 Selector 选择器，而且必须是其父元素的第一个子节点的元素。</li>
+<li><strong>Selector:last-child</strong>：匹配符合 Selector 选择器，而且必须是其父元素的最后一个子节点的元素。</li>
+<li><strong>Selector:nth-child(n)</strong>：匹配符合 Selector 选择器，而且必须是其父元素的第 n 个子节点的元素。</li>
+<li><strong>Selector:nth-last-child(n)</strong>：匹配符合 Selector 选择器，而且必须是其父元素的倒数第 n 个子节点的元素。</li>
+<li><strong>Selector:only-child</strong>：匹配符合 Selector 选择器，而且必须是其父元素的唯一子节点的元素。</li>
+<li><strong>Selector:first-of-type</strong>：要求匹配符合 Selector 选择器，而且是与它同类型、同级的兄弟元素中的第一个元素。</li>
+<li><strong>Selector:last-of-type</strong>：要求匹配符合 Selector 选择器，而且是与它同类型、同级的兄弟元素中的最后一个元素。</li>
+<li><strong>Selector:nth-of-type(n)</strong>：要求匹配符合 Selector 选择器，而且是与它同类型、同级的兄弟元素中的第 n 个元素。</li>
+<li><strong>Selector:nth-last-of-type(n)</strong>：要求匹配符合 Selector 选择器，而且是与它同类型、同级的兄弟元素中的倒数第 n 个元素。</li>
+<li><strong>Selector:only-of-type</strong>：要求匹配符合 Selector 选择器，而且是与它同类型、同级的兄弟元素中的唯一一个元素。</li>
+<li><strong>Selector:empty</strong>：匹配符合 Selector 选择器，而且其内部没有任何子元素(包括文本节点)的元素。</li>
+</ul>
+<blockquote>
+<p>上面这些伪类选择器中，前面的 Selector 选择器可以省略，如果省略了该选择器，则 Selector 将不作为匹配条件。</p>
+<p>:root 伪类选择器用于匹配 HTML 文档的根元素，根元素只能是 &lt;html…/&gt; 元素。HTML 文档的根元素和 &lt;body…/&gt; 元素表示的范围是不同的。根元素的范围更大，如果没有显式为根元素指定样式，那么 &lt;body…/&gt; 元素的样式将会对整个文档起作用。</p>
+</blockquote>
+<p><strong>:first-child</strong>、<strong>:last-child</strong>、<strong>:nth-child</strong>、<strong>:nth-last-child</strong>、<strong>:only-child</strong> 这组伪类选择器依次要求匹配该选择器的元素必须是其父元素的第一个子节点、最后一个子节点、第 n 个子节点、倒数第 n 个子节点、唯一的子节点。</p>
+<p>对于 <strong>:nth-child</strong>、<strong>:nth-last-child</strong> 两个伪类选择器，它们的功能更多：</p>
+<ul>
+<li>Selector:nth-child(odd/event)：匹配符合 Selector 选择器，而且必须是其父元素的第奇数个/偶数个子节点的元素。</li>
+<li>Selector:nth-last-child(odd/event)：匹配符合 Selector 选择器，而且必须是其父元素的倒数第奇数个/偶数个子节点的元素。</li>
+<li>Selector:nth-child(xn+y)：匹配符合 Selector 选择器，而且必须是其父元素的第 <strong>xn+y</strong> 个子节点的元素。</li>
+<li>Selector:nth-last-child(xn+y)：匹配符合 Selector 选择器，而且必须是其父元素的倒数第 <strong>xn+y</strong> 个子节点的元素。</li>
+</ul>
+<p><strong>:first-of-type</strong>、<strong>:last-of-type</strong>、<strong>:nth-of-type</strong>、<strong>:nth-last-of-type</strong>、<strong>:only-of-type</strong> 这组伪类选择器并不要求它们是其父元素的第一个、最后一个、第 n 个、倒数第 n 个、唯一一个元素。这组伪类选择器只要求它们是与其有共同类型、同级元素的第一个、最后一个、第 n 个、倒数第 n 个、唯一一个元素。</p>
+<p><strong>:nth-of-type</strong>、<strong>:nth-of-last-type</strong> 的用法跟 <strong>:nth-child</strong>、<strong>:nth-last-child</strong> 类似。</p>
+<h2 id="UI-元素状态伪类选择器"><a href="#UI-元素状态伪类选择器" class="headerlink" title="UI 元素状态伪类选择器"></a>UI 元素状态伪类选择器</h2><p>UI 元素状态伪类选择器主要用于根据 UI 元素的状态进行筛选。有如下几个：</p>
+<ul>
+<li><strong>Selector:link</strong>：匹配 Selector 选择器且未被访问前的元素(通常只能是超链接)。</li>
+<li><strong>Selector:visited</strong>：匹配 Selector 选择器且已被访问过的元素(通常只能是超链接)。</li>
+<li><strong>Selector:active</strong>：匹配 Selector 选择器且处于被用户激活(在鼠标点击与释放之间的事件)状态的元素。</li>
+<li><strong>Selector:hover</strong>：匹配 Selector 选择器且处于鼠标悬停状态下的元素。</li>
+<li><strong>Selector:focus</strong>：匹配 Selector 选择器且已经得到焦点的元素。</li>
+<li><strong>Selector:enabled</strong>：匹配 Selector 选择器且当前处于可用状态的元素。</li>
+<li><strong>Selector:disabled</strong>：匹配 Selector 选择器且当前处于不可用状态的元素。</li>
+<li><strong>Selector:checked</strong>：匹配 Selector 选择器且当前处于选中状态的元素。</li>
+<li><strong>Selector:default</strong>：匹配 Selector 选择器且页面打开时处于选中状态的元素。</li>
+<li><strong>Selector:read-only</strong>：匹配 Selector 选择器且处于只读状态的元素。</li>
+<li><strong>Selector:read-write</strong>：匹配 Selector 选择器且处于读写状态的元素。</li>
+<li><strong>Selector::selection</strong>：匹配 Selector 选择器的元素中当前被选中的内容。</li>
+</ul>
+<blockquote>
+<p>上面这些伪类选择器中，前面的 Selector 选择器可以省略，如果省略了该选择器，则 Selector 将不作为匹配条件。而且 ::selection 选择器前面有两个冒号。</p>
+</blockquote>
+<h2 id="浏览器专属的属性"><a href="#浏览器专属的属性" class="headerlink" title="浏览器专属的属性"></a>浏览器专属的属性</h2><p>有些浏览器会有专属的自行扩展的 CSS 属性，可以在 CSS 属性前增加各自的浏览器前缀，来让这些浏览器识别这些专属属性。</p>
+<p><img src="https://i.imgur.com/deV1ZjO.png" alt=""></p>
+<h2 id="not-和-target"><a href="#not-和-target" class="headerlink" title=":not 和 :target"></a>:not 和 :target</h2><p>CSS3 新增了两个特殊的伪类选择器：</p>
+<ul>
+<li><strong>Selector:target</strong>：匹配符合 Selector 选择器且必须是命名锚点目标的元素。</li>
+<li><strong>Selector1:not(Selector2)</strong>：匹配符合 Selector1 选择器，但不符合 Selector2 选择器的元素，相当于用 Selector1 减去 Selector2。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/SpringMVC/SpringMVC-国际化/" rel="next" title="SpringMVC-国际化">
+                <i class="fa fa-chevron-left"></i> SpringMVC-国际化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/09/Java/Java通过位运算操作状态/" rel="prev" title="Java 通过位运算操作状态">
+                Java 通过位运算操作状态 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/cat.png"
+                alt="维他柠檬爱虾饺" />
+            
+              <p class="site-author-name" itemprop="name">维他柠檬爱虾饺</p>
+              <p class="site-description motion-element" itemprop="description">不务正业，混吃等死</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lujinbiao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#属性选择器"><span class="nav-number">1.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ID-选择器"><span class="nav-number">2.</span> <span class="nav-text">ID 选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类选择器"><span class="nav-number">3.</span> <span class="nav-text">类选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#包含选择器"><span class="nav-number">4.</span> <span class="nav-text">包含选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子选择器"><span class="nav-number">5.</span> <span class="nav-text">子选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#兄弟选择器"><span class="nav-number">6.</span> <span class="nav-text">兄弟选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择器组合"><span class="nav-number">7.</span> <span class="nav-text">选择器组合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素选择器"><span class="nav-number">8.</span> <span class="nav-text">伪元素选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内容相关的属性"><span class="nav-number">8.1.</span> <span class="nav-text">内容相关的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入图像"><span class="nav-number">8.2.</span> <span class="nav-text">插入图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只插入部分元素"><span class="nav-number">8.3.</span> <span class="nav-text">只插入部分元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配合-quotes-属性执行插入"><span class="nav-number">8.4.</span> <span class="nav-text">配合 quotes 属性执行插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配合-counter-increment-属性添加编号"><span class="nav-number">8.5.</span> <span class="nav-text">配合 counter-increment 属性添加编号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用自定义编号"><span class="nav-number">8.6.</span> <span class="nav-text">使用自定义编号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加多级编号"><span class="nav-number">8.7.</span> <span class="nav-text">添加多级编号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪类选择器"><span class="nav-number">9.</span> <span class="nav-text">伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构性伪类选择器"><span class="nav-number">9.1.</span> <span class="nav-text">结构性伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI-元素状态伪类选择器"><span class="nav-number">9.2.</span> <span class="nav-text">UI 元素状态伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器专属的属性"><span class="nav-number">9.3.</span> <span class="nav-text">浏览器专属的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#not-和-target"><span class="nav-number">9.4.</span> <span class="nav-text">:not 和 :target</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">维他柠檬爱虾饺</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
