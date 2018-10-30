@@ -108,29 +108,25 @@
 
 
 
-  <meta name="description" content="IP地址的定义IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都">
-<meta name="keywords" content="TCP&#x2F;IP">
+  <meta name="description" content="Java 使用 ThreadGroup 来表示线程组，它可以对一批线程进行分类管理，Java 允许程序直接对线程组进行控制，对线程组的控制相当于同时控制这批线程。 如果没有显式指定，则用户创建的线程属于默认线程组。而且，子线程和创建它的父线程处于同一个线程组内。一旦某个线程加入了指定线程组之后，该线程将一直属于该线程组，直到该线程死亡。 Thread 类提供了如下几个构造器来设置新创建的线程属于哪">
+<meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCPIP基础知识">
-<meta property="og:url" content="https://lujinbiao.github.io/2018/02/16/TCPIP/TCPIP基础知识/index.html">
+<meta property="og:title" content="16-线程组">
+<meta property="og:url" content="https://lujinbiao.github.io/2018/05/13/Java/16-线程组/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="IP地址的定义IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都">
+<meta property="og:description" content="Java 使用 ThreadGroup 来表示线程组，它可以对一批线程进行分类管理，Java 允许程序直接对线程组进行控制，对线程组的控制相当于同时控制这批线程。 如果没有显式指定，则用户创建的线程属于默认线程组。而且，子线程和创建它的父线程处于同一个线程组内。一旦某个线程加入了指定线程组之后，该线程将一直属于该线程组，直到该线程死亡。 Thread 类提供了如下几个构造器来设置新创建的线程属于哪">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.imgur.com/8a9NbjY.png">
-<meta property="og:image" content="https://i.imgur.com/8DrgXSC.png">
-<meta property="og:image" content="https://i.imgur.com/VGZzOZa.png">
-<meta property="og:updated_time" content="2018-10-14T15:04:04.514Z">
+<meta property="og:updated_time" content="2018-10-29T05:19:29.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TCPIP基础知识">
-<meta name="twitter:description" content="IP地址的定义IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都">
-<meta name="twitter:image" content="https://i.imgur.com/8a9NbjY.png">
+<meta name="twitter:title" content="16-线程组">
+<meta name="twitter:description" content="Java 使用 ThreadGroup 来表示线程组，它可以对一批线程进行分类管理，Java 允许程序直接对线程组进行控制，对线程组的控制相当于同时控制这批线程。 如果没有显式指定，则用户创建的线程属于默认线程组。而且，子线程和创建它的父线程处于同一个线程组内。一旦某个线程加入了指定线程组之后，该线程将一直属于该线程组，直到该线程死亡。 Thread 类提供了如下几个构造器来设置新创建的线程属于哪">
 
 
 
 
 
 
-  <link rel="canonical" href="https://lujinbiao.github.io/2018/02/16/TCPIP/TCPIP基础知识/"/>
+  <link rel="canonical" href="https://lujinbiao.github.io/2018/05/13/Java/16-线程组/"/>
 
 
 
@@ -140,7 +136,7 @@
   };
 </script>
 
-  <title>TCPIP基础知识 | 学习笔记</title>
+  <title>16-线程组 | 学习笔记</title>
   
 
 
@@ -328,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lujinbiao.github.io/2018/02/16/TCPIP/TCPIP基础知识/">
+    <link itemprop="mainEntityOfPage" href="https://lujinbiao.github.io/2018/05/13/Java/16-线程组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="维他柠檬爱虾饺">
@@ -345,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TCPIP基础知识
+          <h1 class="post-title" itemprop="name headline">16-线程组
               
             
           </h1>
@@ -372,7 +368,7 @@
                 
               
 
-              <time title="创建时间：2018-02-16 11:20:27" itemprop="dateCreated datePublished" datetime="2018-02-16T11:20:27+08:00">2018-02-16</time>
+              <time title="创建时间：2018-05-13 14:26:01" itemprop="dateCreated datePublished" datetime="2018-05-13T14:26:01+08:00">2018-05-13</time>
             
 
             
@@ -389,7 +385,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-14 23:04:04" itemprop="dateModified" datetime="2018-10-14T23:04:04+08:00">2018-10-14</time>
+                <time title="修改时间：2018-10-29 13:19:29" itemprop="dateModified" datetime="2018-10-29T13:19:29+08:00">2018-10-29</time>
               
             
           </span>
@@ -406,7 +402,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -442,12 +438,40 @@
       
 
       
-        <p><strong>IP地址的定义</strong><br>IP地址（IPV4）由32位二进制数来表示。为了便于理解，将32位的IP地址以每８位为一组，分成４组，一个字节为一组，再将每组数转换为十进制数。因此，IPV４一共可以最多允许2的32次方台计算机连接到网络。<br>实际上，IP地址并非是根据主机台数来配置的，而是每一台主机上的每一块网卡都得设置IP地址。通常一个网卡只设置一个IP地址，其实一块网卡也可以设置多个IP地址。此外，一台路由器通常都会设置两个以上的网卡，因此可以设置两个以上的IP地址。</p>
-<p><strong>IP地址由网络和主机两部分表示组成</strong><br>IP地址由 “网络标识” 和 “主机标识” 两部分组成。<br>IP地址的主机标识<br><img src="https://i.imgur.com/8a9NbjY.png" alt="IP地址的主机标识"><br>IP地址的网络标识<br><img src="https://i.imgur.com/8DrgXSC.png" alt="IP地址的网络标识"><br>注意：”192.168.128.10/24”中的”/24”表示从二进制IP地址的第1位开始到多少位属于网络标识。在这个例子中，”192.168.128”之前的都是该IP的网络地址。</p>
-<p><strong>IP地址的分类</strong><br>IP地址分为四个级别，分别为A类、B类、C类、D类。它根据IP地址中从第1位到第4位的比特列对其网络标识和主机标识进行区分。<br><strong>A类地址</strong><br>A类IP地址是首位以”0”开头的地址。从第1位到第8位是它的网络标识。用十进制表示的话，0.0.0.0~127.0.0.0是A类的网络地址。A类地址的后24位相当于主机标识。<br><strong>B类地址</strong><br>B类IP地址是前两位为”10”的地址。从第1位到第16位是它的网络标识。用十进制表示的话，128.0.0.1~191.255.0.0是B类的网络地址。B类的后16位相当于主机号。<br><strong>C类地址</strong><br>C类IP地址是前三位为”110”的地址。从第1位到第24位是它的网络标识。用十进制表示的话，192.168.0.0~239.255.255.0是C类的网络地址。C类地址的后8位相当于主机标识。<br><strong>D类地址</strong><br>D类IP地址是前四位为”1110”的地址。从第1位到第32位是它的网络标识。用十进制表示的话，224.0.0.0~239.255.255.255是D类的网络地址。<strong>D类地址没有主机标识，常被用于多播。</strong><br><img src="https://i.imgur.com/VGZzOZa.png" alt="IP地址的分类"><br><strong>关于分配IP主机地址的注意</strong><br>要<strong>用比特位表示主机地址时，不可以全部为0或全部为1</strong>。因为只有0在表示对应的网络地址或IP地址不可获知的情况下才使用。而全部为1的主机地址通常作为广播地址。</p>
-<p><strong>广播地址</strong><br>广播地址用于在同一个链路中相互连接的主机之间发送数据，把IP地址中的主机地址部分全部设置为1，就成了广播地址。<br>两种广播地址<br>广播地址分为<strong>本地广播</strong>和<strong>直接广播</strong>。<br>在本网络内的关播叫做本地广播。例如网络地址为192.168.0.0/24的情况下，广播地址是192.168.0.255。因为这个广播地址的IP包会被路由器屏蔽，所以不会到达192.168.0.0/24以外的其他链路上。<br>在不同网络之间的广播叫做直接广播。例如网络地址为192.168.0.0/24的主机向192.168.1.255/24的目标地址发送IP包。收到这个包的路由器，将数据转发给192.168.1.0/24，从而使得所有192.168.1.1~192.168.1.254的主机都能收到这个包。</p>
-<p><strong>IP多播</strong><br>多播用于将包发送给特定组内的所有主机。由于其直接使用IP协议，所以也不存在可靠传输。<br>在人们使用多播功能之前，一直采用广播的方式。那时广播将数据发送给所有终端主机，再由这些主机IP之上的一层去判断是否有必要接收数据，是则接收，否则丢弃。然而这种方式会给那些毫无关系的网络或主机带来影响，造成网络上很多不必要的流量。况且由于广播无法穿透路由，若想给其他网段发送同样的包，就不得不采取另一种机制。因此，多播这种既可以穿透路由器，又可以实现只给那些必要的组发送数据包的技术就称为必选。<br><strong>IP多播与地址</strong><br>多播使用D类地址。</p>
-<p><strong>子网掩码（重点）</strong><br>一个IP地址只要确定了其分类，也就确定了它的网络标识和主机标识。<br>直接使用A类、B类、C类地址会非常浪费，因此，如今一个IP地址的网络标识和主机标识已经不再受限于该地址的类别，而是由一种叫做”子网掩码”的识别码通过子网网络地址细分出比A类、B类、C类更小粒度的网络。这种方式实际上就是将原来A类、B类、C类等分类中的主机地址部分用作于子网地址，可以将原网络分为多个物理网络的一种机制。<br>自从引入了子网以后，<strong>一个IP地址就有了两种识别码</strong>。一个是IP地址本身，另一个是表示网络部的子网掩码。<strong>子网掩码用二进制表示的话，也是一个32位的数字。它对应IP地址网络标识部分的位全部为”1”，对应IP地址主机标识部分则全部为”0”</strong>。由此，一个IP地址可以不再受限于自己的类别，而是可以用这样的子网掩码自由定位自己的网络标识长度。<br>子网掩码有两种表示方式：<br>分别用两行表示IP地址和子网掩码<br>IP地址：172.20.100.52(前26位是网络地址)<br>子网掩码：255.255.255.192=11111111.11111111.11111111.11000000<br>网络地址：172.20.100.0<br>子网掩码：255.255.255.192<br>广播地址：172.20.100.63<br>子网掩码：255.255.255.192<br>在每个IP地址后面追加网络地址的位数，用”/“隔开<br>IP地址：172.20.100.52 /26<br>网络地址：172.20.100.0 /26<br>广播地址：172.20.100.63 /26</p>
+        <p>Java 使用 <strong>ThreadGroup</strong> 来表示线程组，它可以对一批线程进行分类管理，Java 允许程序直接对线程组进行控制，对线程组的控制相当于同时控制这批线程。</p>
+<p>如果没有显式指定，则用户创建的线程属于默认线程组。而且，子线程和创建它的父线程处于同一个线程组内。一旦某个线程加入了指定线程组之后，该线程将一直属于该线程组，直到该线程死亡。</p>
+<p>Thread 类提供了如下几个构造器来设置新创建的线程属于哪个线程组：</p>
+<ul>
+<li><strong>Thread(ThreadGroup group,Runnable target)</strong>：以 target 的 run() 方法作为线程执行体创建新线程，属于 group 线程组。</li>
+<li><strong>Thread(ThreadGroup group,Runnable target,String name)</strong>：以 target 的 run() 方法作为线程执行体创建新线程，属于 group 线程组，且线程名为 name。</li>
+<li><strong>Thread(ThreadGroup group,String name)</strong>：创建新线程，名为 name，属于 group 线程组。</li>
+</ul>
+<p>ThreadGroup 类提供了如下两个简单的构造器来创建实例：</p>
+<ul>
+<li><strong>ThreadGroup(String name)</strong>：以指定的线程组名字来创建新的线程组。</li>
+<li><strong>ThreadGroup(ThreadGroup parent,String name)</strong>：以指定的名字、指定的父线程组创建一个新线程组。</li>
+</ul>
+<p>通过 Thread 类提供的 getThreadGroup() 方法来返回该线程组所属的线程组。还可以通过 ThreadGroup 类的 getName() 方法获取线程组的名字，但不允许改变线程组的名字。</p>
+<p>ThreadGroup 类提供了几个常用的方法来操作整个线程组的所有线程：</p>
+<ul>
+<li><strong>int activeCount()</strong>：返回此线程组中活动线程的数目。</li>
+<li><strong>interrupt()</strong>：中断此线程组中的所有线程。</li>
+<li><strong>isDaemon()</strong>：判断该线程组是否是后台线程组。</li>
+<li><strong>setDaemon(boolean daemon)</strong>：把该线程组设置成后台线程组，当最后一个线程执行完后，后台线程组被自动销毁。</li>
+<li><strong>setMaxPriority(int pri)</strong>：设置线程组的最高优先级。</li>
+</ul>
+<p>ThreadGroup 内定义了一个很有用的方法：<strong>void uncaughtException(Thread t,Throwable e)</strong>，该方法可以处理该线程组内的任意线程所抛出的未处理异常。如果线程执行过程中抛出了一个未处理异常，JVM 在结束该线程之前会自动查找是否有对应的 Thread.UncaughtExceptionHandler 对象，如果找到该处理器对象，则会调用该对象的 uncaughtException(Thread t,Throwable e) 方法来处理该异常。</p>
+<p>Thread.UncaughtExceptionHandler 是 Thread 类的一个静态内部接口，该接口内只有一个方法：void uncaughtException(Thread t,Throwable e)，该方法中的 t 代表出现异常的线程，而 e 代表该线程抛出的异常。Thread 类提供了两个方法来设置异常处理器：</p>
+<ul>
+<li><strong>static setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)</strong>：为该线程类的所有线程实例设置默认的异常处理器。</li>
+<li><strong>setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)</strong>：为指定的线程实例设置异常处理器。</li>
+</ul>
+<p>线程组处理异常的默认流程如下：</p>
+<ol>
+<li>如果该线程组有父线程，则调用父线程组的 uncaughtException() 方法来处理该异常。</li>
+<li>如果该线程实例所属的线程类有默认的异常处理器(由setDefaultUncaughtExceptionHandler()方法设置的异常处理器)，那么就调用该异常处理器来处理该异常。</li>
+<li>如果该异常对象是 ThreadDeath 的对象，则不做任何处理；否则，将异常跟踪栈的信息打印到 System.err 错误输出流，并结束该线程。</li>
+</ol>
 
       
     </div>
@@ -468,7 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/TCP-IP/" rel="tag"># TCP/IP</a>
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
           
         </div>
       
@@ -481,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/14/Spring/Spring-面向方面编程/" rel="next" title="Spring-面向方面编程">
-                <i class="fa fa-chevron-left"></i> Spring-面向方面编程
+              <a href="/2018/05/13/Java/16-线程间通信/" rel="next" title="16-线程间通信">
+                <i class="fa fa-chevron-left"></i> 16-线程间通信
               </a>
             
           </div>
@@ -491,8 +515,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/05/Spring/AOP--基于代理类/" rel="prev" title="实现SpringAOP--基于代理类">
-                实现SpringAOP--基于代理类 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/13/Java/16-线程池/" rel="prev" title="16-线程池">
+                16-线程池 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -558,7 +582,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

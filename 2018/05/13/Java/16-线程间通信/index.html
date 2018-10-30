@@ -116,10 +116,12 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="线程间的通信是使多个线程成为整体的必用方案之一，需要着重掌握的技术点如下：  使用 wait/notify 实现线程间的通信。 生产者/消费者模式的实现。 利用管道进行线程间通信 使用阻塞队列 BlockingQueue  等待/通知 机制举个例子来说明 等待/通知 机制，比如厨师和服务员之间的交互要在 “菜品传递台” 上，会有如下几个问题：  厨师做完一道菜的时间不确定，所以厨师将菜品放到 “菜">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-28T02:15:03.868Z">
+<meta property="og:image" content="https://i.imgur.com/OyuvYFG.png">
+<meta property="og:updated_time" content="2018-10-29T04:58:17.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="16-线程间通信">
 <meta name="twitter:description" content="线程间的通信是使多个线程成为整体的必用方案之一，需要着重掌握的技术点如下：  使用 wait/notify 实现线程间的通信。 生产者/消费者模式的实现。 利用管道进行线程间通信 使用阻塞队列 BlockingQueue  等待/通知 机制举个例子来说明 等待/通知 机制，比如厨师和服务员之间的交互要在 “菜品传递台” 上，会有如下几个问题：  厨师做完一道菜的时间不确定，所以厨师将菜品放到 “菜">
+<meta name="twitter:image" content="https://i.imgur.com/OyuvYFG.png">
 
 
 
@@ -385,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-28 10:15:03" itemprop="dateModified" datetime="2018-10-28T10:15:03+08:00">2018-10-28</time>
+                <time title="修改时间：2018-10-29 12:58:17" itemprop="dateModified" datetime="2018-10-29T12:58:17+08:00">2018-10-29</time>
               
             
           </span>
@@ -464,17 +466,31 @@
 <blockquote>
 <p>每个锁对象都有两个队列，一个是 <strong>就绪队列</strong> ，一个是 <strong>阻塞队列</strong>。就绪队列存储了将要获得锁的线程，阻塞队列存储了被阻塞的线程。一个线程被唤醒后，才会进入就绪队列，等待 CPU 的调度；反之，一个线程被 wait 后，就会进入阻塞队列进行等待，等待下一次被唤醒。</p>
 </blockquote>
-<h2 id="等待-通知-机制可能出现的问题"><a href="#等待-通知-机制可能出现的问题" class="headerlink" title="等待/通知 机制可能出现的问题"></a>等待/通知 机制可能出现的问题</h2><h3 id="通知过早"><a href="#通知过早" class="headerlink" title="通知过早"></a>通知过早</h3><p>如果通知过早，则会打乱程序正常的运行逻辑，wait() 方法也就没有必要执行了。</p>
-<h3 id="等待-wait-的条件发生变化"><a href="#等待-wait-的条件发生变化" class="headerlink" title="等待 wait 的条件发生变化"></a>等待 wait 的条件发生变化</h3><h2 id="生产中-消费者-模式实现"><a href="#生产中-消费者-模式实现" class="headerlink" title="生产中/消费者 模式实现"></a>生产中/消费者 模式实现</h2><p>等待/通知 的经典案例就是 “生产者/消费者” 模式。但此模式在使用上有几种变形，不过原理都是一样的。</p>
-<h3 id="一个-多个-生产者与一个-多个-消费者：操作值"><a href="#一个-多个-生产者与一个-多个-消费者：操作值" class="headerlink" title="一个(多个)生产者与一个(多个)消费者：操作值"></a>一个(多个)生产者与一个(多个)消费者：操作值</h3><h3 id="多个生产者与多个消费者：操作值-假死"><a href="#多个生产者与多个消费者：操作值-假死" class="headerlink" title="多个生产者与多个消费者：操作值-假死"></a>多个生产者与多个消费者：操作值-假死</h3><p>在多个生产者，多个消费者的模式中，会出现一种情况：在代码中确实已经通过 wait/notify 进行了通信，但不保证 notify 唤醒的是异类，也许是同类，比如 “生产者” 唤醒了 “生产者”，或 “消费者” 唤醒了 “消费者”。如果按这样的情况运行的比率积少成多，就会导致所有的线程都不能继续运行下去，大家都在等待，都处于 WAITING 状态。</p>
+<h2 id="生产中-消费者-模式实现"><a href="#生产中-消费者-模式实现" class="headerlink" title="生产中/消费者 模式实现"></a>生产中/消费者 模式实现</h2><p>等待/通知 的经典案例就是 “生产者/消费者” 模式。但此模式在使用上有几种变形，不过原理都是一样的。</p>
+<p>在多个生产者，多个消费者的模式中，会出现一种情况：在代码中确实已经通过 wait/notify 进行了通信，但不保证 notify 唤醒的是异类，也许是同类，比如 “生产者” 唤醒了 “生产者”，或 “消费者” 唤醒了 “消费者”。如果按这样的情况运行的比率积少成多，就会导致所有的线程都不能继续运行下去，大家都在等待，都处于 WAITING 状态。</p>
 <p>假死出现的主要原因是有可能连续唤醒同类，因此把 notify() 改写成 notifyAll() 方法即可。</p>
+<h1 id="使用阻塞队列-BlonkingQueue-控制线程通信"><a href="#使用阻塞队列-BlonkingQueue-控制线程通信" class="headerlink" title="使用阻塞队列 BlonkingQueue 控制线程通信"></a>使用阻塞队列 BlonkingQueue 控制线程通信</h1><p><strong>BlockingQueue</strong>接口虽然也是 Queue 的子接口，但它的主要用途并不是作为容器，而是作为线程同步的工具。BlockingQueue 具有一个特征：当生产者线程试图向 BlockingQueue 中放入元素时，如果该队列已满，则该线程被阻塞；当消费者线程试图从 BlockingQueue 中取出元素时，如果该队列已空，则该线程被阻塞。</p>
+<p>两个线程交替向 BlockingQueue 中放入元素、取出元素，即可很好地控制线程通信。BlockingQueue 提供了如下两个支持阻塞的方法：</p>
+<ul>
+<li><strong>put(E e)</strong>：尝试把元素 E 放入 BlockingQueue 中，如果该队列已满，则阻塞该线程。</li>
+<li><strong>take()</strong>：尝试从 BlockingQueue 的头部取出元素，如果该队列的元素已空，则阻塞该线程。</li>
+</ul>
+<p><img src="https://i.imgur.com/OyuvYFG.png" alt=""></p>
+<p><strong>BlockingQueue</strong> 包含5个实现类：</p>
+<ul>
+<li><strong>ArrayBlockingQueue</strong>：基于数组实现。</li>
+<li><strong>LinkedBlockingQueue</strong>：基于链表实现。</li>
+<li><strong>PriorityBlockingQueue</strong>：它并不是标准的阻塞队列。与 PriorityQueue 类似，该队列调用 remove()、poll()、take() 等方法取出元素时，并不是取出队列中存在时间最长的元素，而是队列中最小的元素。元素大小的判断基于 Comparable 接口实现自然排序，也可使用 Comparator 进行定制排序。</li>
+<li><strong>SynchronousQueue</strong>：同步队列，对该队列的存、取操作必须交替进行。</li>
+<li><strong>DelayQueue</strong>：底层基于 PriorityBlockingQueue 实现，不过 DelayQueue 要求集合元素都实现 Delay 接口。</li>
+</ul>
 <h1 id="通过管道进行线程间通信"><a href="#通过管道进行线程间通信" class="headerlink" title="通过管道进行线程间通信"></a>通过管道进行线程间通信</h1><p>管道流 <strong>pipeStream</strong> 是一种特殊的流，用于在线程间直接传送数据。一个线程发送数据到输出管道，另一个线程从输入管道中读取数据。通过管道，实现不同线程间的通信，而无需借助类似于临时文件之类的东西。</p>
 <p>Java 提供了 4 个类来使线程间可以进行通信：</p>
 <ul>
 <li>PipedInputStream 和 PipedOutputStream</li>
 <li>PipedReader 和 PipedWriter</li>
 </ul>
-<h1 id="使用阻塞队列-BlonkingQueue-控制线程通信"><a href="#使用阻塞队列-BlonkingQueue-控制线程通信" class="headerlink" title="使用阻塞队列 BlonkingQueue 控制线程通信"></a>使用阻塞队列 BlonkingQueue 控制线程通信</h1>
+
       
     </div>
 
@@ -517,8 +533,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/13/Java/16-线程池/" rel="prev" title="16-线程池">
-                16-线程池 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/13/Java/16-线程组/" rel="prev" title="16-线程组">
+                16-线程组 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -593,7 +609,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -706,7 +722,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#等待-通知-机制"><span class="nav-number">1.</span> <span class="nav-text">等待/通知 机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#等待-通知-机制可能出现的问题"><span class="nav-number">1.1.</span> <span class="nav-text">等待/通知 机制可能出现的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通知过早"><span class="nav-number">1.1.1.</span> <span class="nav-text">通知过早</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等待-wait-的条件发生变化"><span class="nav-number">1.1.2.</span> <span class="nav-text">等待 wait 的条件发生变化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产中-消费者-模式实现"><span class="nav-number">1.2.</span> <span class="nav-text">生产中/消费者 模式实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个-多个-生产者与一个-多个-消费者：操作值"><span class="nav-number">1.2.1.</span> <span class="nav-text">一个(多个)生产者与一个(多个)消费者：操作值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个生产者与多个消费者：操作值-假死"><span class="nav-number">1.2.2.</span> <span class="nav-text">多个生产者与多个消费者：操作值-假死</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过管道进行线程间通信"><span class="nav-number">2.</span> <span class="nav-text">通过管道进行线程间通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用阻塞队列-BlonkingQueue-控制线程通信"><span class="nav-number">3.</span> <span class="nav-text">使用阻塞队列 BlonkingQueue 控制线程通信</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#等待-通知-机制"><span class="nav-number">1.</span> <span class="nav-text">等待/通知 机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生产中-消费者-模式实现"><span class="nav-number">1.1.</span> <span class="nav-text">生产中/消费者 模式实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用阻塞队列-BlonkingQueue-控制线程通信"><span class="nav-number">2.</span> <span class="nav-text">使用阻塞队列 BlonkingQueue 控制线程通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过管道进行线程间通信"><span class="nav-number">3.</span> <span class="nav-text">通过管道进行线程间通信</span></a></li></ol></div>
             
 
           </div>
