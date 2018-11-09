@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="SQL 语句基础标准的 SQL 语句通常可以分为几种类型：  查询语句：主要由 select 关键字完成。 DML(Data Manipulation Language，数据操作语言)：主要由 insert、update 和 delete 完成。 DDL(Data Definition Language，数据定义语言)：主要由 create、alter、drop 和 truncate 完成。 DC">
+<meta name="keywords" content="CrazyJava">
+<meta property="og:type" content="article">
+<meta property="og:title" content="13-MySQL数据库与JDBC编程">
+<meta property="og:url" content="https://lujinbiao.github.io/2018/04/29/Java/13-MySQL数据库与JDBC编程/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="SQL 语句基础标准的 SQL 语句通常可以分为几种类型：  查询语句：主要由 select 关键字完成。 DML(Data Manipulation Language，数据操作语言)：主要由 insert、update 和 delete 完成。 DDL(Data Definition Language，数据定义语言)：主要由 create、alter、drop 和 truncate 完成。 DC">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-05T23:01:12.850Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="13-MySQL数据库与JDBC编程">
+<meta name="twitter:description" content="SQL 语句基础标准的 SQL 语句通常可以分为几种类型：  查询语句：主要由 select 关键字完成。 DML(Data Manipulation Language，数据操作语言)：主要由 insert、update 和 delete 完成。 DDL(Data Definition Language，数据定义语言)：主要由 create、alter、drop 和 truncate 完成。 DC">
+
+
+
+
+
+
+  <link rel="canonical" href="https://lujinbiao.github.io/2018/04/29/Java/13-MySQL数据库与JDBC编程/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>13-MySQL数据库与JDBC编程 | 学习笔记</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Strange new light can be just as frightening as the dark.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lujinbiao.github.io/2018/04/29/Java/13-MySQL数据库与JDBC编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="维他柠檬爱虾饺">
+      <meta itemprop="description" content="不务正业，混吃等死">
+      <meta itemprop="image" content="/images/cat.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">13-MySQL数据库与JDBC编程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-29 00:33:56" itemprop="dateCreated datePublished" datetime="2018-04-29T00:33:56+08:00">2018-04-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-06 07:01:12" itemprop="dateModified" datetime="2018-11-06T07:01:12+08:00">2018-11-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SQL-语句基础"><a href="#SQL-语句基础" class="headerlink" title="SQL 语句基础"></a>SQL 语句基础</h1><p>标准的 SQL 语句通常可以分为几种类型：</p>
+<ul>
+<li><strong>查询语句</strong>：主要由 select 关键字完成。</li>
+<li><strong>DML(Data Manipulation Language，数据操作语言)</strong>：主要由 insert、update 和 delete 完成。</li>
+<li><strong>DDL(Data Definition Language，数据定义语言)</strong>：主要由 create、alter、drop 和 truncate 完成。</li>
+<li><strong>DCL(Data Control Language，数据控制语言)</strong>：主要由 grant 和 revoke 完成。</li>
+<li><strong>事务控制语句</strong>：主要由 commit、rollback 和 savepoint 完成。</li>
+</ul>
+<h1 id="JDBC-常用接口和类简介"><a href="#JDBC-常用接口和类简介" class="headerlink" title="JDBC 常用接口和类简介"></a>JDBC 常用接口和类简介</h1><ul>
+<li><strong>DriverManager</strong>：用于管理 JDBC 驱动的服务类。程序中使用该类的主要功能是获取 Connection 对象。</li>
+<li><strong>Connection</strong>：代表数据库连接对象，每一个 Connection 代表一个物理连接。该接口常用方法有：<ul>
+<li><strong>Statement createStatement()</strong>：返回一个 Statement 对象。</li>
+<li><strong>PrepareStatement prepareStatement(String sql)</strong>：返回预编译的 Statement 对象。</li>
+<li><strong>CallableStatement prepareCall(String sql)</strong>：返回 CallableStatement 对象，该对象用于调用存储过程。</li>
+<li>Connection 还有如下几个用于控制事务的方法<ul>
+<li><strong>Savepoint setSavepoint()</strong>：创建一个保存点。</li>
+<li><strong>Savepoint setSavepoint(String name)</strong>：以指定名字来创建一个保存点。</li>
+<li><strong>void setTransactionIsolation(int level)</strong>：设置事务的隔离级别。</li>
+<li><strong>void rollback()</strong>：回滚事务。</li>
+<li><strong>void rollback(Savepoint savepoint)</strong>：将事务回滚到指定的保存点。</li>
+<li><strong>void setAutoCommit(boolean autoCommint)</strong>：关闭自动提交、打开事务。</li>
+<li><strong>void commit()</strong>：提交事务。</li>
+<li><strong>setSchema(String schema)</strong> 和 <strong>getSchema()</strong> 两个方法用于控制该 Connection 访问的数据库 Schema。</li>
+<li><strong>setNetworkTimeout(Executor execupor)</strong> 和 <strong>getNetworkTimeout</strong> 两个方法用于控制数据库连接的超时行为。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Statement</strong>：用于执行 SQL 语句的工具接口。当执行查询语句时，返回查询到的结果集。其常用方法如下：<ul>
+<li><strong>ResultSet executeQuery(String sql)</strong>：用于执行查询语句，并返回查询结果对应的 ResultSet 对象。</li>
+<li><strong>int executeUpdate(String sql)</strong>：用于执行 DML 语句，并返回受影响的行数。</li>
+<li><strong>boolean execute(String sql)</strong>：执行任何 SQL 语句。如果执行后第一个结果为 ResultSet 对象，则返回 true；如果执行后第一个结果为受影响的行数或没有任何结果，则返回 false。</li>
+<li><strong>closeOnCompletion()</strong> ，该方法用于当所有依赖于该 Statement 的 ResultSet 关闭时，该 Statement 会自动关闭。</li>
+<li>Java8 为 Statement 提供了多个重载的 <strong>executeLargeUpdate()</strong> 方法，这些方法相当于增强版的 <strong>executeUpdate()</strong> 返回值类型为 long。</li>
+</ul>
+</li>
+<li><strong>PrepareStatement</strong>：预编译的 Statement 对象。允许数据库预编译 SQL 语句(带有参数的SQL语句)，以后每次只要改变参数的值，就可以达到重复使用SQL语句的目的。它比 Statement 多了如下方法：<ul>
+<li><strong>void setXxx(int parameterIndex, Xxx value)</strong>：该方法根据传入参数值的类型不同，需要使用不同的方法。</li>
+</ul>
+</li>
+<li><strong>ResultSet</strong>：结果集对象。该对象包含访问查询结果的方法，ResultSet 可以通过列索引或列名获取列数据。它包含了如下常用方法来移动记录指针：<ul>
+<li>void close()：释放 ResultSet 对象。</li>
+<li>boolean absolute(int row)：将结果集的记录指针移动到第 row 行，如果 row 时负数，则移动到倒数第 row 行。如果移动后的记录指针指向第一条有效记录，则该方法返回 true。</li>
+<li>void beforeFirst()：将 ResultSet 的记录指针定位到首行之前，这是 ResultSet 结果集记录指针的初始状态-记录指针的起始位置位于第一行之前。</li>
+<li>boolean first()：将 ResultSet 的记录指针定位到首行。如果移动后的记录指针指向一条有效记录，则该方法返回 true。</li>
+<li>boolean previous()：将 ResultSet 的记录指针定位到上一行。如果移动后的记录指针指向一条有效记录，在返回 true。</li>
+<li>boolean next()：将 ResultSet 的记录指针定位到下一行。如果移动后的记录指针指向一条有效记录，在返回 true。</li>
+<li>boolean last()：将 ResultSet 的记录指针定位到最后一行。如果移动后的记录指针指向一条有效记录，在返回 true。</li>
+<li>void afterLast()：将 ResultSet 的记录指针定位到最后一行之后。</li>
+</ul>
+</li>
+</ul>
+<h1 id="JDBC-编程步骤"><a href="#JDBC-编程步骤" class="headerlink" title="JDBC 编程步骤"></a>JDBC 编程步骤</h1><ol>
+<li><p>加载数据库驱动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String driverClass=&quot;com.mysql.jdbc.Driver&quot;;</span><br><span class="line">Class.forName(driverClass);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 DriverManager 获取数据库连接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DriverManager.getConnection(String url,String user,String password);</span><br><span class="line">//数据URL通常遵循如下写法：</span><br><span class="line">jdbc:subprotocol:other stuff</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 Connection 对象创建 Statement 对象。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createStatement()、prepareStatement(String sql)、prepareCall(String sql)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>使用 Statement 执行 SQL 语句</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execute()、executeUpdate()、executeQuerey()</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>操作结果集。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">next()、previous()、first()、last()、beforeFirst()、afterLast()、absolute() 移动记录指针</span><br><span class="line">getXxx() 获取记录指针指向行、特定列的值。既可以使用列索引作为参数，也可以使用列名作为参数。</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>回收数据库资源，包括关闭 ResultSet、Statement 和 Connection。</li>
+</ol>
+<h1 id="使用-CallableStatement-调用存储过程"><a href="#使用-CallableStatement-调用存储过程" class="headerlink" title="使用 CallableStatement 调用存储过程"></a>使用 CallableStatement 调用存储过程</h1><p>首先创建一个简单的存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line">create procedure add_pro(a int,b int,out sum int)</span><br><span class="line">begin</span><br><span class="line">set sum=a+b;</span><br><span class="line">end;</span><br><span class="line">//</span><br></pre></td></tr></table></figure>
+<p>创建调用存储过程的 CallableStatement</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CallableStatement cstmt=connection.prepareCall(&quot;&#123;call add_pro(?,?,?)&#125;&quot;);</span><br></pre></td></tr></table></figure>
+<p>存储过程的参数既有传入参数，也有传出参数。所谓传入参数就是 Java 程序必须为这些参数传入的值，可以通过 CallableStatement 的 setXxx() 方法为传入参数设置值；传出参数就是 Java 程序可以通过该参数获取存储过程的值，CallableStatement 需要调用 registerOutParameter() 方法来注册该参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//注册 CallableStatement 的第三个参数是 Integer 类型</span><br><span class="line">cstmt.registerOutParameter(3,Types.INTEGER)；</span><br></pre></td></tr></table></figure>
+<p>经过以上步骤，就可以调用 CallableStatement 的 execute() 方法来执行存储过程，执行结束后通过 CallableStatement 对象的 getXxx(int index) 方法来获取指定传出参数的值。</p>
+<h1 id="管理结果集"><a href="#管理结果集" class="headerlink" title="管理结果集"></a>管理结果集</h1><h1 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h1><p>事务是保证底层数据完整的重要手段。</p>
+<p>事务具备 4 个特性：</p>
+<ul>
+<li>原子性(Atomicity)：事务是应用程序最小的执行单位。</li>
+<li>一致性(Consistency)：</li>
+<li>隔离性(Isolation)：各个事务独立执行，互不干扰。任意一个事务的内部操作对其他事务都是不可见的。</li>
+<li>持续性(Durability)：指事务一旦提交，对数据所做的任何改变都会永久写入到物理设备。</li>
+</ul>
+<p>当事务所包含的全部数据库操作完成后，应该提交事务，有两种方式：显示提交-使用 commit；自动提交-执行 DDL 或 DCL 语句，或者程序正常退出。</p>
+<p>当事务所包含的任意一个数据库操作失败后，应该回滚事务，使该事务中所做的修改全部失效，事务回滚有两种方式：显式回滚-使用 rollback；自动回滚-系统错误或者强行退出。</p>
+<h2 id="MySQL-事务"><a href="#MySQL-事务" class="headerlink" title="MySQL 事务"></a>MySQL 事务</h2><p>MySQL 默认关闭事务(意思是自动提交事务)，如果需要开启 MySQL 的事务支持，可以显式调用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set autocommit=&#123;0|1&#125; 0 为关闭自动提交事务，即开启事务</span><br></pre></td></tr></table></figure>
+<p><strong>临时开启事务</strong></p>
+<p>如果不想关闭整个命令行窗口的自动提交，而只是想临时性地开始事务，则可以使用 MySQL 提供的 start transaction 或 begin 两个命令，它们都表示临时性地开始一次事务，处于 start transaction 或 begin 后的 DML 语句不会立即生效，除非使用 commit 显式提交事务，或者执行 DDL、DCL 语句来隐式提交事务</p>
+<p><strong>设置事务中间点</strong></p>
+<p>MySQL 提供 savepoint 来设置事务的中间点，通过使用 savepoint 可以让事务回滚到指定中间点，而不是回滚全部事务：<code>savepoint a;</code>，<code>rollback a;</code></p>
+<h2 id="JDBC-的事务支持"><a href="#JDBC-的事务支持" class="headerlink" title="JDBC 的事务支持"></a>JDBC 的事务支持</h2><p>JDBC 连接的事务支持由 Connection 提供，Connection 默认打开自动提交事务，即关闭事务。可以调用 Connection 的 setAuto Commit() 方法来关闭自动提交：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.setAutoCommit(false);//关闭自动提交</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当 Connection 遇到一个未处理的 SQLException 异常时，系统将会非正常退出，事务也会自动回滚，但如果程序捕获了该异常，则需要在 catch 块中显式回滚事务。</p>
+</blockquote>
+<p>Connection 提供了设置事务中间点的方法：</p>
+<ul>
+<li>Savepoint setSavepoint()：在当前事务中创建一个未命名的中间点</li>
+<li>Savepoint setSavepoint(String name)：在当前事务中创建一个具有指定命名的中间点</li>
+</ul>
+<p>然后当需要回滚操作时，调用 Connection 的 rollback(Savepoint savepoint) 方法回滚到指定中间点。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CrazyJava/" rel="tag"># CrazyJava</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/15/前端/CSS/" rel="next" title="CSS3 选择器">
+                <i class="fa fa-chevron-left"></i> CSS3 选择器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/09/Java/Java通过位运算操作状态/" rel="prev" title="Java 通过位运算操作状态">
+                Java 通过位运算操作状态 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/cat.png"
+                alt="维他柠檬爱虾饺" />
+            
+              <p class="site-author-name" itemprop="name">维他柠檬爱虾饺</p>
+              <p class="site-description motion-element" itemprop="description">不务正业，混吃等死</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lujinbiao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-语句基础"><span class="nav-number">1.</span> <span class="nav-text">SQL 语句基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-常用接口和类简介"><span class="nav-number">2.</span> <span class="nav-text">JDBC 常用接口和类简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-编程步骤"><span class="nav-number">3.</span> <span class="nav-text">JDBC 编程步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-CallableStatement-调用存储过程"><span class="nav-number">4.</span> <span class="nav-text">使用 CallableStatement 调用存储过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#管理结果集"><span class="nav-number">5.</span> <span class="nav-text">管理结果集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务管理"><span class="nav-number">6.</span> <span class="nav-text">事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-事务"><span class="nav-number">6.1.</span> <span class="nav-text">MySQL 事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-的事务支持"><span class="nav-number">6.2.</span> <span class="nav-text">JDBC 的事务支持</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">维他柠檬爱虾饺</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

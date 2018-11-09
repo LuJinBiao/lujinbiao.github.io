@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="SpringMVC 的国际化按如下步骤进行：  给系统加载国际化资源文件。 输出国际化。SpringMVC 输出国际化消息有两种方式：① 在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库；② 在 Controller 的处理方法中输出国际化消息，需要使用 org.springframework.web.servlet.support.RequestContext 的 getMes">
+  <meta name="description" content="SpringMVC 国际化步骤 给系统加载国际化资源文件。 输出国际化。SpringMVC 输出国际化消息有两种方式： 在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库； 在 Controller 的处理方法中输出国际化消息，需要使用 org.springframework.web.servlet.support.RequestContext 的 getMessage() 方法来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC-国际化">
 <meta property="og:url" content="https://lujinbiao.github.io/2018/04/12/SpringMVC/SpringMVC-国际化/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="SpringMVC 的国际化按如下步骤进行：  给系统加载国际化资源文件。 输出国际化。SpringMVC 输出国际化消息有两种方式：① 在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库；② 在 Controller 的处理方法中输出国际化消息，需要使用 org.springframework.web.servlet.support.RequestContext 的 getMes">
+<meta property="og:description" content="SpringMVC 国际化步骤 给系统加载国际化资源文件。 输出国际化。SpringMVC 输出国际化消息有两种方式： 在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库； 在 Controller 的处理方法中输出国际化消息，需要使用 org.springframework.web.servlet.support.RequestContext 的 getMessage() 方法来">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/nqBSBIl.png">
-<meta property="og:updated_time" content="2018-06-23T22:09:47.444Z">
+<meta property="og:updated_time" content="2018-10-31T05:42:19.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC-国际化">
-<meta name="twitter:description" content="SpringMVC 的国际化按如下步骤进行：  给系统加载国际化资源文件。 输出国际化。SpringMVC 输出国际化消息有两种方式：① 在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库；② 在 Controller 的处理方法中输出国际化消息，需要使用 org.springframework.web.servlet.support.RequestContext 的 getMes">
+<meta name="twitter:description" content="SpringMVC 国际化步骤 给系统加载国际化资源文件。 输出国际化。SpringMVC 输出国际化消息有两种方式： 在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库； 在 Controller 的处理方法中输出国际化消息，需要使用 org.springframework.web.servlet.support.RequestContext 的 getMessage() 方法来">
 <meta name="twitter:image" content="https://i.imgur.com/nqBSBIl.png">
 
 
@@ -386,7 +386,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-24 06:09:47" itemprop="dateModified" datetime="2018-06-24T06:09:47+08:00">2018-06-24</time>
+                <time title="修改时间：2018-10-31 13:42:19" itemprop="dateModified" datetime="2018-10-31T13:42:19+08:00">2018-10-31</time>
               
             
           </span>
@@ -439,24 +439,33 @@
       
 
       
-        <p>SpringMVC 的国际化按如下步骤进行：</p>
-<ul>
+        <h1 id="SpringMVC-国际化步骤"><a href="#SpringMVC-国际化步骤" class="headerlink" title="SpringMVC 国际化步骤"></a>SpringMVC 国际化步骤</h1><ul>
 <li>给系统加载国际化资源文件。</li>
-<li>输出国际化。<br>SpringMVC 输出国际化消息有两种方式：<br>① 在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库；<br>② 在 Controller 的处理方法中输出国际化消息，需要使用 <strong>org.springframework.web.servlet.support.RequestContext</strong> 的 getMessage() 方法来完成。</li>
+<li>输出国际化。SpringMVC 输出国际化消息有两种方式：<ul>
+<li>在视图页面上输出国际化消息，需要使用 SpringMVC 的标签库；</li>
+<li>在 Controller 的处理方法中输出国际化消息，需要使用 <strong>org.springframework.web.servlet.support.RequestContext</strong> 的 getMessage() 方法来完成。</li>
 </ul>
-<h2 id="messageSource"><a href="#messageSource" class="headerlink" title="messageSource"></a>messageSource</h2><p>在 SpringMVC 中，并不直接使用 ResourceBundle，而是利用 messageSource bean 告诉 SpringMVC 要将属性文件保存在哪里：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;messageSource&quot; class=&quot;org.springframework.context.support.ReloadableResourceBundleMessageSource&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;basenames&quot;&gt;</span><br><span class="line">            &lt;list&gt;</span><br><span class="line">                &lt;value&gt;message&lt;/value&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="localeResolver"><a href="#localeResolver" class="headerlink" title="localeResolver"></a>localeResolver</h2><p>当用户选择语言区域时，最常用的方法是通过读取用户浏览器的 <strong>accept-language</strong> 标题值。除此之外还可以读取 <strong>HttpSession</strong> 或者 <strong>Cookie</strong>。</p>
+</li>
+</ul>
+<h1 id="messageSource"><a href="#messageSource" class="headerlink" title="messageSource"></a>messageSource</h1><p>在 SpringMVC 中，并不直接使用 ResourceBundle，而是利用 messageSource bean 告诉 SpringMVC 要将属性文件保存在哪里：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;messageSource&quot; class=&quot;org.springframework.context.support.ReloadableResourceBundleMessageSource&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;basenames&quot;&gt;</span><br><span class="line">            &lt;list&gt;</span><br><span class="line">                &lt;value&gt;message&lt;/value&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<p>basenames 属性用来指定国际化的属性文件名称</p>
+<h1 id="localeResolver"><a href="#localeResolver" class="headerlink" title="localeResolver"></a>localeResolver</h1><p>当用户选择语言区域时，最常用的方法是通过读取用户浏览器的 <strong>accept-language</strong> 标题值。除此之外还可以读取 <strong>HttpSession</strong> 或者 <strong>Cookie</strong>。</p>
 <p>SpringMVC 提供了一个语言区域解析器接口 <strong>LocaleResolver</strong>，有如下实现类：</p>
 <ul>
 <li><strong>AcceptHeaderLocaleResolver</strong>：默认解析器。</li>
 <li><strong>SessionLocaleResolver</strong></li>
 <li><strong>CookieLocaleResolver</strong></li>
 </ul>
-<h2 id="message-标签"><a href="#message-标签" class="headerlink" title="message 标签"></a>message 标签</h2><p>在 SpringMVC 中显示本地化消息通常使用 Spring 的 message 标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=&quot;spring&quot; uri=&quot;http://www.springframework.org/tags&quot; %&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="message-标签"><a href="#message-标签" class="headerlink" title="message 标签"></a>message 标签</h1><p>在 SpringMVC 中显示本地化消息通常使用 Spring 的 message 标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=&quot;spring&quot; uri=&quot;http://www.springframework.org/tags&quot; %&gt;</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://i.imgur.com/nqBSBIl.png" alt=""></p>
-<h2 id="SessionLocaleResolver-国际化"><a href="#SessionLocaleResolver-国际化" class="headerlink" title="SessionLocaleResolver 国际化"></a>SessionLocaleResolver 国际化</h2><p><strong>SessionLocaleResolver</strong> 不是默认的语言区域解析器，需要对其进行显式配置。其作用是从 HttpSession 作用域中获取用户所设置的语言区域，来确定使用哪个 Locale。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:interceptors&gt;</span><br><span class="line">        &lt;!-- 国际化操作拦截器如果采用基于 Session/Cookie 则必须配置 --&gt;</span><br><span class="line">        &lt;bean class=&quot;org.springframework.web.servlet.i18n.LocaleChangeInterceptor&quot;/&gt;</span><br><span class="line">&lt;/mvc:interceptors&gt;</span><br><span class="line">&lt;!-- SessionLocaleResolver 配置 --&gt;</span><br><span class="line">&lt;bean id=&quot;localeResolver&quot; class=&quot;org.springframework.web.servlet.i18n.SessionLocaleResolver&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="AcceptHeaderLocaleResolver-国际化"><a href="#AcceptHeaderLocaleResolver-国际化" class="headerlink" title="AcceptHeaderLocaleResolver 国际化"></a>AcceptHeaderLocaleResolver 国际化</h1><p>AcceptHeaderLocaleResolver 是默认配置，会读取浏览器的 accept-language 标题，来确定使用哪个语言区域。</p>
+<ol>
+<li>首先要准备资源文件，可以使用 native2asci 命令来处理中文资源文件为 Unicode。</li>
+<li>接下来在 JSP 页面导入 spring 标签库，并使用 \<a href="spring:message" target="_blank" rel="noopener">spring:message</a> 标签来输出国际化信息。 </li>
+</ol>
+<h1 id="SessionLocaleResolver-国际化"><a href="#SessionLocaleResolver-国际化" class="headerlink" title="SessionLocaleResolver 国际化"></a>SessionLocaleResolver 国际化</h1><p><strong>SessionLocaleResolver</strong> 不是默认的语言区域解析器，需要对其进行显式配置。其作用是从 HttpSession 作用域中获取用户所设置的语言区域，来确定使用哪个 Locale。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:interceptors&gt;</span><br><span class="line">        &lt;!-- 国际化操作拦截器如果采用基于 Session/Cookie 则必须配置 --&gt;</span><br><span class="line">        &lt;bean class=&quot;org.springframework.web.servlet.i18n.LocaleChangeInterceptor&quot;/&gt;</span><br><span class="line">&lt;/mvc:interceptors&gt;</span><br><span class="line">&lt;!-- SessionLocaleResolver 配置 --&gt;</span><br><span class="line">&lt;bean id=&quot;localeResolver&quot; class=&quot;org.springframework.web.servlet.i18n.SessionLocaleResolver&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
 <p>设置语言环境:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Locale locale=new Locale(&quot;zh&quot;,&quot;CN&quot;);</span><br><span class="line">request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,locale);</span><br></pre></td></tr></table></figure></p>
-<h2 id="CookieLocaleResolver-国际化"><a href="#CookieLocaleResolver-国际化" class="headerlink" title="CookieLocaleResolver 国际化"></a>CookieLocaleResolver 国际化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:interceptors&gt;</span><br><span class="line">        &lt;!-- 国际化操作拦截器如果采用基于 Session/Cookie 则必须配置 --&gt;</span><br><span class="line">        &lt;bean class=&quot;org.springframework.web.servlet.i18n.LocaleChangeInterceptor&quot;/&gt;</span><br><span class="line">&lt;/mvc:interceptors&gt;</span><br><span class="line">&lt;!-- SessionLocaleResolver 配置 --&gt;</span><br><span class="line">&lt;bean id=&quot;localeResolver&quot; class=&quot;org.springframework.web.servlet.i18n.CookieLocaleResolver&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="CookieLocaleResolver-国际化"><a href="#CookieLocaleResolver-国际化" class="headerlink" title="CookieLocaleResolver 国际化"></a>CookieLocaleResolver 国际化</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:interceptors&gt;</span><br><span class="line">        &lt;!-- 国际化操作拦截器如果采用基于 Session/Cookie 则必须配置 --&gt;</span><br><span class="line">        &lt;bean class=&quot;org.springframework.web.servlet.i18n.LocaleChangeInterceptor&quot;/&gt;</span><br><span class="line">&lt;/mvc:interceptors&gt;</span><br><span class="line">&lt;!-- SessionLocaleResolver 配置 --&gt;</span><br><span class="line">&lt;bean id=&quot;localeResolver&quot; class=&quot;org.springframework.web.servlet.i18n.CookieLocaleResolver&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <p>设置语言环境：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Locale locale=new Locale(&quot;zh&quot;,&quot;CN&quot;);</span><br><span class="line">(new CookieLocaleResolver()).setLocale(request,response,locale);</span><br></pre></td></tr></table></figure></p>
 
       
@@ -485,8 +494,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/12/SpringMVC/SpringMVC-文件上传下载/" rel="next" title="SpringMVC-文件上传下载">
-                <i class="fa fa-chevron-left"></i> SpringMVC-文件上传下载
+              <a href="/2018/04/12/SpringMVC/SpringMVC-数据校验/" rel="next" title="SpringMVC-数据校验">
+                <i class="fa fa-chevron-left"></i> SpringMVC-数据校验
               </a>
             
           </div>
@@ -495,8 +504,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/15/前端/CSS/" rel="prev" title="CSS3 选择器">
-                CSS3 选择器 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/12/SpringMVC/SpringMVC-文件上传下载/" rel="prev" title="SpringMVC-文件上传下载">
+                SpringMVC-文件上传下载 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -571,7 +580,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -639,7 +648,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -684,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#messageSource"><span class="nav-number">1.</span> <span class="nav-text">messageSource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#localeResolver"><span class="nav-number">2.</span> <span class="nav-text">localeResolver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-标签"><span class="nav-number">3.</span> <span class="nav-text">message 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionLocaleResolver-国际化"><span class="nav-number">4.</span> <span class="nav-text">SessionLocaleResolver 国际化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CookieLocaleResolver-国际化"><span class="nav-number">5.</span> <span class="nav-text">CookieLocaleResolver 国际化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringMVC-国际化步骤"><span class="nav-number">1.</span> <span class="nav-text">SpringMVC 国际化步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#messageSource"><span class="nav-number">2.</span> <span class="nav-text">messageSource</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#localeResolver"><span class="nav-number">3.</span> <span class="nav-text">localeResolver</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#message-标签"><span class="nav-number">4.</span> <span class="nav-text">message 标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AcceptHeaderLocaleResolver-国际化"><span class="nav-number">5.</span> <span class="nav-text">AcceptHeaderLocaleResolver 国际化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SessionLocaleResolver-国际化"><span class="nav-number">6.</span> <span class="nav-text">SessionLocaleResolver 国际化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CookieLocaleResolver-国际化"><span class="nav-number">7.</span> <span class="nav-text">CookieLocaleResolver 国际化</span></a></li></ol></div>
             
 
           </div>

@@ -117,7 +117,7 @@
 <meta property="og:description" content="CSS 样式的语法总是遵循如下格式：1234Selector&amp;#123;    property1:value;    property2:value;&amp;#125; 属性选择器 E{ …} ：指定该 CSS 样式对所有 E 元素起作用（即元素选择器）。 E[attr]{…}：指定该 CSS 样式对具有 attr 属性的 E 元素起作用。 E[attr=value]{…}：指定该 CSS 样式对所有">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/deV1ZjO.png">
-<meta property="og:updated_time" content="2018-10-20T03:10:00.724Z">
+<meta property="og:updated_time" content="2018-11-09T16:40:52.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3 选择器">
 <meta name="twitter:description" content="CSS 样式的语法总是遵循如下格式：1234Selector&amp;#123;    property1:value;    property2:value;&amp;#125; 属性选择器 E{ …} ：指定该 CSS 样式对所有 E 元素起作用（即元素选择器）。 E[attr]{…}：指定该 CSS 样式对具有 attr 属性的 E 元素起作用。 E[attr=value]{…}：指定该 CSS 样式对所有">
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-20 11:10:00" itemprop="dateModified" datetime="2018-10-20T11:10:00+08:00">2018-10-20</time>
+                <time title="修改时间：2018-11-10 00:40:52" itemprop="dateModified" datetime="2018-11-10T00:40:52+08:00">2018-11-10</time>
               
             
           </span>
@@ -488,7 +488,40 @@
 <h2 id="插入图像"><a href="#插入图像" class="headerlink" title="插入图像"></a>插入图像</h2><p>content 属性的值除了支持普通字符串之外，还可以使用 url(url) 格式的值，用于插入图像。</p>
 <h2 id="只插入部分元素"><a href="#只插入部分元素" class="headerlink" title="只插入部分元素"></a>只插入部分元素</h2><p>有些时候，并不需要为元素的前、后插入内容，只需要向部分元素的前、后插入内容即可。可以在使用 :before、:after 伪元素选择器之前使用更严格的 CSS 选择器。</p>
 <h2 id="配合-quotes-属性执行插入"><a href="#配合-quotes-属性执行插入" class="headerlink" title="配合 quotes 属性执行插入"></a>配合 quotes 属性执行插入</h2><p>使用 quotes 属性可以定义 open-quote 和 close-quote，然后就可以在 content 属性中应用 quotes 属性所定义的 open-quote 和 close-quote。</p>
-<h2 id="配合-counter-increment-属性添加编号"><a href="#配合-counter-increment-属性添加编号" class="headerlink" title="配合 counter-increment 属性添加编号"></a>配合 counter-increment 属性添加编号</h2><h2 id="使用自定义编号"><a href="#使用自定义编号" class="headerlink" title="使用自定义编号"></a>使用自定义编号</h2><h2 id="添加多级编号"><a href="#添加多级编号" class="headerlink" title="添加多级编号"></a>添加多级编号</h2><h1 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h1><p>伪类选择器主要用于对已有选择器做进一步的 <strong>限制</strong>，对已有选择器能匹配的元素做进一步的过滤。CSS 提供的伪类选择器主要分为 3 类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&gt;div&#123;</span><br><span class="line">  quotes: &quot;&lt;&lt;&quot;,&quot;&gt;&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">div&gt;div:before&#123;</span><br><span class="line">  content:open-quote;</span><br><span class="line">&#125;</span><br><span class="line">div&gt;div:after&#123;</span><br><span class="line">  content:close-quote;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配合-counter-increment-属性添加编号"><a href="#配合-counter-increment-属性添加编号" class="headerlink" title="配合 counter-increment 属性添加编号"></a>配合 counter-increment 属性添加编号</h2><p>当需要为多条内容添加编号时，可以通过 counter-increment 属性定义计数器，然后通过 content 属性引用计数器即可。counter-increment 属性的值所指定的字符串就是该计数器的名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&gt;div&#123;</span><br><span class="line">  counter-increment:mycounter;</span><br><span class="line">&#125;</span><br><span class="line">div&gt;div:before&#123;</span><br><span class="line">  content:counter(mycounter) &apos;.&apos;；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上添加的编号默认是数值编号。</p>
+<h2 id="使用自定义编号"><a href="#使用自定义编号" class="headerlink" title="使用自定义编号"></a>使用自定义编号</h2><p>如果想使用自定义的编号，例如罗马字母编号，可以通过 counter(name,list-style-type) 来实现，其中 list-style-type 指定编码风格：</p>
+<ul>
+<li>decimal：阿拉伯数字。默认值</li>
+<li>disc：实心圆。</li>
+<li>circle：空心圆。</li>
+<li>square：实心方块。</li>
+<li>lower-roman：小写罗马数字。</li>
+<li>upper-roman：大写罗马数字。</li>
+<li>lower-alpha：小写英文字母。</li>
+<li>upper-alpha：大写英文字母。</li>
+<li>none：不使用项目符号。</li>
+<li>cjk-ideographic：浅白的表意数字。</li>
+<li>georgian：传统的乔治数字。</li>
+<li>lower-greek：基本的希腊小写字母。</li>
+<li>hebrew：传统的希伯来数字。</li>
+<li>hiragana：日文平假名符。</li>
+<li>hiragana-iroha：日文平假名序号。</li>
+<li>katakana：日文片假名符。</li>
+<li>katakana-iroha：日文片假名序号。</li>
+<li>lower-latin：小写拉丁字母。</li>
+<li>upper-latin：大写拉丁字母。</li>
+</ul>
+<h2 id="添加多级编号"><a href="#添加多级编号" class="headerlink" title="添加多级编号"></a>添加多级编号</h2><p>可以通过 CSS 定义多个编号计数器，然后为不同的选择器插入不同的计数器即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//为div的子h2元素定义一个计数器：categorycounter</span><br><span class="line">div&gt;h2&#123;</span><br><span class="line">  conter-increment:categorycounter;</span><br><span class="line">&#125;</span><br><span class="line">//为div的子div定义一个计数器：subcounter</span><br><span class="line">div&gt;div&#123;</span><br><span class="line">  counter-increment:subcounter;</span><br><span class="line">&#125;</span><br><span class="line">div&gt;h2:before&#123;</span><br><span class="line">  content:counter(categorycounter,georigian) &apos;.&apos;;</span><br><span class="line">&#125;</span><br><span class="line">div&gt;div:before&#123;</span><br><span class="line">  content:counter:&apos;第&apos; counter(subcounter,cjk-ideographic) &apos;本.&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h1><p>伪类选择器主要用于对已有选择器做进一步的 <strong>限制</strong>，对已有选择器能匹配的元素做进一步的过滤。CSS 提供的伪类选择器主要分为 3 类：</p>
+<ul>
+<li>结构性伪类选择器</li>
+<li>UI 元素状态伪类选择器</li>
+<li>其他伪类选择器</li>
+</ul>
 <h2 id="结构性伪类选择器"><a href="#结构性伪类选择器" class="headerlink" title="结构性伪类选择器"></a>结构性伪类选择器</h2><p>结构性伪类选择器指的是根据 HTML 元素之间的结构关键进行筛选的伪类选择器，主要有如下几个：</p>
 <ul>
 <li><strong>Selector:root</strong>：匹配文档的根元素，在 HTML 文档中，跟元素永远是 <code>&lt;html../&gt;</code> 元素。</li>
@@ -576,8 +609,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/12/SpringMVC/SpringMVC-国际化/" rel="next" title="SpringMVC-国际化">
-                <i class="fa fa-chevron-left"></i> SpringMVC-国际化
+              <a href="/2018/04/12/SpringMVC/SpringMVC-文件上传下载/" rel="next" title="SpringMVC-文件上传下载">
+                <i class="fa fa-chevron-left"></i> SpringMVC-文件上传下载
               </a>
             
           </div>
@@ -586,8 +619,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/09/Java/Java通过位运算操作状态/" rel="prev" title="Java 通过位运算操作状态">
-                Java 通过位运算操作状态 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/29/Java/13-MySQL数据库与JDBC编程/" rel="prev" title="13-MySQL数据库与JDBC编程">
+                13-MySQL数据库与JDBC编程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -662,7 +695,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -730,7 +763,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
