@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="HttpMessageConverter\ 接口HttpMessageConverter\ 接口负责将请求信息转换为一个对象(类型为 T)，并将对象绑定到请求方法的参数中或输出为响应信息。 DispatcherServlet 默认已经装配了 RequestMappingHandlerAdapter 类作为 HandlerAdapter 组件的实现类，在 RequestMappingHandlerA">
+  <meta name="description" content="信息转换发生在请求处理方法的入参过程中，把请求信息转换为一个对象。 HttpMessageConverter&amp;lt;T&amp;gt; 接口HttpMessageConverter&amp;lt;T&amp;gt; 是 Spring3.0 新增的接口，负责将请求信息转换为一个对象(类型为T)，并将对象绑定到请求方法的参数中或输出为响应信息。 DispatcherServlet 默认已经装配了 RequestMapping">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC-信息转换">
 <meta property="og:url" content="https://lujinbiao.github.io/2018/05/23/SpringMVC/SpringMVC-信息转换/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="HttpMessageConverter\ 接口HttpMessageConverter\ 接口负责将请求信息转换为一个对象(类型为 T)，并将对象绑定到请求方法的参数中或输出为响应信息。 DispatcherServlet 默认已经装配了 RequestMappingHandlerAdapter 类作为 HandlerAdapter 组件的实现类，在 RequestMappingHandlerA">
+<meta property="og:description" content="信息转换发生在请求处理方法的入参过程中，把请求信息转换为一个对象。 HttpMessageConverter&amp;lt;T&amp;gt; 接口HttpMessageConverter&amp;lt;T&amp;gt; 是 Spring3.0 新增的接口，负责将请求信息转换为一个对象(类型为T)，并将对象绑定到请求方法的参数中或输出为响应信息。 DispatcherServlet 默认已经装配了 RequestMapping">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-09T22:56:46.740Z">
+<meta property="og:updated_time" content="2018-11-11T20:22:41.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC-信息转换">
-<meta name="twitter:description" content="HttpMessageConverter\ 接口HttpMessageConverter\ 接口负责将请求信息转换为一个对象(类型为 T)，并将对象绑定到请求方法的参数中或输出为响应信息。 DispatcherServlet 默认已经装配了 RequestMappingHandlerAdapter 类作为 HandlerAdapter 组件的实现类，在 RequestMappingHandlerA">
+<meta name="twitter:description" content="信息转换发生在请求处理方法的入参过程中，把请求信息转换为一个对象。 HttpMessageConverter&amp;lt;T&amp;gt; 接口HttpMessageConverter&amp;lt;T&amp;gt; 是 Spring3.0 新增的接口，负责将请求信息转换为一个对象(类型为T)，并将对象绑定到请求方法的参数中或输出为响应信息。 DispatcherServlet 默认已经装配了 RequestMapping">
 
 
 
@@ -384,7 +384,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-10 06:56:46" itemprop="dateModified" datetime="2018-11-10T06:56:46+08:00">2018-11-10</time>
+                <time title="修改时间：2018-11-12 04:22:41" itemprop="dateModified" datetime="2018-11-12T04:22:41+08:00">2018-11-12</time>
               
             
           </span>
@@ -437,25 +437,46 @@
       
 
       
-        <h1 id="HttpMessageConverter-接口"><a href="#HttpMessageConverter-接口" class="headerlink" title="HttpMessageConverter\ 接口"></a>HttpMessageConverter\<t> 接口</t></h1><p><strong>HttpMessageConverter\<t></t></strong> 接口负责将请求信息转换为一个对象(类型为 T)，并将对象绑定到请求方法的参数中或输出为响应信息。</p>
-<p><strong>DispatcherServlet</strong> 默认已经装配了 <strong>RequestMappingHandlerAdapter</strong> 类作为 <strong>HandlerAdapter</strong> 组件的实现类，在 <strong>RequestMappingHandlerAdapter</strong> 类中使用了 <strong>HttpMessageConverter</strong>，将请求信息转换为对象。</p>
-<p>Spring 为 HttpMessageConverter\<t> 提供了多个实现类，以下是部分实现类：</t></p>
-<ul>
-<li><strong>StringHttpMessageConverter</strong>：将请求信息转换为字符串。</li>
-<li><strong>FormHttpMessageConverter</strong>：将表单数据读取到 MultiValueMap 中。</li>
-<li><strong>XmlAwareFormHttpMessageConverter</strong>：继承自 FormHttpMessageConverter ，如果部分表单属性是 XML 数据，则可用该转换器进行转换。</li>
-<li><strong>ResourceHttpMessageConverter</strong>：读写 <strong>org.springframework.core.io.Resource</strong> 对象。</li>
+        <p>信息转换发生在请求处理方法的入参过程中，把请求信息转换为一个对象。</p>
+<h1 id="HttpMessageConverter-lt-T-gt-接口"><a href="#HttpMessageConverter-lt-T-gt-接口" class="headerlink" title="HttpMessageConverter&lt;T&gt; 接口"></a>HttpMessageConverter&lt;T&gt; 接口</h1><p><strong>HttpMessageConverter&lt;T&gt;</strong> 是 Spring3.0 新增的接口，负责将请求信息转换为一个对象(类型为T)，并将对象绑定到请求方法的参数中或输出为响应信息。</p>
+<p><strong>DispatcherServlet</strong> 默认已经装配了 <strong>RequestMappingHandlerAdapter</strong> 类作为 <strong>HandlerAdapter</strong> 组件的实现类，在 <strong>RequestMappingHandlerAdapter</strong> 类中使用了 <strong>HttpMessageConverter</strong>。</p>
+<h2 id="HttpMessageConverter-lt-T-gt-方法"><a href="#HttpMessageConverter-lt-T-gt-方法" class="headerlink" title="HttpMessageConverter&lt;T&gt; 方法"></a>HttpMessageConverter&lt;T&gt; 方法</h2><ul>
+<li>boolean canRead(Class&lt;?&gt; clazz,MediaType mediaType)：指定转换器可以读取的对象类型。</li>
+<li>boolean canWrite(Class&lt;?&gt; clazz,MediaType mediaType)：指定转换器可以将 clazz 类型的对象写到响应流中。</li>
+<li>List&lt;MediaType&gt; getSupportedMediaTypes()：返回当前转换器支持的媒体类型。</li>
+<li>T read(Class&lt;? extends T&gt; clazz,HttpInputMessage inputMessage)：将请求信息流转换为 T 类型的对象。</li>
+<li>void write(T t,MediaType contentType,HttpOutputMessage outputMessage)：将 T 类型的对象写到响应流当中，同时指定相应的媒体类型为 contentType。</li>
 </ul>
-<p>如果需要装配其他类型的 HttpMessageConverter ，可以在 Spring 的 Web 容器中自行定义一个 <strong>RequestMappingHandlerAdapter</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;messageConverters&quot;&gt;</span><br><span class="line">            &lt;list&gt;</span><br><span class="line">                &lt;bean class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;/&gt;</span><br><span class="line">                &lt;bean class=&quot;org.springframework.http.converter.ByteArrayHttpMessageConverter&quot;/&gt;</span><br><span class="line">                &lt;bean class=&quot;org.springframework.http.converter.BufferedImageHttpMessageConverter&quot;/&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Converter-和-Formatter"><a href="#Converter-和-Formatter" class="headerlink" title="Converter 和 Formatter"></a>Converter 和 Formatter</h1><p>Converter 和 Formatter 的作用是将一种类型转换成另一种类型的一个对象。例如，如果希望 Spring 在将输入的日期字符串绑定到 Date 时，使用不同的样式，则需要编写一个 Converter，才能将字符串转换成日期。</p>
-<p>通过实现 <strong>org.springframework.core.convert.converter.Converter</strong> 接口来创建自定义的转换器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public interface Converter&lt;S,T&gt;</span><br><span class="line">S 表示源类型，T 表示目标类型</span><br></pre></td></tr></table></figure></p>
-<p>为了使用定制的 Converter，需要在 SpringMVC 配置文件中编写一个 <strong>conversionService bean</strong>。利用 <strong>org.springframework.context.support.ConversionServiceFactoryBean</strong> 在 Spring 的上下文中定义一个 ConversionService，并在其中内置很多类型转换器，还可以注册自定义的类型转换器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.context.support.ConversionServiceFactoryBean&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;converters&quot;&gt;</span><br><span class="line">        &lt;list&gt;</span><br><span class="line">            &lt;bean class=&quot;自定义的转换器&quot;/&gt;</span><br><span class="line">        &lt;/list&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="创建-Formatter"><a href="#创建-Formatter" class="headerlink" title="创建 Formatter"></a>创建 Formatter</h2><p><strong>Formatter</strong> 的作用跟 <strong>Converter</strong> 一样也是进行类型转换，但是 <strong>Formatter</strong> 的源类型必须是一个 String，而 <strong>Converter</strong> 则适用于任意的源类型。因此 <strong>Formatter</strong> 更适合于 Web 层，而 <strong>Converter</strong> 更适合用在任意层中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface Formatter&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    //利用指定的 Locale 将一个 String 类型解析成目标类型。</span><br><span class="line">    T parse(String text,java.util.Local locale);</span><br><span class="line"></span><br><span class="line">    //返回目标对象的字符串表示</span><br><span class="line">    String print(T object,java.util.Locale locale);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>加入自定义的 Formatter ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;conversionService&quot; class=&quot;org.springframework.context.support.ConversionServiceFactoryBean&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;fomatters&quot;&gt;</span><br><span class="line">        &lt;list&gt;</span><br><span class="line">            &lt;bean class=&quot;自定义的格式转换器&quot;/&gt;</span><br><span class="line">        &lt;/list&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
-<p>注册 <strong>Formatter</strong> 的另一个方式是使用 <strong>FormatterRegistrar</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class MyFormatterRegistrar implements FormatterRegistrar</span><br><span class="line">&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void registerFormatters(FormatterRegistry registry)</span><br><span class="line">    &#123;</span><br></pre></td></tr></table></figure></p>
-<p>更多时候，<strong>Formatter\<t></t></strong> 接口用来把客户端传来的 String 字符串转换成具有一定格式的数据，比如 日期、时间、数字、货币，在不同的本地环境中，同一类型的数据还会相应的呈现不同的显示格式。</p>
-<h1 id="区别与联系"><a href="#区别与联系" class="headerlink" title="区别与联系"></a>区别与联系</h1><p>ConversionService 是属于spring-core 部分所有 spring 管理的 bean 等等都使用它进行类型转换，而它又需要注册一些 converter 来完成类型转换。 </p>
-<p>HttpMessageConverter 是对 http请求/响应 数据进行转换的， 它可以使用 ConversionService 进行一些转换（HttpMessageConverter是否能转换 还需要根据如请求的contentType等决定）.</p>
+<h2 id="HttpMessageConverter-lt-T-gt-实现类"><a href="#HttpMessageConverter-lt-T-gt-实现类" class="headerlink" title="HttpMessageConverter&lt;T&gt;  实现类"></a>HttpMessageConverter&lt;T&gt;  实现类</h2><p>HttpMessageConverter&lt;T&gt; 提供了多个实现类：</p>
+<ul>
+<li><p><strong>StringHttpMessageConverter</strong> (默认装配)：将请求信息转换为字符串。</p>
+</li>
+<li><p><strong>FormHttpMessageConverter</strong> ：将表单数据读取到 MultiValueMap 中。</p>
+</li>
+<li><p><strong>XmlAwareFormHttpMessageConverter</strong> (默认装配)：继承自 FormHttpMessageConverter ，如果部分表单属性是 XML 数据，则可用该转换器进行转换。</p>
+</li>
+<li><p><strong>ResourceHttpMessageConverter</strong>：读写<strong>org.springframework.core.io.Resource</strong> 对象。</p>
+</li>
+</ul>
+<p>如果需要装配其他类型的 HttpMessageConverter ，可以在 Spring 的 Web 容器中自行定义一个 <strong>RequestMappingHandlerAdapter</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;messageConverters&quot;&gt;</span><br><span class="line">		&lt;list&gt;</span><br><span class="line">			&lt;bean class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;/&gt;</span><br><span class="line">			&lt;bean class=&quot;org.springframework.http.converter.ByteArrayHttpMessageConverter&quot;/&gt;</span><br><span class="line">			&lt;bean class=&quot;org.springframework.http.converter.BufferedImageHttpMessageConverter&quot;/&gt;</span><br><span class="line">		&lt;/list&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="转换-JSON-数据"><a href="#转换-JSON-数据" class="headerlink" title="转换 JSON 数据"></a>转换 JSON 数据</h2><h3 id="SpringMVC-提供了处理-JSON-格式请求-响应的-HttpMessageConverter："><a href="#SpringMVC-提供了处理-JSON-格式请求-响应的-HttpMessageConverter：" class="headerlink" title="SpringMVC 提供了处理 JSON 格式请求/响应的 HttpMessageConverter："></a>SpringMVC 提供了处理 JSON 格式请求/响应的 HttpMessageConverter：</h3><ul>
+<li><strong>MappingJackson2HttpMessageConverter</strong>：利用 Jackson 开源类包处理 JSON 格式的请求或响应信息。</li>
+</ul>
+<p>只需要在配置文件中为 RequestMappingHandlerAdapter 装配处理 JSON 的 HttpMessageConverter，并在交互过程中通过请求的 Accept 指定 MIME 类型，SpringMVC 就可以使服务端的处理方法和客户端 JSON 格式的消息进行通信。</p>
+<p><strong>org.springframework.web.bind.annotation.RequestBody</strong> 注解用于读取 Request 请求的 body 部分的数据，使用系统默认配置的 HttpMessageConverter 进行解析，然后把相应的数据绑定到 Controller 中方法的参数上。</p>
+<p>当前台页面使用 GET 或 POST 提交数据时，数据编码格式由请求头的 ContentType 指定，有如下几种情况：</p>
+<ul>
+<li>application/x-www-form-urlencoded：这种情况的数据 @RequestParam、@ModelAttribute 也可以处理，当然 @RequestBody 也能处理。</li>
+<li>multipart/form-data：@RequestBody 不能处理这种数据。</li>
+<li>application/json、application/xml：必须使用 @RequestBody 来处理。</li>
+</ul>
+<h3 id="自定义-HttpMessageConverter-接收-JSON-格式的数据"><a href="#自定义-HttpMessageConverter-接收-JSON-格式的数据" class="headerlink" title="自定义 HttpMessageConverter 接收 JSON 格式的数据"></a>自定义 HttpMessageConverter 接收 JSON 格式的数据</h3><p>也可以使用其他开源类包处理 JSON 数据。下面介绍非常受欢迎的 <strong>fastjson</strong> 来接收 JSON 数据。</p>
+<p>在引入第三放的 fastjson 处理 JSON 数据，因此需要另行配置 HttpMessageConverter：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:annotation-driven&gt;</span><br><span class="line">    &lt;mvc:message-converters register-defaults=&quot;false&quot;&gt;</span><br><span class="line">      &lt;bean class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;/&gt;</span><br><span class="line">      &lt;bean class=&quot;org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter&quot;/&gt;</span><br><span class="line">      &lt;bean class=&quot;org.springframework.http.converter.ByteArrayHttpMessageConverter&quot;/&gt;</span><br><span class="line">      &lt;bean class=&quot;org.springframework.http.converter.BufferedImageHttpMessageConverter&quot;/&gt;</span><br><span class="line">      &lt;!--配置 FastJSON --&gt;</span><br><span class="line">      &lt;bean id=&quot;fastJSONHttpMessageConverter&quot; class=&quot;com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter&quot;&gt;</span><br><span class="line">             &lt;property name=&quot;supportedMediaTypes&quot;&gt;</span><br><span class="line">               &lt;list&gt;</span><br><span class="line">                 &lt;value&gt;text/html;charset=UTF-8&lt;/value&gt;</span><br><span class="line">                 &lt;value&gt;application/json;charset=UTF-8&lt;/value&gt;</span><br><span class="line">               &lt;/list&gt;</span><br><span class="line">             &lt;/property&gt;</span><br><span class="line">      &lt;/bean&gt;</span><br><span class="line">    &lt;/mvc:message-converters&gt;</span><br><span class="line">&lt;/mvc:annotation-driven&gt;</span><br></pre></td></tr></table></figure>
+<p>@ResponseBody 注解用于将 Controller 方法返回的对象通过适当的消息转换器转化为指定格式后，写入到 Response 对象的 body 数据区。通常当返回的数据不是 html 标签的页面，而是其他格式的数据如 json、xml 时使用该注解。</p>
+<h2 id="转换-XML-数据"><a href="#转换-XML-数据" class="headerlink" title="转换 XML 数据"></a>转换 XML 数据</h2><p>SpringMVC 默认使用 <strong>Jaxb2RootElementHttpMessageConverter</strong> 转换 XML 格式的数据。JAXB 可以很方便地生成 XML，也能够很方便地生成 JSON，因此可以很好地在 XML 和 JSON 之间进行转换。</p>
+<p>JAXB 常用的注解包括：@XmlRootElement、@XmlElement。</p>
 
       
     </div>
@@ -569,7 +590,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -682,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HttpMessageConverter-接口"><span class="nav-number">1.</span> <span class="nav-text">HttpMessageConverter\ 接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Converter-和-Formatter"><span class="nav-number">2.</span> <span class="nav-text">Converter 和 Formatter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-Formatter"><span class="nav-number">2.1.</span> <span class="nav-text">创建 Formatter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#区别与联系"><span class="nav-number">3.</span> <span class="nav-text">区别与联系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HttpMessageConverter-lt-T-gt-接口"><span class="nav-number">1.</span> <span class="nav-text">HttpMessageConverter&lt;T&gt; 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpMessageConverter-lt-T-gt-方法"><span class="nav-number">1.1.</span> <span class="nav-text">HttpMessageConverter&lt;T&gt; 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpMessageConverter-lt-T-gt-实现类"><span class="nav-number">1.2.</span> <span class="nav-text">HttpMessageConverter&lt;T&gt;  实现类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换-JSON-数据"><span class="nav-number">1.3.</span> <span class="nav-text">转换 JSON 数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC-提供了处理-JSON-格式请求-响应的-HttpMessageConverter："><span class="nav-number">1.3.1.</span> <span class="nav-text">SpringMVC 提供了处理 JSON 格式请求/响应的 HttpMessageConverter：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义-HttpMessageConverter-接收-JSON-格式的数据"><span class="nav-number">1.3.2.</span> <span class="nav-text">自定义 HttpMessageConverter 接收 JSON 格式的数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换-XML-数据"><span class="nav-number">1.4.</span> <span class="nav-text">转换 XML 数据</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="文件上传为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。 有两种方式来进行文件上传：  利用 Servlet 3.0 及更高版本的支持，但这种上传需要在 Servlet 中完成。 SpringMVC 使用 Apache Commons FileUpload 技术实现了一">
+  <meta name="description" content="为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。 有两种方式来进行文件上传：  利用 Servlet 3.0 及更高版本的支持，但这种上传需要在 Servlet 中完成。 SpringMVC 中使用 MultipartFile 对象，该接口依赖于Apache Commo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC-文件上传下载">
 <meta property="og:url" content="https://lujinbiao.github.io/2018/04/12/SpringMVC/SpringMVC-文件上传下载/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="文件上传为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。 有两种方式来进行文件上传：  利用 Servlet 3.0 及更高版本的支持，但这种上传需要在 Servlet 中完成。 SpringMVC 使用 Apache Commons FileUpload 技术实现了一">
+<meta property="og:description" content="为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。 有两种方式来进行文件上传：  利用 Servlet 3.0 及更高版本的支持，但这种上传需要在 Servlet 中完成。 SpringMVC 中使用 MultipartFile 对象，该接口依赖于Apache Commo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-03T03:25:58.809Z">
+<meta property="og:updated_time" content="2018-11-11T23:07:36.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC-文件上传下载">
-<meta name="twitter:description" content="文件上传为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。 有两种方式来进行文件上传：  利用 Servlet 3.0 及更高版本的支持，但这种上传需要在 Servlet 中完成。 SpringMVC 使用 Apache Commons FileUpload 技术实现了一">
+<meta name="twitter:description" content="为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。 有两种方式来进行文件上传：  利用 Servlet 3.0 及更高版本的支持，但这种上传需要在 Servlet 中完成。 SpringMVC 中使用 MultipartFile 对象，该接口依赖于Apache Commo">
 
 
 
@@ -384,7 +384,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-03 11:25:58" itemprop="dateModified" datetime="2018-06-03T11:25:58+08:00">2018-06-03</time>
+                <time title="修改时间：2018-11-12 07:07:36" itemprop="dateModified" datetime="2018-11-12T07:07:36+08:00">2018-11-12</time>
               
             
           </span>
@@ -437,21 +437,18 @@
       
 
       
-        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。</p>
+        <p>为了能上传文件，必须将表单的 method 设置为 POST，并将 enctype 设置为 multipart/form-data。这样浏览器会采用二进制流的方式来处理表单数据。</p>
 <p>有两种方式来进行文件上传：</p>
 <ul>
 <li>利用 Servlet 3.0 及更高版本的支持，但这种上传需要在 Servlet 中完成。</li>
-<li>SpringMVC 使用 Apache Commons FileUpload 技术实现了一个 MultipartResolver 实现类：CommonsMultipartResolver。</li>
+<li>SpringMVC 中使用 MultipartFile 对象，该接口依赖于Apache Commons FileUpload 组件，因此需要引入 <code>commons-fileupload</code>。</li>
 </ul>
 <blockquote>
 <p>在 HTML5之前，想要上传多个文件，就必须使用多个文件 input 元素。但是在 HTML5 中编写以下任意一行代码，即可生成一个按钮选择多个文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&lt;input type=&quot;file&quot; name=&quot;fileName&quot; multiple/&gt;</span><br><span class="line">&gt;&lt;input type=&quot;file&quot; name=&quot;fileName&quot; multiple=&quot;multiple&quot;/&gt;</span><br><span class="line">&gt;&lt;input type=&quot;file&quot; name=&quot;fileName&quot; multiple=&quot;&quot;/&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h2 id="使用-SpringMVC-提供文件上传支持"><a href="#使用-SpringMVC-提供文件上传支持" class="headerlink" title="使用 SpringMVC 提供文件上传支持"></a>使用 SpringMVC 提供文件上传支持</h2><p>在负责上传的表单设置编码为 “multipart/form-data”：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;upload&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;上传&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="使用-SpringMVC-提供文件上传支持"><a href="#使用-SpringMVC-提供文件上传支持" class="headerlink" title="使用 SpringMVC 提供文件上传支持"></a>使用 SpringMVC 提供文件上传支持</h1><p>在负责上传的表单设置编码为 “multipart/form-data”：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;upload&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;上传&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
 <p>在请求方法中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/uploadFiles&quot;)</span><br><span class="line">    public String uploadFile(HttpServletRequest request, @RequestParam(&quot;files&quot;) MultipartFile file) throws IOException</span><br><span class="line">    &#123;</span><br><span class="line">        //如果上传文件非空,写入上传路径</span><br><span class="line">        if (!file.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            //获取保存路径</span><br><span class="line">            String savePath = request.getSession().getServletContext().getRealPath(&quot;/uploadFiles/&quot;);</span><br><span class="line">            //上传文件名</span><br><span class="line">            String uploadFileName = file.getOriginalFilename();</span><br><span class="line">            File filepath=new File(savePath,uploadFileName);</span><br><span class="line"></span><br><span class="line">            if (!filepath.getParentFile().exists())</span><br><span class="line">            &#123;</span><br><span class="line">                filepath.getParentFile().mkdir();</span><br><span class="line">            &#125;</span><br><span class="line">            file.transferTo(new File(savePath+File.separator+uploadFileName));</span><br><span class="line">            request.setAttribute(&quot;message&quot;,&quot;文件上传成功&quot;);</span><br><span class="line">        &#125; else</span><br><span class="line">        &#123;</span><br><span class="line">            request.setAttribute(&quot;message&quot;,&quot;文件上传异常&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;fileUpload&quot;;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>要使用 SpringMVC 的文件上传功能，还需要在配置文件中配置 MultipartResolver：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;multipartResolver&quot; class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;</span><br><span class="line">    &lt;!-- 上传文件大小上限，单位为字节 --&gt;</span><br><span class="line">    &lt;property name=&quot;maxUploadSize&quot;&gt;</span><br><span class="line">          &lt;value&gt;10485760&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;!-- 请求的编码格式，必须和 JSP 的 pageEncoding 属性一致，以便正确读取表单的内容，默认为 ISO-8859-1 --&gt;</span><br><span class="line">    &lt;property name=&quot;defaultEncoding&quot;&gt;</span><br><span class="line">          &lt;value&gt;UTF-8&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>注意，SpringMVC 自带的文件上传功能依赖于 Apache Commons FileUpload 的组件，所以需要 commons-fileupload-x.y.jar 和 commons-io-x.y.jar。</p>
-</blockquote>
 <p>MultipartFile 对象中的常用方法有：</p>
 <ul>
 <li><strong>byte[] getBytes()</strong>：获取文件数据。</li>
@@ -463,7 +460,7 @@
 <li><strong>boolean isEmpty()</strong>：是否有上传的文件。</li>
 <li><strong>void transferTo(File dest)</strong>：将上传文件保存到一个目标文件中。</li>
 </ul>
-<h2 id="利用-Servlet-3-及更高版本上传文件"><a href="#利用-Servlet-3-及更高版本上传文件" class="headerlink" title="利用 Servlet 3 及更高版本上传文件"></a>利用 Servlet 3 及更高版本上传文件</h2><p>利用 Servlet3 进行文件上传，需要在 web.xml 中对 servlet 元素进行改造，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">      .....</span><br><span class="line">      &lt;multipart-config&gt;</span><br><span class="line">          &lt;max-file-size&gt;20848820&lt;/max-file-size&gt;</span><br><span class="line">          &lt;max-request-size&gt;418018841&lt;/max-request-size&gt;</span><br><span class="line">          &lt;file-size-threshold&gt;1048576&lt;/file-size-threshold&gt;</span><br><span class="line">      &lt;/multipart-config&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="利用-Servlet-3-及更高版本上传文件"><a href="#利用-Servlet-3-及更高版本上传文件" class="headerlink" title="利用 Servlet 3 及更高版本上传文件"></a>利用 Servlet 3 及更高版本上传文件</h1><p>利用 Servlet3 进行文件上传，需要在 web.xml 中对 servlet 元素进行改造，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">      .....</span><br><span class="line">      &lt;multipart-config&gt;</span><br><span class="line">          &lt;max-file-size&gt;20848820&lt;/max-file-size&gt;</span><br><span class="line">          &lt;max-request-size&gt;418018841&lt;/max-request-size&gt;</span><br><span class="line">          &lt;file-size-threshold&gt;1048576&lt;/file-size-threshold&gt;</span><br><span class="line">      &lt;/multipart-config&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p><code>@MultipartConfig</code> 有如下可选属性：</p>
 <ul>
@@ -474,7 +471,8 @@
 </ul>
 </blockquote>
 <p>此外，还需要在 SpringMVC 配置文件中使用一个不同的多部分解析器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 设置一个多部分解析器来进行基于 Servlet3 的文件上传 --&gt;</span><br><span class="line">&lt;bean id=&quot;multipartResolver&quot; class=&quot;org.springframework.web.multipart.support.StandardServletMultipartResolver&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="客户端上传"><a href="#客户端上传" class="headerlink" title="客户端上传"></a>客户端上传</h2><p>HTML5 在其 DOM 中添加了一个 File API，用于客户端文件上传。（待补充）</p>
+<h1 id="客户端上传"><a href="#客户端上传" class="headerlink" title="客户端上传"></a>客户端上传</h1><p>在 Servlet 中进行文件上传并不能显示上传的进度，或者显示已经成功上传的文件数量，用户体验很差。因此HTML5 在其 DOM 中添加了一个 File API，允许访问本地文件，通过 JavaScript 和该 File API 来提供报告上传进度的进度条。</p>
+<p>(待补充)</p>
 <h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><p>对于一些保存在应用程序目录外，或者是保存在某一个数据库中，或者有时需要控制它的访问权限，防止其他网站交叉引用的资源，可以通过编程来发送。通过编程进行的文件下载，可以有选择地将文件发送到浏览器。</p>
 <p>通过编程把一个文件发送到浏览器，需要在控制器完成以下工作：</p>
 <ol>
@@ -482,7 +480,6 @@
 <li>将响应的内容类型设置为文件的内容类型，例如 <code>response.setContentType(&quot;application/pdf&quot;)，如果不清楚内容类型，并且希望浏览器始终显示</code>Save As(另存为)<code></code> 对话框，可以将 ContentType 设置为 <strong>APPLICATION_OCTET_STREAM</strong> 。</li>
 <li>添加一个名为 <strong>Content-Disposition</strong> 的 HTTP 响应标题，并赋值 <strong>attachment；filename=fileName</strong>，这里 fileName 默认是文件名，通常与文件同名。</li>
 </ol>
-<p>以下是一个隐藏资源的示例，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/resource_download&quot;)</span><br><span class="line">   public void downloadResource(HttpServletRequest request,</span><br><span class="line">                                HttpServletResponse response)</span><br><span class="line">   &#123;</span><br><span class="line">       String dataDir = request.getSession().getServletContext().getRealPath(&quot;/WEB-INF/data&quot;);</span><br><span class="line">       String fileName = &quot;excel.pdf&quot;;</span><br><span class="line">       File file = new File(dataDir, fileName);</span><br><span class="line">       if (file.exists())</span><br><span class="line">       &#123;</span><br><span class="line">           response.setContentType(&quot;application/octet-stream&quot;);</span><br><span class="line">           response.addHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename=&quot; + fileName);</span><br><span class="line">           byte[] buffer = new byte[1024];</span><br><span class="line">           try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file))</span><br><span class="line">           )</span><br><span class="line">           &#123;</span><br><span class="line">               OutputStream outputStream = response.getOutputStream();</span><br><span class="line">               int i = bis.read(buffer);</span><br><span class="line">               while (i != -1)</span><br><span class="line">               &#123;</span><br><span class="line">                   outputStream.write(buffer, 0, i);</span><br><span class="line">                   i = bis.read(buffer);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; catch (FileNotFoundException e)</span><br><span class="line">           &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125; catch (IOException e)</span><br><span class="line">           &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -510,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/10/MyBatis/MyBatis-基本使用/" rel="next" title="MyBatis-基本使用">
-                <i class="fa fa-chevron-left"></i> MyBatis-基本使用
+              <a href="/2018/04/12/SpringMVC/SpringMVC-数据校验/" rel="next" title="SpringMVC-数据校验">
+                <i class="fa fa-chevron-left"></i> SpringMVC-数据校验
               </a>
             
           </div>
@@ -596,7 +593,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -709,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件上传"><span class="nav-number">1.</span> <span class="nav-text">文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-SpringMVC-提供文件上传支持"><span class="nav-number">1.1.</span> <span class="nav-text">使用 SpringMVC 提供文件上传支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用-Servlet-3-及更高版本上传文件"><span class="nav-number">1.2.</span> <span class="nav-text">利用 Servlet 3 及更高版本上传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端上传"><span class="nav-number">1.3.</span> <span class="nav-text">客户端上传</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件下载"><span class="nav-number">2.</span> <span class="nav-text">文件下载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-SpringMVC-提供文件上传支持"><span class="nav-number">1.</span> <span class="nav-text">使用 SpringMVC 提供文件上传支持</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用-Servlet-3-及更高版本上传文件"><span class="nav-number">2.</span> <span class="nav-text">利用 Servlet 3 及更高版本上传文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端上传"><span class="nav-number">3.</span> <span class="nav-text">客户端上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件下载"><span class="nav-number">4.</span> <span class="nav-text">文件下载</span></a></li></ol></div>
             
 
           </div>

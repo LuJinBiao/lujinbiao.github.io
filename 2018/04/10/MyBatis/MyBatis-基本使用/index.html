@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="MyBatis 作为持久层框架，其主要思想是将程序中的大量 SQL 语句剥离出来，配置在配置文件中，以实现 SQL 的灵活配置。这样做的好处是将 SQL 与程序代码分离，做到可以在不修改程序代码的情况下，直接在配置文件中修改 SQL。 使用 MyBatis 进行持久化操作，通常有如下操作步骤：  开发实体类 POJO 和编写持久化操作的 Mapper.xml，在 Mapper.xml 中定义要执行">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-03T10:42:00.013Z">
+<meta property="og:updated_time" content="2018-11-11T23:27:14.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis-基本使用">
 <meta name="twitter:description" content="MyBatis 作为持久层框架，其主要思想是将程序中的大量 SQL 语句剥离出来，配置在配置文件中，以实现 SQL 的灵活配置。这样做的好处是将 SQL 与程序代码分离，做到可以在不修改程序代码的情况下，直接在配置文件中修改 SQL。 使用 MyBatis 进行持久化操作，通常有如下操作步骤：  开发实体类 POJO 和编写持久化操作的 Mapper.xml，在 Mapper.xml 中定义要执行">
@@ -384,7 +384,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-03 18:42:00" itemprop="dateModified" datetime="2018-06-03T18:42:00+08:00">2018-06-03</time>
+                <time title="修改时间：2018-11-12 07:27:14" itemprop="dateModified" datetime="2018-11-12T07:27:14+08:00">2018-11-12</time>
               
             
           </span>
@@ -446,6 +446,8 @@
 <li>用面向对象的方式操作数据库；</li>
 <li>关闭事务，关闭 SqlSession；</li>
 </ol>
+<p>下面是使用 MyBatis 时需要先加载配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream is=Resources.getResrourceAsStream(&quot;mybatis-config.xml&quot;);</span><br><span class="line">SqlSessionFactory sessionFactory=new SqlSessionFactoryBuilder().build(is);</span><br><span class="line">SqlSession session=sessionFactory.openSession();</span><br></pre></td></tr></table></figure>
 <p>MyBatis 的初始化要经过以下几个步骤：</p>
 <ol>
 <li>调用 SqlSessionFactoryBuilder 对象的 build(inputStream) 方法；</li>
@@ -497,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/12/SpringMVC/SpringMVC-文件上传下载/" rel="prev" title="SpringMVC-文件上传下载">
-                SpringMVC-文件上传下载 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/12/SpringMVC/SpringMVC-数据校验/" rel="prev" title="SpringMVC-数据校验">
+                SpringMVC-数据校验 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -573,7 +575,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
