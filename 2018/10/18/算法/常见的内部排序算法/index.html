@@ -116,7 +116,9 @@
 <meta property="og:description" content="常见的内部排序方法可以分为6大类，具体有10种：  选择排序（直接选择排序、堆排序） 交换排序（冒泡排序、快速排序） 插入排序（直接插入排序、折半插入排序、Shell排序） 归并排序 桶式排序 基数排序  选择排序常用的选择排序有：直接选择排序　和　堆排序。直接选择排序简单但是性能差，堆排序较为高效但是实现起来复杂。 直接选择排序直接选择排序的思路很简单，第 1 趟比较，把记录定位到第 1 个数">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/Td8P4CI.jpg">
-<meta property="og:updated_time" content="2018-11-04T20:43:07.863Z">
+<meta property="og:image" content="https://i.imgur.com/eTpHRBS.png">
+<meta property="og:image" content="https://i.imgur.com/jbOB7IO.jpg">
+<meta property="og:updated_time" content="2018-11-16T00:40:55.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见的内部排序算法">
 <meta name="twitter:description" content="常见的内部排序方法可以分为6大类，具体有10种：  选择排序（直接选择排序、堆排序） 交换排序（冒泡排序、快速排序） 插入排序（直接插入排序、折半插入排序、Shell排序） 归并排序 桶式排序 基数排序  选择排序常用的选择排序有：直接选择排序　和　堆排序。直接选择排序简单但是性能差，堆排序较为高效但是实现起来复杂。 直接选择排序直接选择排序的思路很简单，第 1 趟比较，把记录定位到第 1 个数">
@@ -390,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-05 04:43:07" itemprop="dateModified" datetime="2018-11-05T04:43:07+08:00">2018-11-05</time>
+                <time title="修改时间：2018-11-16 08:40:55" itemprop="dateModified" datetime="2018-11-16T08:40:55+08:00">2018-11-16</time>
               
             
           </span>
@@ -489,13 +491,53 @@
 <h1 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h1><p>交换排序的主体操作是对数据组中的数据不断进行交换操作，主要有冒泡排序和快速排序。</p>
 <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>原理：气泡在水底时，水压最大，气泡最小；但慢慢浮上水面时，气泡由小逐渐变大。当有 <strong>n</strong> 个元素时算法执行 <strong>n-1</strong> 次扫描，第 <strong>i</strong> 次扫描执行 <strong>n-i</strong> 次比较。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] origin)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; origin.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> flag = <span class="number">0</span>;<span class="comment">//flag标记用来记录是否有执行过交换动作，并记录次数</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; origin.length - i; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (origin[j] &gt; origin[j + <span class="number">1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> temp = origin[j];</span><br><span class="line">                    origin[j] = origin[j + <span class="number">1</span>];</span><br><span class="line">                    origin[j + <span class="number">1</span>] = temp;</span><br><span class="line">                    flag++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序法又称为分割交换排序法，是速度非常快的交换排序法。它的基本思路是：从待排序的数据中任取一个数据(如第一个数据)作为分界值，所有比它小的数据元素一律放到左边，所有比它大的数据元素一律放到右边。经过这样一趟下来，该序列形成左右两个子序列，左边序列中数据元素的值都比分界值小、右边序列中的数据元素都比分界值大。然后对左、右两个子序列进行递归，以同样的方式处理两边的数据，直到排序完成。</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序法又称为分割交换排序法，是速度非常快的交换排序法。</p>
+<p>假设有 n 个记录，快速排序法的步骤如下：</p>
+<ol>
+<li>取 K 为第一个键值。</li>
+<li>定义一个变量 <strong>i</strong>，<strong>i</strong> 变量从左边第一个索引开始，找大于分界值的元素的索引，并用 <strong>i</strong> 来记录该索引。</li>
+<li>定义一个变量 <strong>j</strong>，<strong>j</strong> 变量从右边第一个索引开始，找小于分界值的元素的索引，并用 <strong>j</strong> 来记录该索引。</li>
+<li>如果 <strong>i</strong> &lt; <strong>j</strong>，交换 <strong>i</strong>、<strong>j</strong> 两个索引处的元素。</li>
+<li>重复执行 1、2、3 步骤，直到 <strong>i</strong> &gt;= <strong>j</strong>，则将 <strong>K</strong> 与 <strong>j</strong> 索引处的数据元素交换，并以 <strong>j</strong> 为基准点将数据分为左右两部分，并以递归方式分别为左右两半进行排序，直至完成排序。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 快速排序</span><br><span class="line"> *</span><br><span class="line"> * @param origin 原始数组</span><br><span class="line"> */</span><br><span class="line">public static void quickSort(int[] origin)</span><br><span class="line">&#123;</span><br><span class="line">	subSort(origin, 0, origin.length - 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void subSort(int[] data, int start, int end)</span><br><span class="line">&#123;</span><br><span class="line">	if (start &lt; end)</span><br><span class="line">&#123;</span><br><span class="line">	//把第一个数据元素作为分界值</span><br><span class="line">	int base = data[start];</span><br><span class="line">	//i 从左边开始搜索第一个比分界值大的数据元素的索引</span><br><span class="line">	int i = start;</span><br><span class="line">	//j 从右边开始搜索第一个比分界值小的数据元素的索引</span><br><span class="line">	int j = end + 1;</span><br><span class="line">	while (true)</span><br><span class="line">  &#123;</span><br><span class="line">		//开始寻找大于分界值的索引，</span><br><span class="line">		while (i &lt; end &amp;&amp; data[++i] &lt; base) ;</span><br><span class="line">		//寻找小于分界值的索引</span><br><span class="line">		while (j &gt; start &amp;&amp; data[--j] &gt; base) ;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			swap(data, i, j);</span><br><span class="line">		&#125; else</span><br><span class="line">		&#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		swap(data, start, j);</span><br><span class="line">		//分别递归左子列和右子列</span><br><span class="line">		subSort(data, start, j - 1);</span><br><span class="line">		subSort(data, j + 1, end);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>快速排序的时间效率很好，因为它每趟能确定的元素呈指数增长。</p>
+<p>快速排序需要使用递归，而递归使用栈，因此它的空间效率为 O(log~2~n)。</p>
+<p>快速排序中包含跳跃式交换，因此是不稳定算法。</p>
 <h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><h2 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h2><p>直接插入排序是将数组中的元素，逐一与已排序好的数据作比较，再将该元素插入适当的位置。</p>
 <p><img src="https://i.imgur.com/Td8P4CI.jpg" alt=""></p>
 <p>在步骤二中，以 4 为基准与其他元素比较后，放到适当位置(6的前面)，步骤三则拿 9 与其他两个元素比较，接着 8 在比较完前三个数后插入 9 的前面….直至完成排序。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] origin)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//扫描次数为 n-1 次</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; origin.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = origin[i];</span><br><span class="line">            <span class="keyword">if</span> (origin[i] &lt; origin[i - <span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (; j &gt;= <span class="number">0</span> &amp;&amp; origin[j] &gt; temp; j--)</span><br><span class="line">                &#123;</span><br><span class="line">                    origin[j + <span class="number">1</span>] = origin[j];</span><br><span class="line">                &#125;</span><br><span class="line">                origin[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="折半插入排序"><a href="#折半插入排序" class="headerlink" title="折半插入排序"></a>折半插入排序</h2><h2 id="Shell排序"><a href="#Shell排序" class="headerlink" title="Shell排序"></a>Shell排序</h2><p>希尔排序法类似于直接插入排序法，但它可以减少数据搬移的次数。排序的原则是将数据区划分成特定间隔的几个小区块，以插入排序法排序完区块内的数据后再渐渐减少间隔的距离。</p>
-<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><h1 id="桶式排序"><a href="#桶式排序" class="headerlink" title="桶式排序"></a>桶式排序</h1><h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并排序的基本思想是将两个(或以上)有序的序列合并成一个新的有序序列。具体做法是，归并排序先将长度为 n 的无序序列看成是 n 个长度为 1 的有序子列，首先做两两合并，得到 n/2 个长度为 2  的有序子列，再做两两合并······不断重复这个过程，最终可以得到一个长度为 n 的有序序列。</p>
+<p>对于长度为 n 的原始数据序列，只需经过 log~2~n 次合并。</p>
+<p>归并排序的具体步骤：</p>
+<ol>
+<li>定义变量 i，j 从 0 开始，依次等于 A 序列中每个元素的索引。</li>
+<li>定义变量 i，j 从 0 开始，依次等于 B 序列中每个元素的索引。</li>
+<li>拿 A 序列中 i 索引处元素和 B 序列中 j 索引处的元素进行比较，将较小的复制到一个临时数组中。</li>
+<li>如果 i 索引处的元素小，i++；如果 j 索引处的元素小，j++。</li>
+<li>不断重复以上 4 个步骤，即可将 A、B 两个序列中的数据元素复制到临时数组中，直到其中一个数组中的所有元素都被复制到临时数组中。最后，再将另一个数组中多出来的元素全部复制到临时数组中，合并即完成排序。</li>
+</ol>
+<p><img src="https://i.imgur.com/eTpHRBS.png" alt=""></p>
+<h1 id="桶式排序"><a href="#桶式排序" class="headerlink" title="桶式排序"></a>桶式排序</h1><p>桶式排序不是一种基于比较的排序方法，其需要原始数据序列满足如下两个特征：</p>
+<ol>
+<li>原始数据序列的所有值处于一个可枚举范围内；</li>
+<li>原始数据序列所在的这个可枚举范围不应该太大，否则排序开销太大。</li>
+</ol>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><p>基数排序法并不需要进行元素间的比较，属于一种分配模式排序方式。按照比较的方向可分为 <strong>最高位优先(Most Significant Digit First,MSD)</strong>，和 <strong>最低位优先(Least Significant Digit First,LSD)</strong> 两种。MSD 法是从最左边的位数开始比较，而 LSD 是从最右边的位数开始比较。</p>
+<p>下面以 LSD 为例对三位数的整数按个位数、十位数、百位数进行排序。</p>
+<p><img src="https://i.imgur.com/jbOB7IO.jpg" alt=""></p>
+<p>最后合并即完成排序：7、34、45、59、60、88、95、133、168、171、259、372.</p>
+<p>基数排序法分析：</p>
+<ol>
+<li>在所有情况下，时间复杂度均为 O(nlog~p~k)，k 是原始数据的最大值。</li>
+<li>基数排序法是稳定排序。</li>
+<li>基数排序会用到很大的额外空间来存放列表数据，其空间复杂度为 O(n*p)，n 是原始数据的个数，p 是数据字符数(即数据的位数)。</li>
+<li>若 n 很大，p 固定或很小，基数排序将很有效率。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
 
